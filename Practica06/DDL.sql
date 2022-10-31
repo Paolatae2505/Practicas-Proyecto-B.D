@@ -1,3 +1,43 @@
+CREATE TABLE cliente(
+	id_cliente int, 
+	nombre varchar(256),
+	fecha_nacimiento date
+);
+
+ALTER TABLE cliente
+ADD CONSTRAINT positivos_cliente
+CHECK (
+    id_cliente > 0
+);
+
+ALTER TABLE cliente ADD CONSTRAINT pk_cliente PRIMARY KEY(correo);
+
+CREATE TABLE telefono_cliente(
+	id_cliente int,
+	telefono_cliente VARCHAR(10)
+);
+
+ALTER TABLE telefono_cliente
+ADD CONSTRAINT positivos_telefono_cliente
+CHECK (
+    id_cliente > 0
+);
+
+ALTER TABLE telefono_cliente ADD CONSTRAINT pk_telefono_cliente PRIMARY KEY(id_cliente,telefono_cliente);
+
+CREATE TABLE correo_electronico_cliente(
+	id_cliente int,
+	correo_electronico_cliente VARCHAR(100)
+);
+
+ALTER TABLE correo_electronico_cliente
+ADD CONSTRAINT positivos_correo_electronico_cliente
+CHECK (
+    id_cliente > 0
+);
+
+ALTER TABLE correo_electronico_cliente ADD CONSTRAINT pk_telefono_cliente PRIMARY KEY(id_cliente,correo_electronico_cliente);
+
 CREATE TABLE venta_linea(
 	id_vivero INT,
 	id_planta INT,
