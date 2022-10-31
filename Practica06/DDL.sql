@@ -10,7 +10,7 @@ CHECK (
     id_cliente > 0
 );
 
-ALTER TABLE cliente ADD CONSTRAINT pk_cliente PRIMARY KEY(correo);
+ALTER TABLE cliente ADD CONSTRAINT pk_cliente PRIMARY KEY(id_cliente);
 
 CREATE TABLE telefono_cliente(
 	id_cliente INT,
