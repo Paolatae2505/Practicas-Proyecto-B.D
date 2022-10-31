@@ -18,7 +18,7 @@ ALTER TABLE vivero ADD CONSTRAINT pk_vivero PRIMARY KEY(id_vivero);
 
 CREATE TABLE telefono_vivero(
 	id_vivero INT,
-	telefono_vivero VARCHAR(11) NOT NULL
+	telefono_vivero VARCHAR(10) NOT NULL
 );
 
 ALTER TABLE telefono_vivero
@@ -45,7 +45,7 @@ ALTER TABLE cliente ADD CONSTRAINT pk_cliente PRIMARY KEY(id_cliente);
 
 CREATE TABLE telefono_cliente(
 	id_cliente INT,
-	telefono_cliente VARCHAR(11) NOT NULL
+	telefono_cliente VARCHAR(10) NOT NULL
 );
 
 ALTER TABLE telefono_cliente
