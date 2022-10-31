@@ -97,16 +97,28 @@ PRIMARY KEY (id_vivero, id_planta,
 			id_venta);
 
 ALTER TABLE venta_linea
-ADD CONSTRAINT fk1_cliente
+ADD CONSTRAINT fk1_vivero
+FOREIGN KEY (id_vivero)
+   REFERENCES vivero (id_vivero);
+
+ALTER TABLE venta_linea
+ADD CONSTRAINT fk2_planta
+FOREIGN KEY (id_planta)
+   REFERENCES planta (id_planta);
+
+ALTER TABLE venta_linea
+ADD CONSTRAINT fk3_cliente
 FOREIGN KEY (id_cliente)
    REFERENCES cliente (id_cliente);
+   
+
 			
 CREATE TABLE venta_fisica(
 	id_vivero INT,
 	id_planta INT,
 	id_venta INT,
-	id_rol INT,
-	id_empleado INT
+	id_rol_ayudar INT,
+	id_empleado_ayudar INT
 );
 ALTER TABLE venta_fisica
 ADD CONSTRAINT positivos_venta_fisica
@@ -124,13 +136,23 @@ PRIMARY KEY (id_vivero, id_planta,
 			id_venta);
 			
 ALTER TABLE venta_fisica
-ADD CONSTRAINT fk1_rol
-FOREIGN KEY (id_rol)
+ADD CONSTRAINT fk1_vivero
+FOREIGN KEY (id_vivero)
+   REFERENCES vivero (id_vivero);
+
+ALTER TABLE venta_fisica
+ADD CONSTRAINT fk2_planta
+FOREIGN KEY (id_planta)
+   REFERENCES planta (id_planta);
+			
+ALTER TABLE venta_fisica
+ADD CONSTRAINT fk3_rol_ayudar
+FOREIGN KEY (id_rol_ayudar)
    REFERENCES empleado (id_rol);
 
 ALTER TABLE venta_fisica
-ADD CONSTRAINT fk2_empleado
-FOREIGN KEY (id_empleado)
+ADD CONSTRAINT fk4_empleado_ayudar
+FOREIGN KEY (id_empleado_ayudar)
    REFERENCES empleado (id_empleado);
    
 CREATE TABLE generar(
@@ -191,9 +213,24 @@ ALTER TABLE nota_pago
 ADD CONSTRAINT pk_nota_pago
 PRIMARY KEY (id_nota_pago,id_vivero, id_planta,
 			id_venta);
+
+ALTER TABLE nota_pago
+ADD CONSTRAINT fk1_vivero
+FOREIGN KEY (id_vivero)
+   REFERENCES vivero (id_vivero);
+   
+ALTER TABLE nota_pago
+ADD CONSTRAINT fk2_planta
+FOREIGN KEY (id_planta)
+   REFERENCES planta (id_planta);
+ 
+ALTER TABLE nota_pago
+ADD CONSTRAINT fk3_venta
+FOREIGN KEY (id_venta)
+   REFERENCES venta (id_venta);
 			
 ALTER TABLE nota_pago
-ADD CONSTRAINT fk1_forma_pago
+ADD CONSTRAINT fk4_forma_pago
 FOREIGN KEY (id_forma_pago)
    REFERENCES c_forma_de_pago (id_forma_pago);
 			
