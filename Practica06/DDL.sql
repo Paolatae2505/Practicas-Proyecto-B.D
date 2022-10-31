@@ -14,7 +14,7 @@ ALTER TABLE cliente ADD CONSTRAINT pk_cliente PRIMARY KEY(correo);
 
 CREATE TABLE telefono_cliente(
 	id_cliente INT,
-	telefono_cliente VARCHAR(10) NOT NULL
+	telefono_cliente VARCHAR(11) NOT NULL
 );
 
 ALTER TABLE telefono_cliente
