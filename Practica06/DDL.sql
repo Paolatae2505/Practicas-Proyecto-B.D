@@ -1,3 +1,34 @@
+CREATE TABLE vivero(
+	id_vivero INT, 
+	nombre_vivero VARCHAR(256) NOT NULL,
+	fecha_apertura DATE NOT NULL,
+	estado VARCHAR(256) NOT NULL,
+	ciudad VARCHAR(256) NOT NULL,
+	calle VARCHAR(256) NOT NULL,
+	cp VARCHAR(5) NOT NULL
+);
+
+ALTER TABLE vivero
+ADD CONSTRAINT positivos_vivero
+CHECK (
+    id_vivero > 0
+);
+
+ALTER TABLE vivero ADD CONSTRAINT pk_vivero PRIMARY KEY(id_vivero);
+
+CREATE TABLE telefono_vivero(
+	id_vivero INT,
+	telefono_vivero VARCHAR(11) NOT NULL
+);
+
+ALTER TABLE telefono_vivero
+ADD CONSTRAINT positivos_telefono_vivero
+CHECK (
+    id_vivero > 0
+);
+
+ALTER TABLE telefono_vivero ADD CONSTRAINT pk_telefono_vivero PRIMARY KEY(id_vivero,telefono_vivero);
+
 CREATE TABLE cliente(
 	id_cliente INT, 
 	nombre VARCHAR(256) NOT NULL,
