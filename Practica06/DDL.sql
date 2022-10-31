@@ -27,7 +27,7 @@ ALTER TABLE telefono_cliente ADD CONSTRAINT pk_telefono_cliente PRIMARY KEY(id_c
 
 CREATE TABLE correo_electronico_cliente(
 	id_cliente INT,
-	correo_electronico_cliente VARCHAR(100) NOT NULL
+	correo_electronico_cliente VARCHAR(256) NOT NULL
 );
 
 ALTER TABLE correo_electronico_cliente
