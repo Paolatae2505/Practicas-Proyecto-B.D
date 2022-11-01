@@ -279,6 +279,12 @@ CHECK (
     AND id_empleado > 0
 );
 
+ALTER TABLE empleado
+ADD CONSTRAINT unique_empleado
+UNIQUE(
+	id_empleado, id_rol
+);
+
 
 ALTER TABLE empleado
 ADD CONSTRAINT pk_empleado
@@ -369,13 +375,18 @@ CHECK (
     AND id_tp > 0
 );
 
+ALTER TABLE empleado
+ADD CONSTRAINT unique_empleado
+UNIQUE(
+	id_planta
+);
 
 ALTER TABLE planta
 ADD CONSTRAINT pk_planta
 PRIMARY KEY(
 	id_planta,
 	id_vivero,
-	id_tp,
+	id_tp
 );
 
 ALTER TABLE planta
