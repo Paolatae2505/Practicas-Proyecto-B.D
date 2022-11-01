@@ -224,6 +224,7 @@ ADD CONSTRAINT positivos_nota_pago
 CHECK (
     id_nota_pago > 0
     AND id_forma_pago > 0
+    AND monto ::numeric::float8  > 0
 );
 
 ALTER TABLE nota_pago
@@ -279,6 +280,7 @@ CHECK (
     id_vivero > 0
     AND id_rol > 0
     AND id_empleado > 0
+    AND salario ::numeric::float8  > 0
 );
 
 ALTER TABLE empleado
