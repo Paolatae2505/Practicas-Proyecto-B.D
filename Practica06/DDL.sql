@@ -77,7 +77,7 @@ CHECK (
     id_cliente > 0
 );
 
-ALTER TABLE correo_electronico_cliente ADD CONSTRAINT formato_correo_cliente check(correo like '_%@_%._%'); 
+ALTER TABLE correo_electronico_cliente ADD CONSTRAINT formato_correo_cliente check(correo_electronico_cliente like '_%@_%._%'); 
 
 ALTER TABLE correo_electronico_cliente ADD CONSTRAINT pk_correo_electronico_cliente PRIMARY KEY(id_cliente,correo_electronico_cliente);
 
