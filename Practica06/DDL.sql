@@ -29,6 +29,11 @@ CHECK (
 
 ALTER TABLE telefono_vivero ADD CONSTRAINT pk_telefono_vivero PRIMARY KEY(id_vivero,telefono_vivero);
 
+ALTER TABLE telefono_vivero
+ADD CONSTRAINT fk_telefono_vivero
+FOREIGN KEY (id_vivero)
+   REFERENCES vivero (id_vivero);
+
 CREATE TABLE cliente(
 	id_cliente INT, 
 	nombre VARCHAR(256) NOT NULL,
