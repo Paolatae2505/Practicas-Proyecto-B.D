@@ -354,12 +354,21 @@ CREATE TABLE planta(
 	id_planta INT,
 	id_vivero INT,
 	id_tp INT,
-	precio INT,
-	fecha_germinacion DATE,
-	sustrato VARCHAR(256),
-	genero VARCHAR(256),
-	nombre_planta VARCHAR(256),
+	precio INT NOT NULL,
+	fecha_germinacion DATE NOT NULL,
+	sustrato VARCHAR(256) NOT NULL,
+	genero VARCHAR(256) NOT NULL,
+	nombre_planta VARCHAR(256) NOT NULL,
 );
+
+ALTER TABLE planta
+ADD CONSTRAINT positivos_planta
+CHECK (
+    id_planta > 0
+    AND id_vivero > 0
+    AND id_tp > 0
+);
+
 
 ALTER TABLE planta
 ADD CONSTRAINT pk_planta
@@ -386,7 +395,13 @@ REFERENCES  c_tipo_planta(id_tp);
 
 CREATE TABLE c_tipo_planta(
 	id_tp INT,
-	descripcion VARCHAR(256)
+	descripcion VARCHAR(256) NOT NULL
+);
+
+ALTER TABLE c_tipo_planta
+ADD CONSTRAINT positivos_c_tipo_planta
+CHECK (
+    id_tp > 0
 );
 
 ALTER TABLE c_tipo_planta
@@ -395,7 +410,13 @@ PRIMARY KEY(id_tp);
 
 CREATE TABLE cuidado_basico(
 	id_planta INT,
-	cuidado_basico VARCHAR(256)
+	cuidado_basico VARCHAR(256) NOT NULL
+);
+
+ALTER TABLE c_tipo_planta
+ADD CONSTRAINT positivos_cuidado_basico
+CHECK (
+    id_planta > 0
 );
 
 ALTER TABLE cuidado_basico
