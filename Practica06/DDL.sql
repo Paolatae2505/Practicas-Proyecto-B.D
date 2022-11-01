@@ -223,6 +223,12 @@ ADD CONSTRAINT pk_venta_linea
 PRIMARY KEY (id_venta_linea ,id_vivero, id_planta);
 
 ALTER TABLE venta_linea
+ADD CONSTRAINT unique_venta_linea
+UNIQUE(
+	id_venta_linea
+);
+
+ALTER TABLE venta_linea
 ADD CONSTRAINT fk1_vivero
 FOREIGN KEY (id_vivero)
    REFERENCES vivero (id_vivero);
@@ -252,6 +258,12 @@ CHECK (
 ALTER TABLE venta_fisica
 ADD CONSTRAINT pk_venta_fisica
 PRIMARY KEY (id_venta_fisica, id_vivero, id_planta);
+
+ALTER TABLE venta_fisica
+ADD CONSTRAINT unique_venta_fisica
+UNIQUE(
+	id_venta_fisica
+);
 			
 ALTER TABLE venta_fisica
 ADD CONSTRAINT fk1_vivero
@@ -301,6 +313,12 @@ ALTER TABLE generar
 ADD CONSTRAINT fk4_venta_linea
 FOREIGN KEY (id_venta_linea)
    REFERENCES venta_linea (id_venta_linea);
+   
+ALTER TABLE nota_pago
+ADD CONSTRAINT unique_nota_pago
+UNIQUE(
+	id_nota_pago
+);
 
 ALTER TABLE generar
 ADD CONSTRAINT fk5_nota_pago
@@ -318,15 +336,15 @@ CHECK (
 ALTER TABLE nota_pago
 ADD CONSTRAINT pk_nota_pago
 PRIMARY KEY (id_nota_pago);
+
+ALTER TABLE c_forma_de_pago
+ADD CONSTRAINT pk_c_forma_de_pago
+PRIMARY KEY (id_forma_pago);
  		
 ALTER TABLE nota_pago
 ADD CONSTRAINT fk1_forma_pago
 FOREIGN KEY (id_forma_pago)
    REFERENCES c_forma_de_pago (id_forma_pago);
-
-ALTER TABLE c_forma_pago
-ADD CONSTRAINT pk_c_forma_pago
-PRIMARY KEY (id_forma_pago);
 
 ALTER TABLE c_rol
 ADD CONSTRAINT positivos_c_rol
@@ -441,7 +459,7 @@ PRIMARY KEY(id_tp);
 ALTER TABLE c_tipo_planta
 ADD CONSTRAINT positivos_cuidado_basico
 CHECK (
-    id_planta > 0
+    id_tp > 0
 );
 
 ALTER TABLE cuidado_basico
