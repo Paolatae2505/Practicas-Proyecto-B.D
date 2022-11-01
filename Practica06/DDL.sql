@@ -8,6 +8,149 @@ CREATE TABLE vivero(
 	cp VARCHAR(5) NOT NULL
 );
 
+CREATE TABLE telefono_vivero(
+	id_vivero INT,
+	telefono_vivero VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE cliente(
+	id_cliente INT, 
+	nombre VARCHAR(256) NOT NULL,
+	fecha_nacimiento DATE NOT NULL
+);
+
+CREATE TABLE correo_electronico_cliente(
+	id_cliente INT,
+	correo_electronico_cliente VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE telefono_cliente(
+	id_cliente INT,
+	telefono_cliente VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE venta_linea(
+	id_venta_linea INT,
+	id_vivero INT,
+	id_planta INT,
+	id_cliente INT,
+	fecha_pedido DATE,
+	num_segu_envio INT NOT NULL ,
+	direc_envio VARCHAR(286) NOT NULL
+);
+
+CREATE TABLE venta_fisica(
+	id_venta_fisica INT,
+	id_vivero INT,
+	id_planta INT,
+	id_rol_ayudar INT,
+	id_empleado_ayudar INT,
+	id_rol_cobrar INT,
+	id_empleado_cobrar INT
+);
+
+CREATE TABLE generar(
+	id_vivero INT,
+	id_planta INT,
+	id_venta_fisica INT,
+	id_venta_linea INT,
+	id_nota_pago INT
+);
+
+CREATE TABLE nota_pago(
+	id_nota_pago INT,
+	id_forma_pago INT,
+	monto MONEY NOT NULL
+);
+
+CREATE TABLE c_forma_de_pago(
+	id_forma_pago INT check(id_forma_pago > 0),
+	descripcion VARCHAR(15) NOT NULL
+);
+
+CREATE TABLE c_rol(
+	id_rol INT check(id_rol > 0),
+	descripcion VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE empleado(
+	id_vivero INT,
+	id_rol INT,
+	id_empleado INT,
+	nombre VARCHAR(256) NOT NULL,
+	fecha_nacimiento DATE NOT NULL,
+	salario MONEY NOT NULL,
+	ciudad VARCHAR(256) NOT NULL,
+	estado VARCHAR(256) NOT NULL,
+	cp VARCHAR(5) NOT NULL,
+	calle VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE telefono_empleado(
+	id_vivero INT,
+	id_rol INT,
+	id_empleado INT,
+	telefono_empleado VARCHAR(11) NOT NULL
+);
+
+CREATE TABLE correo_electronico_empl(
+	id_vivero INT,
+	id_rol INT,
+	id_empleado INT,
+	correo_electronico_empl VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE planta(
+	id_planta INT,
+	id_vivero INT,
+	id_tp INT,
+	precio INT NOT NULL,
+	fecha_germinacion DATE NOT NULL,
+	sustrato VARCHAR(256) NOT NULL,
+	genero VARCHAR(256) NOT NULL,
+	nombre_planta VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE cuidado_basico(
+	id_planta INT,
+	cuidado_basico VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE c_tipo_planta(
+	id_tp INT,
+	descripcion VARCHAR(256) NOT NULL
+);
+
+ALTER TABLE planta
+ADD CONSTRAINT unique_planta
+UNIQUE(
+	id_planta
+);
+
+ALTER TABLE c_tipo_planta
+ADD CONSTRAINT unique_id_tp
+UNIQUE(
+	id_tp
+);
+
+ALTER TABLE cuidado_basico
+ADD CONSTRAINT unique_cuidado_basico
+UNIQUE(
+	cuidado_basico
+);
+
+ALTER TABLE empleado
+ADD CONSTRAINT unique_empleado
+UNIQUE(
+	id_empleado
+);
+
+ALTER TABLE empleado
+ADD CONSTRAINT unique_rol
+UNIQUE(
+	id_rol
+);
+
 ALTER TABLE vivero
 ADD CONSTRAINT positivos_vivero
 CHECK (
@@ -15,11 +158,6 @@ CHECK (
 );
 
 ALTER TABLE vivero ADD CONSTRAINT pk_vivero PRIMARY KEY(id_vivero);
-
-CREATE TABLE telefono_vivero(
-	id_vivero INT,
-	telefono_vivero VARCHAR(10) NOT NULL
-);
 
 ALTER TABLE telefono_vivero
 ADD CONSTRAINT positivos_telefono_vivero
@@ -34,12 +172,6 @@ ADD CONSTRAINT fk_telefono_vivero
 FOREIGN KEY (id_vivero)
    REFERENCES vivero (id_vivero);
 
-CREATE TABLE cliente(
-	id_cliente INT, 
-	nombre VARCHAR(256) NOT NULL,
-	fecha_nacimiento DATE NOT NULL
-);
-
 ALTER TABLE cliente
 ADD CONSTRAINT positivos_cliente
 CHECK (
@@ -47,11 +179,6 @@ CHECK (
 );
 
 ALTER TABLE cliente ADD CONSTRAINT pk_cliente PRIMARY KEY(id_cliente);
-
-CREATE TABLE telefono_cliente(
-	id_cliente INT,
-	telefono_cliente VARCHAR(10) NOT NULL
-);
 
 ALTER TABLE telefono_cliente
 ADD CONSTRAINT positivos_telefono_cliente
@@ -65,11 +192,6 @@ ALTER TABLE telefono_cliente
 ADD CONSTRAINT fk1_telefono_cliente
 FOREIGN KEY (id_cliente)
    REFERENCES cliente(id_cliente);
-
-CREATE TABLE correo_electronico_cliente(
-	id_cliente INT,
-	correo_electronico_cliente VARCHAR(256) NOT NULL
-);
 
 ALTER TABLE correo_electronico_cliente
 ADD CONSTRAINT positivos_correo_electronico_cliente
@@ -85,16 +207,6 @@ ALTER TABLE correo_electronico_cliente
 ADD CONSTRAINT fk1_correo_electronico_cliente
 FOREIGN KEY (id_cliente)
    REFERENCES cliente(id_cliente);
-
-CREATE TABLE venta_linea(
-	id_venta_linea INT,
-	id_vivero INT,
-	id_planta INT,
-	id_cliente INT,
-	fecha_pedido DATE,
-	num_segu_envio INT NOT NULL ,
-	direc_envio VARCHAR(286) NOT NULL
-);
 
 ALTER TABLE venta_linea
 ADD CONSTRAINT positivos_venta_linea
@@ -124,16 +236,6 @@ ALTER TABLE venta_linea
 ADD CONSTRAINT fk3_cliente
 FOREIGN KEY (id_cliente)
    REFERENCES cliente (id_cliente);
-   			
-CREATE TABLE venta_fisica(
-	id_venta_fisica INT,
-	id_vivero INT,
-	id_planta INT,
-	id_rol_ayudar INT,
-	id_empleado_ayudar INT,
-	id_rol_cobrar INT,
-	id_empleado_cobrar INT
-);
 
 ALTER TABLE venta_fisica
 ADD CONSTRAINT positivos_venta_fisica
@@ -170,14 +272,6 @@ ALTER TABLE venta_fisica
 ADD CONSTRAINT fk4_empleado_ayudar
 FOREIGN KEY (id_empleado_ayudar)
    REFERENCES empleado (id_empleado);
-   
-CREATE TABLE generar(
-	id_vivero INT,
-	id_planta INT,
-	id_venta_fisica INT,
-	id_venta_linea INT
-	id_nota_pago INT,
-);
 
 ALTER TABLE generar
 ADD CONSTRAINT positivos_generar
@@ -212,12 +306,6 @@ ALTER TABLE generar
 ADD CONSTRAINT fk5_nota_pago
 FOREIGN KEY (id_nota_pago)
    REFERENCES nota_pago (id_nota_pago);
-   
-CREATE TABLE nota_pago(
-	id_nota_pago INT,
-	id_forma_pago INT,
-	monto MONEY NOT NULL
-);
 
 ALTER TABLE nota_pago
 ADD CONSTRAINT positivos_nota_pago
@@ -235,21 +323,10 @@ ALTER TABLE nota_pago
 ADD CONSTRAINT fk1_forma_pago
 FOREIGN KEY (id_forma_pago)
    REFERENCES c_forma_de_pago (id_forma_pago);
-			
-CREATE TABLE c_forma_de_pago(
-	id_forma_pago INT check(id_forma_pago > 0),
-	descripcion VARCHAR(15) NOT NULL
-);
 
 ALTER TABLE c_forma_pago
 ADD CONSTRAINT pk_c_forma_pago
 PRIMARY KEY (id_forma_pago);
-
-
-CREATE TABLE c_rol(
-	id_rol INT check(id_rol > 0),
-	descripcion VARCHAR(256) NOT NULL
-);
 
 ALTER TABLE c_rol
 ADD CONSTRAINT positivos_c_rol
@@ -261,19 +338,6 @@ ALTER TABLE c_rol
 ADD CONSTRAINT pk_c_rol
 PRIMARY KEY (id_rol);
 
-CREATE TABLE empleado(
-	id_vivero INT,
-	id_rol INT,
-	id_empleado INT,
-	nombre VARCHAR(256) NOT NULL,
-	fecha_nacimiento DATE NOT NULL,
-	salario MONEY NOT NULL,
-	ciudad VARCHAR(256) NOT NULL,
-	estado VARCHAR(256) NOT NULL,
-	cp VARCHAR(5) NOT NULL,
-	calle VARCHAR(256) NOT NULL
-);
-
 ALTER TABLE empleado
 ADD CONSTRAINT positivos_empleado
 CHECK (
@@ -281,12 +345,6 @@ CHECK (
     AND id_rol > 0
     AND id_empleado > 0
     AND salario ::numeric::float8  > 0
-);
-
-ALTER TABLE empleado
-ADD CONSTRAINT unique_empleado
-UNIQUE(
-	id_empleado, id_rol
 );
 
 
@@ -305,13 +363,6 @@ ADD CONSTRAINT fk2_empl_idrol
 FOREIGN KEY (id_rol)
    REFERENCES c_rol (id_rol);    
 
-CREATE TABLE telefono_empleado(
-	id_vivero INT,
-	id_rol INT,
-	id_empleado INT,
-	telefono_empleado VARCHAR(11) NOT NULL
-);
-
 ALTER TABLE telefono_empleado
 ADD CONSTRAINT positivos_tel_empleado
 CHECK (
@@ -329,14 +380,6 @@ ALTER TABLE telefono_empleado
 ADD CONSTRAINT fk_tel_empleado
 FOREIGN KEY (id_vivero, id_rol, id_empleado)
    REFERENCES empleado (id_vivero, id_rol, id_empleado);
-
-
-CREATE TABLE correo_electronico_empl(
-	id_vivero INT,
-	id_rol INT,
-	id_empleado INT,
-	correo_electronico_empl VARCHAR(256) NOT NULL
-);
 
 ALTER TABLE correo_electronico_empl
 ADD CONSTRAINT positivos_correo_empl
@@ -359,30 +402,12 @@ ADD CONSTRAINT fk_correo_empl
 FOREIGN KEY (id_vivero, id_rol, id_empleado)
    REFERENCES empleado (id_vivero, id_rol, id_empleado);
 
-
-CREATE TABLE planta(
-	id_planta INT,
-	id_vivero INT,
-	id_tp INT,
-	precio INT NOT NULL,
-	fecha_germinacion DATE NOT NULL,
-	sustrato VARCHAR(256) NOT NULL,
-	genero VARCHAR(256) NOT NULL,
-	nombre_planta VARCHAR(256) NOT NULL,
-);
-
 ALTER TABLE planta
 ADD CONSTRAINT positivos_planta
 CHECK (
     id_planta > 0
     AND id_vivero > 0
     AND id_tp > 0
-);
-
-ALTER TABLE planta
-ADD CONSTRAINT unique_planta
-UNIQUE(
-	id_planta
 );
 
 ALTER TABLE planta
@@ -403,11 +428,6 @@ ADD CONSTRAINT fk_planta_id_tp
 FOREIGN KEY (id_tp)
 REFERENCES  c_tipo_planta(id_tp);
 
-CREATE TABLE c_tipo_planta(
-	id_tp INT,
-	descripcion VARCHAR(256) NOT NULL
-);
-
 ALTER TABLE c_tipo_planta
 ADD CONSTRAINT positivos_c_tipo_planta
 CHECK (
@@ -417,11 +437,6 @@ CHECK (
 ALTER TABLE c_tipo_planta
 ADD CONSTRAINT pk_c_tipo_planta
 PRIMARY KEY(id_tp);
-
-CREATE TABLE cuidado_basico(
-	id_planta INT,
-	cuidado_basico VARCHAR(256) NOT NULL
-);
 
 ALTER TABLE c_tipo_planta
 ADD CONSTRAINT positivos_cuidado_basico
