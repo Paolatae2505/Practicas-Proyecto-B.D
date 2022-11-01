@@ -130,7 +130,9 @@ CREATE TABLE venta_fisica(
 	id_vivero INT,
 	id_planta INT,
 	id_rol_ayudar INT,
-	id_empleado_ayudar INT
+	id_empleado_ayudar INT,
+	id_rol_cobrar INT,
+	id_empleado_cobrar INT
 );
 ALTER TABLE venta_fisica
 ADD CONSTRAINT positivos_venta_fisica
@@ -138,8 +140,10 @@ CHECK (
     id_venta_fisica > 0
     AND id_vivero > 0
     AND id_planta > 0
-    AND id_rol > 0
-    AND id_empleado > 0
+    AND id_rol_ayudar > 0
+    AND id_empleado_ayudar > 0
+    AND id_rol_cobrar > 0
+    AND id_empleado_cobrar > 0
 );
 
 ALTER TABLE venta_fisica
@@ -223,8 +227,7 @@ CHECK (
 ALTER TABLE nota_pago
 ADD CONSTRAINT pk_nota_pago
 PRIMARY KEY (id_nota_pago);
- 
-			
+ 		
 ALTER TABLE nota_pago
 ADD CONSTRAINT fk1_forma_pago
 FOREIGN KEY (id_forma_pago)
