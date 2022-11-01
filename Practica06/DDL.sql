@@ -61,6 +61,11 @@ CHECK (
 
 ALTER TABLE telefono_cliente ADD CONSTRAINT pk_telefono_cliente PRIMARY KEY(id_cliente,telefono_cliente);
 
+ALTER TABLE telefono_cliente
+ADD CONSTRAINT fk1_telefono_cliente
+FOREIGN KEY (id_cliente)
+   REFERENCES cliente(id_cliente);
+
 CREATE TABLE correo_electronico_cliente(
 	id_cliente INT,
 	correo_electronico_cliente VARCHAR(256) NOT NULL
@@ -76,11 +81,15 @@ ALTER TABLE correo_electronico_cliente ADD CONSTRAINT formato_correo_cliente che
 
 ALTER TABLE correo_electronico_cliente ADD CONSTRAINT pk_correo_electronico_cliente PRIMARY KEY(id_cliente,correo_electronico_cliente);
 
+ALTER TABLE correo_electronico_cliente
+ADD CONSTRAINT fk1_correo_electronico_cliente
+FOREIGN KEY (id_cliente)
+   REFERENCES cliente(id_cliente);
 
 CREATE TABLE venta_linea(
+	id_venta_linea INT,
 	id_vivero INT,
 	id_planta INT,
-	id_venta INT,
 	id_cliente INT,
 	fecha_pedido DATE,
 	num_segu_envio INT NOT NULL ,
@@ -90,7 +99,8 @@ CREATE TABLE venta_linea(
 ALTER TABLE venta_linea
 ADD CONSTRAINT positivos_venta_linea
 CHECK (
-    id_vivero > 0
+    id_venta_linea > 0
+    AND id_vivero > 0
     AND id_planta > 0
     AND id_cliente > 0
     AND num_segu_envio > 0
@@ -98,50 +108,69 @@ CHECK (
 
 ALTER TABLE venta_linea
 ADD CONSTRAINT pk_venta_linea
-PRIMARY KEY (id_vivero, id_planta,
-			id_venta);
+PRIMARY KEY (id_venta_linea ,id_vivero, id_planta);
 
 ALTER TABLE venta_linea
-ADD CONSTRAINT fk1_cliente
+ADD CONSTRAINT fk1_vivero
+FOREIGN KEY (id_vivero)
+   REFERENCES vivero (id_vivero);
+
+ALTER TABLE venta_linea
+ADD CONSTRAINT fk2_planta
+FOREIGN KEY (id_planta)
+   REFERENCES planta (id_planta);
+
+ALTER TABLE venta_linea
+ADD CONSTRAINT fk3_cliente
 FOREIGN KEY (id_cliente)
    REFERENCES cliente (id_cliente);
-			
+   			
 CREATE TABLE venta_fisica(
+	id_venta_fisica INT,
 	id_vivero INT,
 	id_planta INT,
-	id_venta INT,
-	id_rol INT,
-	id_empleado INT
+	id_rol_ayudar INT,
+	id_empleado_ayudar INT
 );
 ALTER TABLE venta_fisica
 ADD CONSTRAINT positivos_venta_fisica
 CHECK (
-    id_vivero > 0
+    id_venta_fisica > 0
+    AND id_vivero > 0
     AND id_planta > 0
-    AND id_venta > 0
     AND id_rol > 0
     AND id_empleado > 0
 );
 
 ALTER TABLE venta_fisica
 ADD CONSTRAINT pk_venta_fisica
-PRIMARY KEY (id_vivero, id_planta,
-			id_venta);
+PRIMARY KEY (id_venta_fisica, id_vivero, id_planta);
 			
 ALTER TABLE venta_fisica
-ADD CONSTRAINT fk1_rol
-FOREIGN KEY (id_rol)
+ADD CONSTRAINT fk1_vivero
+FOREIGN KEY (id_vivero)
+   REFERENCES vivero (id_vivero);
+
+ALTER TABLE venta_fisica
+ADD CONSTRAINT fk2_planta
+FOREIGN KEY (id_planta)
+   REFERENCES planta (id_planta);
+			
+ALTER TABLE venta_fisica
+ADD CONSTRAINT fk3_rol_ayudar
+FOREIGN KEY (id_rol_ayudar)
    REFERENCES empleado (id_rol);
 
 ALTER TABLE venta_fisica
-ADD CONSTRAINT fk2_empleado
-FOREIGN KEY (id_empleado)
+ADD CONSTRAINT fk4_empleado_ayudar
+FOREIGN KEY (id_empleado_ayudar)
    REFERENCES empleado (id_empleado);
    
 CREATE TABLE generar(
 	id_vivero INT,
 	id_planta INT,
-	id_venta INT,
+	id_venta_fisica INT,
+	id_venta_linea INT
 	id_nota_pago INT,
 	monto MONEY NOT NULL
 );
@@ -150,7 +179,8 @@ ADD CONSTRAINT positivos_generar
 CHECK (
     id_vivero > 0
     AND id_planta > 0
-    AND id_venta > 0
+    AND id_venta_fisica > 0
+    AND id_venta_linea > 0
     AND id_nota_pago > 0
     AND monto >= 0
 );
@@ -165,12 +195,17 @@ FOREIGN KEY (id_planta)
    REFERENCES planta (id_planta);
 
 ALTER TABLE generar
-ADD CONSTRAINT fk3_venta
-FOREIGN KEY (id_venta)
-   REFERENCES venta (id_venta);
+ADD CONSTRAINT fk3_venta_fisica
+FOREIGN KEY (id_venta_fisica)
+   REFERENCES venta_fisica (id_venta_fisica);
 
 ALTER TABLE generar
-ADD CONSTRAINT fk4_nota_pago
+ADD CONSTRAINT fk4_venta_linea
+FOREIGN KEY (id_venta_linea)
+   REFERENCES venta_linea (id_venta_linea);
+
+ALTER TABLE generar
+ADD CONSTRAINT fk5_nota_pago
 FOREIGN KEY (id_nota_pago)
    REFERENCES nota_pago (id_nota_pago);
    
@@ -178,8 +213,9 @@ CREATE TABLE nota_pago(
 	id_nota_pago INT,
 	id_vivero INT
 	id_planta INT,
-	id_venta INT,
-	id_rol INT
+	id_venta_fisica INT,
+	id_venta_linea INT
+	id_forma_pago INT
 );
 
 ALTER TABLE nota_pago
@@ -188,17 +224,38 @@ CHECK (
     id_nota_pago > 0
     AND id_vivero > 0
     AND id_planta > 0
-    AND id_venta > 0
+    AND id_venta_fisica > 0
+    AND id_venta_linea > 0
     AND id_forma_pago > 0
 );
 
 ALTER TABLE nota_pago
 ADD CONSTRAINT pk_nota_pago
 PRIMARY KEY (id_nota_pago,id_vivero, id_planta,
-			id_venta);
+			id_venta_fisica, id_venta_linea);
+
+ALTER TABLE nota_pago
+ADD CONSTRAINT fk1_vivero
+FOREIGN KEY (id_vivero)
+   REFERENCES vivero (id_vivero);
+   
+ALTER TABLE nota_pago
+ADD CONSTRAINT fk2_planta
+FOREIGN KEY (id_planta)
+   REFERENCES planta (id_planta);
+ 
+ALTER TABLE nota_pago
+ADD CONSTRAINT fk3_venta_fisica
+FOREIGN KEY (id_venta_fisica)
+   REFERENCES venta_fisica (id_venta_fisica);
+   
+ALTER TABLE nota_pago
+ADD CONSTRAINT fk4_venta_linea
+FOREIGN KEY (id_venta_linea)
+   REFERENCES venta_linea (id_venta_linea);
 			
 ALTER TABLE nota_pago
-ADD CONSTRAINT fk1_forma_pago
+ADD CONSTRAINT fk5_forma_pago
 FOREIGN KEY (id_forma_pago)
    REFERENCES c_forma_de_pago (id_forma_pago);
 			
