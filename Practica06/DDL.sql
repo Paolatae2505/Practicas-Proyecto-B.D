@@ -359,8 +359,6 @@ CREATE TABLE planta(
 	sustrato VARCHAR(256),
 	genero VARCHAR(256),
 	nombre_planta VARCHAR(256),
-	precio_total INT,
-	numero_productos INT
 );
 
 ALTER TABLE planta
