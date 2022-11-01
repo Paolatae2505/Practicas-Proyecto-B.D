@@ -374,17 +374,17 @@ PRIMARY KEY(
 ALTER TABLE planta
 ADD CONSTRAINT fk_planta_id_planta
 FOREIGN KEY (id_planta)
-REFERENCES cuidado_basico(id_planta)
+REFERENCES cuidado_basico(id_planta);
 
 ALTER TABLE planta
 ADD CONSTRAINT fk_planta_id_vivero
 FOREIGN KEY (id_vivero)
-REFERENCES vivero(id_vivero)
+REFERENCES vivero(id_vivero);
 
 ALTER TABLE planta
 ADD CONSTRAINT fk_planta_id_tp
 FOREIGN KEY (id_tp)
-REFERENCES  c_tipo_planta(id_tp)
+REFERENCES  c_tipo_planta(id_tp);
 
 CREATE TABLE c_tipo_planta(
 	id_tp INT,
@@ -402,5 +402,12 @@ CREATE TABLE cuidado_basico(
 
 ALTER TABLE cuidado_basico
 ADD CONSTRAINT pk_cuidado_basico
-PRIMARY KEY(id_planta)
-REFERENCES planta(id_planta);
+PRIMARY KEY(
+	id_planta,
+	cuidado_basico
+);
+
+ALTER TABLE cuidado_basico
+ADD CONSTRAINT fk_cuidado_basico
+FOREIGN KEY (id_planta)
+REFERENCES  planta(id_planta);
