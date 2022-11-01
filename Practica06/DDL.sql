@@ -379,11 +379,6 @@ PRIMARY KEY(
 );
 
 ALTER TABLE planta
-ADD CONSTRAINT fk_planta_id_planta
-FOREIGN KEY (id_planta)
-REFERENCES cuidado_basico(id_planta);
-
-ALTER TABLE planta
 ADD CONSTRAINT fk_planta_id_vivero
 FOREIGN KEY (id_vivero)
 REFERENCES vivero(id_vivero);
