@@ -241,7 +241,7 @@ CREATE TABLE c_forma_de_pago(
 	descripcion VARCHAR(15) NOT NULL
 );
 
-ALTER TABLE c_forma_pago
+ALTER TABLE c_forma_de_pago
 ADD CONSTRAINT pk_c_forma_pago
 PRIMARY KEY (id_forma_pago);
 
