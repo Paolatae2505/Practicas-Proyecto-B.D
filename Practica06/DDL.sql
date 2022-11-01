@@ -249,7 +249,7 @@ PRIMARY KEY (id_forma_pago);
 CREATE TABLE c_rol(
 	id_rol INT check(id_rol > 0),
 	descripcion VARCHAR(256) NOT NULL
-)
+);
 
 ALTER TABLE c_rol
 ADD CONSTRAINT positivos_c_rol
@@ -272,7 +272,7 @@ CREATE TABLE empleado(
 	estado VARCHAR(256) NOT NULL,
 	cp VARCHAR(5) NOT NULL,
 	calle VARCHAR(256) NOT NULL
-)
+);
 
 ALTER TABLE empleado
 ADD CONSTRAINT positivos_empleado
@@ -310,7 +310,7 @@ CREATE TABLE telefono_empleado(
 	id_rol INT,
 	id_empleado INT,
 	telefono_empleado VARCHAR(11) NOT NULL
-)
+);
 
 ALTER TABLE telefono_empleado
 ADD CONSTRAINT positivos_tel_empleado
@@ -336,7 +336,7 @@ CREATE TABLE correo_electronico_empl(
 	id_rol INT,
 	id_empleado INT,
 	correo_electronico_empl VARCHAR(256) NOT NULL
-)
+);
 
 ALTER TABLE correo_electronico_empl
 ADD CONSTRAINT positivos_correo_empl
