@@ -286,7 +286,13 @@ CHECK (
 ALTER TABLE empleado
 ADD CONSTRAINT unique_empleado
 UNIQUE(
-	id_empleado, id_rol
+	id_empleado
+);
+
+ALTER TABLE empleado
+ADD CONSTRAINT unique_rol
+UNIQUE(
+	id_rol
 );
 
 
