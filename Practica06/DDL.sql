@@ -241,3 +241,110 @@ CREATE TABLE c_forma_de_pago(
 ALTER TABLE c_forma_pago
 ADD CONSTRAINT pk_c_forma_pago
 PRIMARY KEY (id_forma_pago);
+
+
+CREATE TABLE c_rol(
+	id_rol INT check(id_rol > 0),
+	descripcion VARCHAR(256) NOT NULL
+)
+
+ALTER TABLE c_rol
+ADD CONSTRAINT positivos_c_rol
+CHECK (
+    id_rol > 0
+);
+
+ALTER TABLE c_rol
+ADD CONSTRAINT pk_c_rol
+PRIMARY KEY (id_rol);
+
+CREATE TABLE empleado(
+	id_vivero INT,
+	id_rol INT,
+	id_empleado INT,
+	nombre VARCHAR(256) NOT NULL,
+	fecha_nacimiento DATE NOT NULL,
+	salario MONEY NOT NULL,
+	ciudad VARCHAR(256) NOT NULL,
+	estado VARCHAR(256) NOT NULL,
+	cp VARCHAR(5) NOT NULL,
+	calle VARCHAR(256) NOT NULL
+)
+
+ALTER TABLE empleado
+ADD CONSTRAINT positivos_empleado
+CHECK (
+    id_vivero > 0
+    AND id_rol > 0
+    AND id_empleado > 0
+);
+
+
+ALTER TABLE empleado
+ADD CONSTRAINT pk_empleado
+PRIMARY KEY (id_vivero, id_rol,
+			id_empleado);
+			
+ALTER TABLE empleado
+ADD CONSTRAINT fk1_empl_idvivero
+FOREIGN KEY (id_vivero)
+   REFERENCES vivero (id_vivero);
+   
+ALTER TABLE empleado
+ADD CONSTRAINT fk2_empl_idrol
+FOREIGN KEY (id_rol)
+   REFERENCES c_rol (id_rol);    
+
+CREATE TABLE telefono_empleado(
+	id_vivero INT,
+	id_rol INT,
+	id_empleado INT,
+	telefono_empleado VARCHAR(11) NOT NULL
+)
+
+ALTER TABLE telefono_empleado
+ADD CONSTRAINT positivos_tel_empleado
+CHECK (
+    id_vivero > 0
+    AND id_rol > 0
+    AND id_empleado > 0
+);
+
+ALTER TABLE telefono_empleado
+ADD CONSTRAINT pk_tel_empleado
+PRIMARY KEY (id_vivero, id_rol,
+			id_empleado, telefono_empleado);
+			
+ALTER TABLE telefono_empleado
+ADD CONSTRAINT fk_tel_empleado
+FOREIGN KEY (id_vivero, id_rol, id_empleado)
+   REFERENCES empleado (id_vivero, id_rol, id_empleado);
+
+
+CREATE TABLE correo_electronico_empl(
+	id_vivero INT,
+	id_rol INT,
+	id_empleado INT,
+	correo_electronico_empl VARCHAR(256) NOT NULL
+)
+
+ALTER TABLE correo_electronico_empl
+ADD CONSTRAINT positivos_correo_empl
+CHECK (
+    id_vivero > 0
+    AND id_rol > 0
+    AND id_empleado > 0
+);
+
+ALTER TABLE correo_electronico_empl 
+ADD CONSTRAINT formato_correo_empleado check(correo_electronico_empl like '_%@_%._%');
+
+ALTER TABLE correo_electronico_empl
+ADD CONSTRAINT pk_correo_empleado
+PRIMARY KEY (id_vivero, id_rol,
+			id_empleado, correo_electronico_empl); 	
+
+ALTER TABLE correo_electronico_empl
+ADD CONSTRAINT fk_correo_empl
+FOREIGN KEY (id_vivero, id_rol, id_empleado)
+   REFERENCES empleado (id_vivero, id_rol, id_empleado);
