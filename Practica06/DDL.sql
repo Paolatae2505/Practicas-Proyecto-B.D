@@ -348,3 +348,59 @@ ALTER TABLE correo_electronico_empl
 ADD CONSTRAINT fk_correo_empl
 FOREIGN KEY (id_vivero, id_rol, id_empleado)
    REFERENCES empleado (id_vivero, id_rol, id_empleado);
+
+
+CREATE TABLE planta(
+	id_planta INT,
+	id_vivero INT,
+	id_tp INT,
+	precio INT,
+	fecha_germinacion DATE,
+	sustrato VARCHAR(256),
+	genero VARCHAR(256),
+	nombre_planta VARCHAR(256),
+	precio_total INT,
+	numero_productos INT
+);
+
+ALTER TABLE planta
+ADD CONSTRAINT pk_planta
+PRIMARY KEY(
+	id_planta,
+	id_vivero,
+	id_tp,
+);
+
+ALTER TABLE planta
+ADD CONSTRAINT fk_planta_id_planta
+FOREIGN KEY (id_planta)
+REFERENCES cuidado_basico(id_planta)
+
+ALTER TABLE planta
+ADD CONSTRAINT fk_planta_id_vivero
+FOREIGN KEY (id_vivero)
+REFERENCES vivero(id_vivero)
+
+ALTER TABLE planta
+ADD CONSTRAINT fk_planta_id_tp
+FOREIGN KEY (id_tp)
+REFERENCES  c_tipo_planta(id_tp)
+
+CREATE TABLE c_tipo_planta(
+	id_tp INT,
+	descripcion VARCHAR(256)
+);
+
+ALTER TABLE c_tipo_planta
+ADD CONSTRAINT pk_c_tipo_planta
+PRIMARY KEY(id_tp);
+
+CREATE TABLE cuidado_basico(
+	id_planta INT,
+	cuidado_basico VARCHAR(256)
+);
+
+ALTER TABLE cuidado_basico
+ADD CONSTRAINT pk_cuidado_basico
+PRIMARY KEY(id_planta)
+REFERENCES planta(id_planta);
