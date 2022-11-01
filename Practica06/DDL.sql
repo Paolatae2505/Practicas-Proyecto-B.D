@@ -134,6 +134,7 @@ CREATE TABLE venta_fisica(
 	id_rol_cobrar INT,
 	id_empleado_cobrar INT
 );
+
 ALTER TABLE venta_fisica
 ADD CONSTRAINT positivos_venta_fisica
 CHECK (
@@ -177,6 +178,7 @@ CREATE TABLE generar(
 	id_venta_linea INT
 	id_nota_pago INT,
 );
+
 ALTER TABLE generar
 ADD CONSTRAINT positivos_generar
 CHECK (
@@ -375,8 +377,8 @@ CHECK (
     AND id_tp > 0
 );
 
-ALTER TABLE empleado
-ADD CONSTRAINT unique_empleado
+ALTER TABLE planta
+ADD CONSTRAINT unique_planta
 UNIQUE(
 	id_planta
 );
