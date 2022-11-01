@@ -134,6 +134,7 @@ CREATE TABLE venta_fisica(
 	id_rol_cobrar INT,
 	id_empleado_cobrar INT
 );
+
 ALTER TABLE venta_fisica
 ADD CONSTRAINT positivos_venta_fisica
 CHECK (
@@ -177,6 +178,7 @@ CREATE TABLE generar(
 	id_venta_linea INT
 	id_nota_pago INT,
 );
+
 ALTER TABLE generar
 ADD CONSTRAINT positivos_generar
 CHECK (
@@ -222,6 +224,7 @@ ADD CONSTRAINT positivos_nota_pago
 CHECK (
     id_nota_pago > 0
     AND id_forma_pago > 0
+    AND monto ::numeric::float8  > 0
 );
 
 ALTER TABLE nota_pago
@@ -246,7 +249,7 @@ PRIMARY KEY (id_forma_pago);
 CREATE TABLE c_rol(
 	id_rol INT check(id_rol > 0),
 	descripcion VARCHAR(256) NOT NULL
-)
+);
 
 ALTER TABLE c_rol
 ADD CONSTRAINT positivos_c_rol
@@ -269,7 +272,7 @@ CREATE TABLE empleado(
 	estado VARCHAR(256) NOT NULL,
 	cp VARCHAR(5) NOT NULL,
 	calle VARCHAR(256) NOT NULL
-)
+);
 
 ALTER TABLE empleado
 ADD CONSTRAINT positivos_empleado
@@ -277,6 +280,13 @@ CHECK (
     id_vivero > 0
     AND id_rol > 0
     AND id_empleado > 0
+    AND salario ::numeric::float8  > 0
+);
+
+ALTER TABLE empleado
+ADD CONSTRAINT unique_empleado
+UNIQUE(
+	id_empleado, id_rol
 );
 
 
@@ -300,7 +310,7 @@ CREATE TABLE telefono_empleado(
 	id_rol INT,
 	id_empleado INT,
 	telefono_empleado VARCHAR(11) NOT NULL
-)
+);
 
 ALTER TABLE telefono_empleado
 ADD CONSTRAINT positivos_tel_empleado
@@ -326,7 +336,7 @@ CREATE TABLE correo_electronico_empl(
 	id_rol INT,
 	id_empleado INT,
 	correo_electronico_empl VARCHAR(256) NOT NULL
-)
+);
 
 ALTER TABLE correo_electronico_empl
 ADD CONSTRAINT positivos_correo_empl
@@ -369,13 +379,18 @@ CHECK (
     AND id_tp > 0
 );
 
+ALTER TABLE planta
+ADD CONSTRAINT unique_planta
+UNIQUE(
+	id_planta
+);
 
 ALTER TABLE planta
 ADD CONSTRAINT pk_planta
 PRIMARY KEY(
 	id_planta,
 	id_vivero,
-	id_tp,
+	id_tp
 );
 
 ALTER TABLE planta
