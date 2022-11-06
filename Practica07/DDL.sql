@@ -36,7 +36,9 @@ CREATE TABLE venta_linea(
 	id_cliente INT,
 	fecha_pedido DATE,
 	num_segu_envio INT NOT NULL ,
-	direc_envio VARCHAR(286) NOT NULL
+	direc_envio VARCHAR(286) NOT NULL,
+	id_forma_pago INT,
+	monto MONEY NOT NULL
 );
 
 CREATE TABLE venta_fisica(
@@ -46,25 +48,13 @@ CREATE TABLE venta_fisica(
 	id_rol_ayudar INT,
 	id_empleado_ayudar INT,
 	id_rol_cobrar INT,
-	id_empleado_cobrar INT
-);
-
-CREATE TABLE generar(
-	id_vivero INT,
-	id_planta INT,
-	id_venta_fisica INT,
-	id_venta_linea INT,
-	id_nota_pago INT
-);
-
-CREATE TABLE nota_pago(
-	id_nota_pago INT,
+	id_empleado_cobrar INT,
 	id_forma_pago INT,
 	monto MONEY NOT NULL
 );
 
 CREATE TABLE c_forma_de_pago(
-	id_forma_pago INT check(id_forma_pago > 0),
+	id_forma_pago INT ,
 	descripcion VARCHAR(15) NOT NULL
 );
 
@@ -216,6 +206,8 @@ CHECK (
     AND id_planta > 0
     AND id_cliente > 0
     AND num_segu_envio > 0
+	AND id_forma_pago > 0
+	AND monto ::numeric::float8  > 0
 );
 
 ALTER TABLE venta_linea
@@ -243,6 +235,11 @@ ADD CONSTRAINT fk3_cliente
 FOREIGN KEY (id_cliente)
    REFERENCES cliente (id_cliente);
 
+ALTER TABLE venta_linea
+ADD CONSTRAINT fk4_forma_pago
+FOREIGN KEY (id_forma_pago)
+   REFERENCES c_forma_de_pago (id_forma_pago);
+
 ALTER TABLE venta_fisica
 ADD CONSTRAINT positivos_venta_fisica
 CHECK (
@@ -253,6 +250,8 @@ CHECK (
     AND id_empleado_ayudar > 0
     AND id_rol_cobrar > 0
     AND id_empleado_cobrar > 0
+	AND id_forma_pago > 0
+	AND monto ::numeric::float8  > 0
 );
 
 ALTER TABLE venta_fisica
@@ -285,66 +284,26 @@ ADD CONSTRAINT fk4_empleado_ayudar
 FOREIGN KEY (id_empleado_ayudar)
    REFERENCES empleado (id_empleado);
 
-ALTER TABLE generar
-ADD CONSTRAINT positivos_generar
-CHECK (
-    id_vivero > 0
-    AND id_planta > 0
-    AND id_venta_fisica > 0
-    AND id_venta_linea > 0
-    AND id_nota_pago > 0
-);
-ALTER TABLE generar
-ADD CONSTRAINT fk1_vivero
-FOREIGN KEY (id_vivero)
-   REFERENCES vivero (id_vivero);
-   
-ALTER TABLE generar
-ADD CONSTRAINT fk2_planta
-FOREIGN KEY (id_planta)
-   REFERENCES planta (id_planta);
-
-ALTER TABLE generar
-ADD CONSTRAINT fk3_venta_fisica
-FOREIGN KEY (id_venta_fisica)
-   REFERENCES venta_fisica (id_venta_fisica);
-
-ALTER TABLE generar
-ADD CONSTRAINT fk4_venta_linea
-FOREIGN KEY (id_venta_linea)
-   REFERENCES venta_linea (id_venta_linea);
-   
-ALTER TABLE nota_pago
-ADD CONSTRAINT unique_nota_pago
-UNIQUE(
-	id_nota_pago
-);
-
-ALTER TABLE generar
-ADD CONSTRAINT fk5_nota_pago
-FOREIGN KEY (id_nota_pago)
-   REFERENCES nota_pago (id_nota_pago);
-
-ALTER TABLE nota_pago
-ADD CONSTRAINT positivos_nota_pago
-CHECK (
-    id_nota_pago > 0
-    AND id_forma_pago > 0
-    AND monto ::numeric::float8  > 0
-);
-
-ALTER TABLE nota_pago
-ADD CONSTRAINT pk_nota_pago
-PRIMARY KEY (id_nota_pago);
+ALTER TABLE venta_fisica
+ADD CONSTRAINT fk5_forma_pago
+FOREIGN KEY (id_forma_pago)
+   REFERENCES c_forma_de_pago (id_forma_pago);
 
 ALTER TABLE c_forma_de_pago
 ADD CONSTRAINT pk_c_forma_de_pago
 PRIMARY KEY (id_forma_pago);
+
+ALTER TABLE c_forma_de_pago
+ADD CONSTRAINT unique_c_forma_de_pago
+UNIQUE(
+	id_forma_pago
+);
  		
-ALTER TABLE nota_pago
-ADD CONSTRAINT fk1_forma_pago
-FOREIGN KEY (id_forma_pago)
-   REFERENCES c_forma_de_pago (id_forma_pago);
+ALTER TABLE c_forma_de_pago
+ADD CONSTRAINT positivos_c_forma_de_pago
+CHECK (
+    id_forma_pago > 0
+);
 
 ALTER TABLE c_rol
 ADD CONSTRAINT positivos_c_rol
@@ -473,3 +432,43 @@ ALTER TABLE cuidado_basico
 ADD CONSTRAINT fk_cuidado_basico
 FOREIGN KEY (id_planta)
 REFERENCES  planta(id_planta);
+
+
+COMMENT ON TABLE venta_linea IS ’Tabla que contiene las ventas en linea generadas ’;
+COMMENT ON TABLE venta_fisica IS ’Tabla que contiene las venta fisicas generadas ’;
+COMMENT ON TABLE c_forma_de_pago IS ’Tabla que contiene las formas de pago de las ventas ’;
+COMMENT ON COLUMN venta_linea.id_venta_linea IS ’Identificador de la venta en linea’;
+COMMENT ON COLUMN venta_linea.id_vivero IS ’Identificador del vivero’;
+COMMENT ON COLUMN venta_linea.id_planta IS ’Identificador de la planta’;
+COMMENT ON COLUMN venta_linea.id_cliente IS ’Identificador del cliente’;
+COMMENT ON COLUMN venta_linea.id_forma_pago IS ’Identificador de la forma de pago’;
+COMMENT ON COLUMN venta_linea.fecha_pedido IS ’Fecha de pedido ’;
+COMMENT ON COLUMN venta_linea.num_segu_envio IS ’Numero de Seguimiento del envio’;
+COMMENT ON COLUMN venta_linea.direc_envio IS ’Direccion de envio’;
+COMMENT ON COLUMN venta_linea.monto IS ’Identificador de la venta en linea’;
+COMMENT ON COLUMN venta_fisica.id_venta_fisica IS ’Identificador de la venta fisica’;
+COMMENT ON COLUMN venta_fisica.id_vivero IS ’Identificador delvivero’;
+COMMENT ON COLUMN venta_fisica.id_planta IS ’Identificador de la planta ’;
+COMMENT ON COLUMN venta_fisica.id_rol_ayudar IS ’Identificador del rol ayudar’;
+COMMENT ON COLUMN venta_fisica.id_rol_cobrar IS ’Identificador del rol cobrar’;
+COMMENT ON COLUMN venta_fisica.id_empleado_ayudar IS ’Identificador de empleado ayudar;
+COMMENT ON COLUMN venta_fisica.id_empleado_cobrar IS ’Identificador de empleado cobrar;
+COMMENT ON COLUMN venta_fisica.id_forma_pago IS ’Identificador de la forma de pago’;
+COMMENT ON COLUMN venta_fisica.monto IS ’Monto’;
+COMMENT ON COLUMN c_forma_de_pago.id_forma_pago IS ’Identificador del cátalogo de forma de pago’;
+COMMENT ON COLUMN c_forma_de_pago.descripcion IS ’Formas de pago Débito,Tarjeta y Mixto’;
+COMMENT ON CONSTRAINT pk_venta_linea ON venta_linea IS ’La llave primaria de la tabla venta_linea’;
+COMMENT ON CONSTRAINT unique_venta_linea ON venta_linea IS ’Restricción unique para el atributo id_
+                                                                 venta_linea’;
+COMMENT ON CONSTRAINT positivos_venta_linea ON venta_linea IS ’Restricción check la cual asegura 
+                                                  tener los ids y el monto positivos’;
+COMMENT ON CONSTRAINT pk_venta_fisica ON venta_fisica IS ’La llave primaria de la tabla venta_fisica’;
+COMMENT ON CONSTRAINT unique_venta_fisica ON venta_fisica IS ’Restricción unique para el atributo id_
+                                                                 venta_fisica’;
+COMMENT ON CONSTRAINT positivos_venta_fisica ON venta_fisica IS ’Restricción check la cual asegura 
+                                                  tener los ids y el monto positivos’;
+COMMENT ON CONSTRAINT pk_c_forma_de_pago ON c_forma_de_pago IS ’La llave primaria de la tabla c_forma_de_pago’;
+COMMENT ON CONSTRAINT unique_c_forma_de_pago ON c_forma_de_pago IS ’Restricción unique para el atributo id_
+                                                                 id_forma_pago’;
+COMMENT ON CONSTRAINT positivos_c_forma_de_pago ON c_forma_de_pago IS ’Restricción check la cual  asegura 
+                                                  tener su id positivo’;
