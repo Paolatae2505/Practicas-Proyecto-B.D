@@ -509,6 +509,22 @@ ADD CONSTRAINT fk2_empl_idrol
 FOREIGN KEY (id_rol)
    REFERENCES c_rol (id_rol);    
 
+ALTER TABLE empleado
+DROP CONSTRAINT fk1_empl_idvivero,
+ADD CONSTRAINT fk1_empl_idvivero
+FOREIGN KEY (id_vivero)
+   REFERENCES vivero (id_vivero)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
+   
+ALTER TABLE empleado
+DROP CONSTRAINT fk2_empl_idrol,
+ADD CONSTRAINT fk2_empl_idrol
+FOREIGN KEY (id_rol)
+   REFERENCES c_rol (id_rol)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
+   
 ALTER TABLE telefono_empleado
 ADD CONSTRAINT positivos_tel_empleado
 CHECK (
@@ -526,6 +542,14 @@ ALTER TABLE telefono_empleado
 ADD CONSTRAINT fk_tel_empleado
 FOREIGN KEY (id_vivero, id_rol, id_empleado)
    REFERENCES empleado (id_vivero, id_rol, id_empleado);
+   
+ALTER TABLE telefono_empleado
+DROP CONSTRAINT fk_tel_empleado,
+ADD CONSTRAINT fk_tel_empleado
+FOREIGN KEY (id_vivero, id_rol, id_empleado)
+   REFERENCES empleado (id_vivero, id_rol, id_empleado)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 ALTER TABLE correo_electronico_empl
 ADD CONSTRAINT positivos_correo_empl
@@ -547,6 +571,14 @@ ALTER TABLE correo_electronico_empl
 ADD CONSTRAINT fk_correo_empl
 FOREIGN KEY (id_vivero, id_rol, id_empleado)
    REFERENCES empleado (id_vivero, id_rol, id_empleado);
+   
+ALTER TABLE correo_electronico_empl
+DROP CONSTRAINT fk_correo_empl,
+ADD CONSTRAINT fk_correo_empl
+FOREIGN KEY (id_vivero, id_rol, id_empleado)
+   REFERENCES empleado (id_vivero, id_rol, id_empleado)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 ALTER TABLE planta
 ADD CONSTRAINT positivos_planta
