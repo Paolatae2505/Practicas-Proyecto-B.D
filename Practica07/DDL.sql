@@ -243,8 +243,24 @@ CHECK (
 	AND monto ::numeric::float8  > 0
 );
 
+ALTER TABLE venta_linea
+ADD CONSTRAINT fk1_vivero
+FOREIGN KEY (id_vivero)
+   REFERENCES vivero (id_vivero);
 
 ALTER TABLE venta_linea
+ADD CONSTRAINT fk2_planta
+FOREIGN KEY (id_planta)
+   REFERENCES planta (id_planta);
+
+ALTER TABLE venta_linea
+ADD CONSTRAINT fk3_cliente
+FOREIGN KEY (id_cliente)
+   REFERENCES cliente (id_cliente);
+
+'las nuevas'
+ALTER TABLE venta_linea
+DROP CONSTRAINT fk1_vivero,
 ADD CONSTRAINT fk1_vivero
 FOREIGN KEY (id_vivero)
    REFERENCES vivero (id_vivero)
@@ -252,6 +268,7 @@ FOREIGN KEY (id_vivero)
    ON DELETE RESTRICT;
 
 ALTER TABLE venta_linea
+DROP CONSTRAINT fk2_planta,
 ADD CONSTRAINT fk2_planta
 FOREIGN KEY (id_planta)
    REFERENCES planta (id_planta)
@@ -259,6 +276,7 @@ FOREIGN KEY (id_planta)
    ON DELETE RESTRICT;
 
 ALTER TABLE venta_linea
+DROP CONSTRAINT fk3_cliente,
 ADD CONSTRAINT fk3_cliente
 FOREIGN KEY (id_cliente)
    REFERENCES cliente (id_cliente)
@@ -266,6 +284,7 @@ FOREIGN KEY (id_cliente)
    ON DELETE RESTRICT;
 
 ALTER TABLE venta_linea
+DROP CONSTRAINT fk4_forma_pago,
 ADD CONSTRAINT fk4_forma_pago
 FOREIGN KEY (id_forma_pago)
    REFERENCES c_forma_de_pago (id_forma_pago)
@@ -306,8 +325,30 @@ CHECK (
 	AND id_forma_pago > 0
 	AND monto ::numeric::float8  > 0
 );
+
+ALTER TABLE venta_fisica
+ADD CONSTRAINT fk1_vivero
+FOREIGN KEY (id_vivero)
+   REFERENCES vivero (id_vivero);
+
+ALTER TABLE venta_fisica
+ADD CONSTRAINT fk2_planta
+FOREIGN KEY (id_planta)
+   REFERENCES planta (id_planta);
 			
 ALTER TABLE venta_fisica
+ADD CONSTRAINT fk3_rol_ayudar
+FOREIGN KEY (id_rol_ayudar)
+   REFERENCES empleado (id_rol);
+
+ALTER TABLE venta_fisica
+ADD CONSTRAINT fk4_empleado_ayudar
+FOREIGN KEY (id_empleado_ayudar)
+   REFERENCES empleado (id_empleado);
+
+'Las nuevas'
+ALTER TABLE venta_fisica
+DROP CONSTRAINT fk1_vivero,
 ADD CONSTRAINT fk1_vivero
 FOREIGN KEY (id_vivero)
    REFERENCES vivero (id_vivero)
@@ -315,6 +356,7 @@ FOREIGN KEY (id_vivero)
    ON DELETE RESTRICT;
 
 ALTER TABLE venta_fisica
+DROP CONSTRAINT fk2_planta,
 ADD CONSTRAINT fk2_planta
 FOREIGN KEY (id_planta)
    REFERENCES planta (id_planta)
@@ -322,6 +364,7 @@ FOREIGN KEY (id_planta)
    ON DELETE RESTRICT;
 			
 ALTER TABLE venta_fisica
+DROP CONSTRAINT fk3_rol_ayudar,
 ADD CONSTRAINT fk3_rol_ayudar
 FOREIGN KEY (id_rol_ayudar)
    REFERENCES empleado (id_rol)
@@ -329,6 +372,7 @@ FOREIGN KEY (id_rol_ayudar)
    ON DELETE RESTRICT;
 
 ALTER TABLE venta_fisica
+DROP CONSTRAINT fk4_empleado_ayudar,
 ADD CONSTRAINT fk4_empleado_ayudar
 FOREIGN KEY (id_empleado_ayudar)
    REFERENCES empleado (id_empleado)
@@ -336,6 +380,7 @@ FOREIGN KEY (id_empleado_ayudar)
    ON DELETE RESTRICT;
 
 ALTER TABLE venta_fisica
+DROP CONSTRAINT fk5_forma_pago,
 ADD CONSTRAINT fk5_forma_pago
 FOREIGN KEY (id_forma_pago)
    REFERENCES c_forma_de_pago (id_forma_pago)
