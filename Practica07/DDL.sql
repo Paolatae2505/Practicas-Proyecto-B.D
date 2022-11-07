@@ -64,12 +64,12 @@ CREATE TABLE nota_pago(
 );
 
 CREATE TABLE c_forma_de_pago(
-	id_forma_pago INT check(id_forma_pago > 0),
+	id_forma_pago INT CHECK(id_forma_pago > 0),
 	descripcion VARCHAR(15) NOT NULL
 );
 
 CREATE TABLE c_rol(
-	id_rol INT check(id_rol > 0),
+	id_rol INT CHECK(id_rol > 0),
 	descripcion VARCHAR(256) NOT NULL
 );
 
@@ -239,7 +239,7 @@ ADD COLUMN monto MONEY;
 ALTER TABLE venta_linea
 ADD CONSTRAINT positivos_venta_linea_2
 CHECK (
-	AND id_forma_pago > 0
+	id_forma_pago > 0
 	AND monto ::numeric::float8  > 0
 );
 
@@ -258,7 +258,7 @@ ADD CONSTRAINT fk3_cliente
 FOREIGN KEY (id_cliente)
    REFERENCES cliente (id_cliente);
 
-'las nuevas'
+
 ALTER TABLE venta_linea
 DROP CONSTRAINT fk1_vivero,
 ADD CONSTRAINT fk1_vivero
@@ -284,7 +284,6 @@ FOREIGN KEY (id_cliente)
    ON DELETE RESTRICT;
 
 ALTER TABLE venta_linea
-DROP CONSTRAINT fk4_forma_pago,
 ADD CONSTRAINT fk4_forma_pago
 FOREIGN KEY (id_forma_pago)
    REFERENCES c_forma_de_pago (id_forma_pago)
@@ -322,7 +321,7 @@ ADD COLUMN monto MONEY;
 ALTER TABLE venta_fisica
 ADD CONSTRAINT positivos_venta_fisica_2
 CHECK (
-	AND id_forma_pago > 0
+	id_forma_pago > 0
 	AND monto ::numeric::float8  > 0
 );
 
@@ -346,7 +345,7 @@ ADD CONSTRAINT fk4_empleado_ayudar
 FOREIGN KEY (id_empleado_ayudar)
    REFERENCES empleado (id_empleado);
 
-'Las nuevas'
+
 ALTER TABLE venta_fisica
 DROP CONSTRAINT fk1_vivero,
 ADD CONSTRAINT fk1_vivero
@@ -372,7 +371,6 @@ FOREIGN KEY (id_rol_ayudar)
    ON DELETE RESTRICT;
 
 ALTER TABLE venta_fisica
-DROP CONSTRAINT fk4_empleado_ayudar,
 ADD CONSTRAINT fk4_empleado_ayudar
 FOREIGN KEY (id_empleado_ayudar)
    REFERENCES empleado (id_empleado)
@@ -442,6 +440,12 @@ PRIMARY KEY (id_nota_pago);
 ALTER TABLE c_forma_de_pago
 ADD CONSTRAINT pk_c_forma_de_pago
 PRIMARY KEY (id_forma_pago);
+
+ALTER TABLE c_forma_pago
+ADD CONSTRAINT unique_c_forma_de_pago
+UNIQUE(
+	id_forma_pago
+);
  		
 ALTER TABLE nota_pago
 ADD CONSTRAINT fk1_forma_pago
