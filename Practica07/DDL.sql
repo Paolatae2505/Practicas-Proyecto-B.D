@@ -441,7 +441,7 @@ ALTER TABLE c_forma_de_pago
 ADD CONSTRAINT pk_c_forma_de_pago
 PRIMARY KEY (id_forma_pago);
 
-ALTER TABLE c_forma_pago
+ALTER TABLE c_forma_de_pago
 ADD CONSTRAINT unique_c_forma_de_pago
 UNIQUE(
 	id_forma_pago
@@ -623,5 +623,3 @@ COMMENT ON CONSTRAINT positivos_venta_fisica_2 ON venta_fisica IS 'Restricción 
 COMMENT ON CONSTRAINT pk_c_forma_de_pago ON c_forma_de_pago IS 'La llave primaria de la tabla c_forma_de_pago';
 COMMENT ON CONSTRAINT unique_c_forma_de_pago ON c_forma_de_pago IS 'Restricción unique para el atributo id_
                                                                  id_forma_pago';
-COMMENT ON CONSTRAINT positivos_c_forma_de_pago ON c_forma_de_pago IS 'Restricción check la cual  asegura 
-                                                  tener su id positivo';
