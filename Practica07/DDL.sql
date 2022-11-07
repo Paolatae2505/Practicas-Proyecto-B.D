@@ -215,10 +215,16 @@ ALTER TABLE telefono_cliente ADD CONSTRAINT pk_telefono_cliente PRIMARY KEY(id_c
 ALTER TABLE telefono_cliente
 ADD CONSTRAINT fk1_telefono_cliente
 FOREIGN KEY (id_cliente)
+   REFERENCES cliente(id_cliente);
+   
+ALTER TABLE telefono_cliente
+DROP CONSTRAINT fk1_telefono_cliente,
+ADD CONSTRAINT fk1_telefono_cliente
+FOREIGN KEY (id_cliente)
    REFERENCES cliente(id_cliente)
    ON UPDATE RESTRICT
    ON DELETE RESTRICT;
-
+   
 ALTER TABLE correo_electronico_cliente
 ADD CONSTRAINT positivos_correo_electronico_cliente
 CHECK (
@@ -230,6 +236,13 @@ ALTER TABLE correo_electronico_cliente ADD CONSTRAINT formato_correo_cliente che
 ALTER TABLE correo_electronico_cliente ADD CONSTRAINT pk_correo_electronico_cliente PRIMARY KEY(id_cliente,correo_electronico_cliente);
 
 ALTER TABLE correo_electronico_cliente
+ADD CONSTRAINT fk1_correo_electronico_cliente
+FOREIGN KEY (id_cliente)
+   REFERENCES cliente(id_cliente);
+
+   
+ALTER TABLE correo_electronico_cliente
+DROP CONSTRAINT fk1_correo_electronico_cliente,
 ADD CONSTRAINT fk1_correo_electronico_cliente
 FOREIGN KEY (id_cliente)
    REFERENCES cliente(id_cliente)
