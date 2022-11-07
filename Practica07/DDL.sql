@@ -151,6 +151,30 @@ UNIQUE(
 	id_rol
 );
 
+ALTER TABLE venta_linea
+ADD CONSTRAINT unique_venta_linea
+UNIQUE(
+	id_venta_linea
+);
+
+ALTER TABLE venta_fisica
+ADD CONSTRAINT unique_venta_fisica
+UNIQUE(
+	id_venta_fisica
+);
+
+ALTER TABLE nota_pago
+ADD CONSTRAINT unique_nota_pago
+UNIQUE(
+	id_nota_pago
+);
+
+ALTER TABLE c_forma_de_pago
+ADD CONSTRAINT unique_c_forma_de_pago
+UNIQUE(
+	id_forma_pago
+);
+
 ALTER TABLE vivero
 ADD CONSTRAINT positivos_vivero
 CHECK (
@@ -215,12 +239,6 @@ FOREIGN KEY (id_cliente)
 ALTER TABLE venta_linea
 ADD CONSTRAINT pk_venta_linea
 PRIMARY KEY (id_venta_linea ,id_vivero, id_planta);
-
-ALTER TABLE venta_linea
-ADD CONSTRAINT unique_venta_linea
-UNIQUE(
-	id_venta_linea
-);
 
 ALTER TABLE venta_linea
 ADD CONSTRAINT positivos_venta_linea
@@ -298,11 +316,6 @@ ALTER TABLE venta_fisica
 ADD CONSTRAINT pk_venta_fisica
 PRIMARY KEY (id_venta_fisica, id_vivero, id_planta);
 
-ALTER TABLE venta_fisica
-ADD CONSTRAINT unique_venta_fisica
-UNIQUE(
-	id_venta_fisica
-);
    
 ALTER TABLE venta_fisica
 ADD CONSTRAINT positivos_venta_fisica
@@ -316,10 +329,10 @@ CHECK (
     AND id_empleado_cobrar > 0
 );
 
-ALTER TABLE venta_linea
+ALTER TABLE venta_fisica
 ADD COLUMN id_forma_pago INT;
 
-ALTER TABLE venta_linea
+ALTER TABLE venta_fisica
 ADD COLUMN monto MONEY;
 
 ALTER TABLE venta_fisica
@@ -348,6 +361,14 @@ ALTER TABLE venta_fisica
 ADD CONSTRAINT fk4_empleado_ayudar
 FOREIGN KEY (id_empleado_ayudar)
    REFERENCES empleado (id_empleado);
+ 
+
+ALTER TABLE venta_fisica
+ADD CONSTRAINT fk5_forma_pago
+FOREIGN KEY (id_forma_pago)
+   REFERENCES c_forma_de_pago (id_forma_pago)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 
 ALTER TABLE venta_fisica
@@ -375,19 +396,13 @@ FOREIGN KEY (id_rol_ayudar)
    ON DELETE RESTRICT;
 
 ALTER TABLE venta_fisica
-ADD CONSTRAINT fk4_empleado_ayudar
+DROP CONSTRAINT fk5_forma_pago,
+ADD CONSTRAINT fk5_empleado_ayudar
 FOREIGN KEY (id_empleado_ayudar)
    REFERENCES empleado (id_empleado)
    ON UPDATE RESTRICT
    ON DELETE RESTRICT;
 
-ALTER TABLE venta_fisica
-DROP CONSTRAINT fk5_forma_pago,
-ADD CONSTRAINT fk5_forma_pago
-FOREIGN KEY (id_forma_pago)
-   REFERENCES c_forma_de_pago (id_forma_pago)
-   ON UPDATE RESTRICT
-   ON DELETE RESTRICT;
 
 ALTER TABLE generar
 ADD CONSTRAINT positivos_generar
@@ -398,6 +413,7 @@ CHECK (
     AND id_venta_linea > 0
     AND id_nota_pago > 0
 );
+
 ALTER TABLE generar
 ADD CONSTRAINT fk1_vivero
 FOREIGN KEY (id_vivero)
@@ -418,11 +434,6 @@ ADD CONSTRAINT fk4_venta_linea
 FOREIGN KEY (id_venta_linea)
    REFERENCES venta_linea (id_venta_linea);
    
-ALTER TABLE nota_pago
-ADD CONSTRAINT unique_nota_pago
-UNIQUE(
-	id_nota_pago
-);
 
 ALTER TABLE generar
 ADD CONSTRAINT fk5_nota_pago
@@ -444,12 +455,6 @@ PRIMARY KEY (id_nota_pago);
 ALTER TABLE c_forma_de_pago
 ADD CONSTRAINT pk_c_forma_de_pago
 PRIMARY KEY (id_forma_pago);
-
-ALTER TABLE c_forma_de_pago
-ADD CONSTRAINT unique_c_forma_de_pago
-UNIQUE(
-	id_forma_pago
-);
  		
 ALTER TABLE nota_pago
 ADD CONSTRAINT fk1_forma_pago
