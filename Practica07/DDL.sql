@@ -196,7 +196,9 @@ ALTER TABLE correo_electronico_cliente ADD CONSTRAINT pk_correo_electronico_clie
 ALTER TABLE correo_electronico_cliente
 ADD CONSTRAINT fk1_correo_electronico_cliente
 FOREIGN KEY (id_cliente)
-   REFERENCES cliente(id_cliente);
+   REFERENCES cliente(id_cliente)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 ALTER TABLE venta_linea
 ADD CONSTRAINT positivos_venta_linea
@@ -223,22 +225,30 @@ UNIQUE(
 ALTER TABLE venta_linea
 ADD CONSTRAINT fk1_vivero
 FOREIGN KEY (id_vivero)
-   REFERENCES vivero (id_vivero);
+   REFERENCES vivero (id_vivero)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 ALTER TABLE venta_linea
 ADD CONSTRAINT fk2_planta
 FOREIGN KEY (id_planta)
-   REFERENCES planta (id_planta);
+   REFERENCES planta (id_planta)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 ALTER TABLE venta_linea
 ADD CONSTRAINT fk3_cliente
 FOREIGN KEY (id_cliente)
-   REFERENCES cliente (id_cliente);
+   REFERENCES cliente (id_cliente)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 ALTER TABLE venta_linea
 ADD CONSTRAINT fk4_forma_pago
 FOREIGN KEY (id_forma_pago)
-   REFERENCES c_forma_de_pago (id_forma_pago);
+   REFERENCES c_forma_de_pago (id_forma_pago)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 ALTER TABLE venta_fisica
 ADD CONSTRAINT positivos_venta_fisica
@@ -267,27 +277,37 @@ UNIQUE(
 ALTER TABLE venta_fisica
 ADD CONSTRAINT fk1_vivero
 FOREIGN KEY (id_vivero)
-   REFERENCES vivero (id_vivero);
+   REFERENCES vivero (id_vivero)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 ALTER TABLE venta_fisica
 ADD CONSTRAINT fk2_planta
 FOREIGN KEY (id_planta)
-   REFERENCES planta (id_planta);
+   REFERENCES planta (id_planta)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 			
 ALTER TABLE venta_fisica
 ADD CONSTRAINT fk3_rol_ayudar
 FOREIGN KEY (id_rol_ayudar)
-   REFERENCES empleado (id_rol);
+   REFERENCES empleado (id_rol)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 ALTER TABLE venta_fisica
 ADD CONSTRAINT fk4_empleado_ayudar
 FOREIGN KEY (id_empleado_ayudar)
-   REFERENCES empleado (id_empleado);
+   REFERENCES empleado (id_empleado)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 ALTER TABLE venta_fisica
 ADD CONSTRAINT fk5_forma_pago
 FOREIGN KEY (id_forma_pago)
-   REFERENCES c_forma_de_pago (id_forma_pago);
+   REFERENCES c_forma_de_pago (id_forma_pago)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 ALTER TABLE c_forma_de_pago
 ADD CONSTRAINT pk_c_forma_de_pago
