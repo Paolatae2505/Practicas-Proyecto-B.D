@@ -624,10 +624,10 @@ ALTER TABLE c_tipo_planta
 ADD CONSTRAINT pk_c_tipo_planta
 PRIMARY KEY(id_tp);
 
-ALTER TABLE c_tipo_planta
+ALTER TABLE cuidado_basico
 ADD CONSTRAINT positivos_cuidado_basico
 CHECK (
-    id_tp > 0
+    id_planta > 0
 );
 
 ALTER TABLE cuidado_basico
@@ -724,3 +724,18 @@ COMMENT ON CONSTRAINT unique_rol ON empleado IS 'Restricción unique para el atr
 COMMENT ON CONSTRAINT fk_tel_empleado ON telefono_empleado IS 'Establece la llave primaria de empleado como llave foránea de telefono_empleado';
 COMMENT ON CONSTRAINT pk_tel_empleado ON telefono_empleado IS 'Establece la llave primaria de telefono_empleado';
 COMMENT ON CONSTRAINT positivos_tel_empleado ON telefono_empleado IS 'Restringe los valores de los id de telefono_empleado a valores positivos';
+
+COMMENT ON TABLE planta IS 'Tabla que modela una planta';
+COMMENT ON CONSTRAINT positivos_planta ON planta IS 'Checa que los atributos que componen la PK de planta sean mayores que 0.';
+COMMENT ON CONSTRAINT unique_planta ON planta IS 'Checa que id_planta sea único.';
+COMMENT ON CONSTRAINT pk_planta ON planta IS 'Especifica la PK de planta.';
+COMMENT ON CONSTRAINT fk_planta_id_vivero ON planta IS 'Especifica la FK id_vivero en planta, hace referencia al vivero que la aloja.';
+COMMENT ON CONSTRAINT fk_planta_id_tp ON planta IS 'Llave foránea de planta, id_tp. Hace referencia a un c_tipo_planta.';
+COMMENT ON TABLE c_tipo_planta IS 'Tabla que modela el tipo de planta, contiene una descripción de la misma.';
+COMMENT ON CONSTRAINT positivos_c_tipo_planta ON c_tipo_planta IS 'Asegura que id_tp sea mayor que 0.';
+COMMENT ON CONSTRAINT pk_c_tipo_planta ON c_tipo_planta IS 'Llave primaria de c_tipo_planta.';
+COMMENT ON TABLE cuidado_basico IS 'Tabla que especifica el cuidado básico de alguna planta.';
+COMMENT ON CONSTRAINT positivos_cuidado_basico ON cuidado_basico IS 'Asegura que id_planta sea mayor que 0.';
+COMMENT ON CONSTRAINT pk_cuidado_basico ON cuidado_basico IS 'Especifica la primary key de cuidado_basico.';
+COMMENT ON CONSTRAINT fk_cuidado_basico ON cuidado_basico IS 'Especifica la FK id_planta de cuidado básico, hace referencia a planta. 
+Restringe el borrado';
