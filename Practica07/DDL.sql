@@ -195,6 +195,14 @@ ALTER TABLE telefono_vivero
 ADD CONSTRAINT fk_telefono_vivero
 FOREIGN KEY (id_vivero)
    REFERENCES vivero (id_vivero);
+   
+ALTER TABLE telefono_vivero
+DROP CONSTRAINT fk_telefono_vivero,
+ADD CONSTRAINT fk_telefono_vivero
+FOREIGN KEY (id_vivero)
+   REFERENCES vivero(id_vivero)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
 
 ALTER TABLE cliente
 ADD CONSTRAINT positivos_cliente
@@ -637,6 +645,25 @@ REFERENCES  planta(id_planta);
 DROP TABLE generar;
 DROP TABLE nota_pago;
 
+COMMENT ON TABLE vivero IS 'Tabla que contiene los diferentes viveros';
+COMMENT ON COLUMN vivero.id_vivero IS 'Identificador del vivero';
+COMMENT ON COLUMN vivero.nombre_vivero IS 'Nombre del vivero';
+COMMENT ON COLUMN vivero.fecha_apertura IS 'Fecha de apertura del vivero';
+COMMENT ON COLUMN vivero.estado IS 'Estado donde se encuentra ubicado el vivero';
+COMMENT ON COLUMN vivero.ciudad IS 'Ciudad donde se encuentra ubicado el vivero';
+COMMENT ON COLUMN vivero.calle IS 'Calle donde se encuentra ubicado el vivero';
+COMMENT ON COLUMN vivero.cp IS 'Código postal donde se encuentra ubicado el vivero';
+COMMENT ON CONSTRAINT pk_vivero ON vivero IS 'La llave primaria de la tabla vivero';
+COMMENT ON CONSTRAINT positivos_vivero ON vivero IS 'Restricción que asegura tener ids positivos';
+COMMENT ON TABLE telefono_vivero IS 'Tabla que contiene los teléfonos de los viveros';
+COMMENT ON COLUMN telefono_vivero.id_vivero IS 'Identificador del vivero al que pertenece el telefono';
+COMMENT ON COLUMN telefono_vivero.id_vivero IS 'Telefono del vivero';
+COMMENT ON CONSTRAINT pk_telefono_vivero ON telefono_vivero IS 'La llave primaria compuesta de la tabla 
+																	telefono_vivero';
+COMMENT ON CONSTRAINT fk_telefono_vivero ON telefono_vivero IS 'La llave foránea es el identificador 
+																	de vivero con la política RESTRICT';
+COMMENT ON CONSTRAINT positivos_telefono_vivero ON telefono_vivero IS 'Restricción que asegura tener 
+																		ids positivos';
 COMMENT ON TABLE venta_linea IS 'Tabla que contiene las ventas en linea generadas';
 COMMENT ON TABLE venta_fisica IS 'Tabla que contiene las venta fisicas generadas';
 COMMENT ON TABLE c_forma_de_pago IS 'Tabla que contiene las formas de pago de las ventas';
