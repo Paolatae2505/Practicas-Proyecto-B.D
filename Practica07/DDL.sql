@@ -680,7 +680,7 @@ COMMENT ON CONSTRAINT unique_c_forma_de_pago ON c_forma_de_pago IS 'Restricción
 COMMENT ON TABLE c_rol IS 'Tabla que contiene los roles de los empleados del vivero';
 COMMENT ON TABLE empleado IS 'Tabla que contiene la información de los empleados';
 COMMENT ON TABLE telefono_empleado IS 'Tabla que contiene el/los telefono(s) de los empleados';
-COMMENT ON TABLE correo_empleado IS 'Tabla que contiene el/los correo(s) de los empelados';
+COMMENT ON TABLE correo_electronico_empl IS 'Tabla que contiene el/los correo(s) de los empelados';
 COMMENT ON CONSTRAINT pk_c_rol ON c_rol IS 'Establece la llave primaria de c_rol';
 COMMENT ON CONSTRAINT positivos_empleado ON empleado IS 'Restricción check la cual asegura 
                                                   tener los ids y el salario positivos';
