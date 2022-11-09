@@ -670,6 +670,33 @@ COMMENT ON CONSTRAINT fk_telefono_vivero ON telefono_vivero IS 'La llave foráne
 																	de vivero con la política RESTRICT';
 COMMENT ON CONSTRAINT positivos_telefono_vivero ON telefono_vivero IS 'Restricción que asegura tener 
 																		ids positivos';
+
+COMMENT ON TABLE cliente IS 'Tabla que contiene la información de los clientes';
+COMMENT ON COLUMN cliente.id_cliente IS 'Identificador de cliente';
+COMMENT ON COLUMN cliente.nombre IS 'Nombre del cliente';
+COMMENT ON COLUMN cliente.fecha_nacimiento IS 'Fecha de nacimiento del cliente';
+
+COMMENT ON TABLE correo_electronico_cliente IS 'Tabla que contiene el/los correo(s) electronico(s) de los clientes';
+COMMENT ON COLUMN correo_electronico_cliente.id_cliente IS 'Identificador del cliente del que es el correo electronico';
+COMMENT ON COLUMN correo_electronico_cliente.correo_electronico_cliente IS 'Correo electronico de la cliente';
+
+COMMENT ON TABLE telefono_cliente IS 'Tabla que contiene el/los telefono(s) de los clientes';
+COMMENT ON COLUMN telefono_cliente.id_cliente IS 'Identificador del cliente del que es el telefono';
+COMMENT ON COLUMN telefono_cliente.telefono_cliente IS 'Telefono del cliente';
+
+COMMENT ON CONSTRAINT positivos_cliente ON cliente IS 'Restricción check la cual asegura 
+                                                  tener los ids positivos';
+COMMENT ON CONSTRAINT pk_cliente ON cliente IS 'Establece llave primaria de cliente';
+
+COMMENT ON CONSTRAINT positivos_telefono_cliente ON telefono_cliente IS 'Restringe los valores de los id_cliente de telefono_cliente a valores positivos';
+COMMENT ON CONSTRAINT pk_telefono_cliente ON telefono_cliente IS 'Establece la llave primaria de telefono_cliente';
+COMMENT ON CONSTRAINT fk1_telefono_cliente ON telefono_cliente IS 'Establece la llave primaria de cliente como llave foránea de telefono_cliente con la política RESTRICT';
+
+COMMENT ON CONSTRAINT positivos_correo_electronico_cliente ON correo_electronico_cliente IS 'Restringe los valores de los id_cliente de correo_electronico_cliente a valores positivos';
+COMMENT ON CONSTRAINT formato_correo_cliente ON correo_electronico_cliente IS 'Establece el formato que deben cumplir los correos de los clientes';
+COMMENT ON CONSTRAINT pk_correo_electronico_cliente ON correo_electronico_cliente IS 'Establece la llave primaria de correo_electronico_cliente';
+COMMENT ON CONSTRAINT fk1_correo_electronico_cliente ON correo_electronico_cliente IS 'Establece la llave primaria de cliente como llave foránea de correo_electronico_cliente con la política RESTRICT';
+
 COMMENT ON TABLE venta_linea IS 'Tabla que contiene las ventas en linea generadas';
 COMMENT ON TABLE venta_fisica IS 'Tabla que contiene las venta fisicas generadas';
 COMMENT ON TABLE c_forma_de_pago IS 'Tabla que contiene las formas de pago de las ventas';
