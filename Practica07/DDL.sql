@@ -607,11 +607,23 @@ PRIMARY KEY(
 ALTER TABLE planta
 ADD CONSTRAINT fk_planta_id_vivero
 FOREIGN KEY (id_vivero)
+REFERENCES vivero(id_vivero);
+
+ALTER TABLE planta
+DROP CONSTRAINT fk_planta_id_vivero,
+ADD CONSTRAINT fk_planta_id_vivero
+FOREIGN KEY (id_vivero)
 REFERENCES vivero(id_vivero)
 ON UPDATE RESTRICT
 ON DELETE RESTRICT;
 
 ALTER TABLE planta
+ADD CONSTRAINT fk_planta_id_tp
+FOREIGN KEY (id_tp)
+REFERENCES  c_tipo_planta(id_tp);
+
+ALTER TABLE planta
+DROP CONSTRAINT fk_planta_id_tp,
 ADD CONSTRAINT fk_planta_id_tp
 FOREIGN KEY (id_tp)
 REFERENCES  c_tipo_planta(id_tp)
@@ -642,6 +654,12 @@ PRIMARY KEY(
 );
 
 ALTER TABLE cuidado_basico
+ADD CONSTRAINT fk_cuidado_basico
+FOREIGN KEY (id_planta)
+REFERENCES  planta(id_planta);
+
+ALTER TABLE cuidado_basico
+DROP CONSTRAINT fk_cuidado_basico,
 ADD CONSTRAINT fk_cuidado_basico
 FOREIGN KEY (id_planta)
 REFERENCES  planta(id_planta)
