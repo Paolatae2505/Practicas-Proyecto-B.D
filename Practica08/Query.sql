@@ -1,0 +1,1 @@
+SELECT * FROM planta WHERE genero = 'Haworthia';
