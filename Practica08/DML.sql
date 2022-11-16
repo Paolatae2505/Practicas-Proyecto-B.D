@@ -300,3 +300,8 @@ INSERT INTO telefono_cliente(id_cliente,telefono_cliente) VALUES (11,'5564938045
 INSERT INTO telefono_cliente(id_cliente,telefono_cliente) VALUES (96,'5554187393');
 INSERT INTO telefono_cliente(id_cliente,telefono_cliente) VALUES (61,'5578024952');
 INSERT INTO telefono_cliente(id_cliente,telefono_cliente) VALUES (33,'5580918001');
+
+INSERT INTO c_rol(id_rol,descripcion) VALUES (1,'Gerente de vivero');
+INSERT INTO c_rol(id_rol,descripcion) VALUES (2,'Cuidador de plantas');
+INSERT INTO c_rol(id_rol,descripcion) VALUES (3,'Encargado de mostrador');
+INSERT INTO c_rol(id_rol,descripcion) VALUES (4,'Cajero');
