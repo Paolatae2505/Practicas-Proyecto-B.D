@@ -670,16 +670,16 @@ DROP TABLE generar;
 DROP TABLE nota_pago;
 
 ALTER TABLE venta_fisica
-DROP CONSTRAINT fk3_rol_ayudar
+DROP CONSTRAINT fk3_rol_ayudar;
 
 ALTER TABLE empleado
-DROP CONSTRAINT unique_rol
+DROP CONSTRAINT unique_rol;
 
 ALTER TABLE venta_fisica
-DROP CONSTRAINT fk1_vivero 
+DROP CONSTRAINT fk1_vivero;
 
 ALTER TABLE venta_fisica
-DROP CONSTRAINT fk4_empleado_ayudar
+DROP CONSTRAINT fk4_empleado_ayudar;
 
 ALTER TABLE venta_fisica
 ADD CONSTRAINT fk6_vf_empleadoAyudar
