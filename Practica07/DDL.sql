@@ -669,6 +669,33 @@ ON DELETE RESTRICT;
 DROP TABLE generar;
 DROP TABLE nota_pago;
 
+ALTER TABLE venta_fisica
+DROP CONSTRAINT fk3_rol_ayudar
+
+ALTER TABLE empleado
+DROP CONSTRAINT unique_rol
+
+ALTER TABLE venta_fisica
+DROP CONSTRAINT fk1_vivero 
+
+ALTER TABLE venta_fisica
+DROP CONSTRAINT fk4_empleado_ayudar
+
+ALTER TABLE venta_fisica
+ADD CONSTRAINT fk6_vf_empleadoAyudar
+FOREIGN KEY (id_vivero, id_rol_ayudar, id_empleado_ayudar)
+   REFERENCES empleado (id_vivero, id_rol, id_empleado)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;
+   
+ALTER TABLE venta_fisica
+ADD CONSTRAINT fk7_vf_empleadoCobrar
+FOREIGN KEY (id_vivero, id_rol_cobrar, id_empleado_cobrar)
+   REFERENCES empleado (id_vivero, id_rol, id_empleado)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT;   
+   
+
 COMMENT ON TABLE vivero IS 'Tabla que contiene los diferentes viveros';
 COMMENT ON COLUMN vivero.id_vivero IS 'Identificador del vivero';
 COMMENT ON COLUMN vivero.nombre_vivero IS 'Nombre del vivero';
@@ -771,7 +798,6 @@ COMMENT ON CONSTRAINT fk1_empl_idvivero ON empleado IS 'Establece id_vivero como
 COMMENT ON CONSTRAINT fk2_empl_idrol ON empleado IS 'Establece id_rol como llave foránea de empleado';
 COMMENT ON CONSTRAINT pk_empleado ON empleado IS 'Establece llave primaria compuesta de empleado';
 COMMENT ON CONSTRAINT unique_empleado ON empleado IS 'Restricción unique para el atributo id_empleado';
-COMMENT ON CONSTRAINT unique_rol ON empleado IS 'Restricción unique para el atributo id_rol';
 COMMENT ON CONSTRAINT fk_tel_empleado ON telefono_empleado IS 'Establece la llave primaria de empleado como llave foránea de telefono_empleado';
 COMMENT ON CONSTRAINT pk_tel_empleado ON telefono_empleado IS 'Establece la llave primaria de telefono_empleado';
 COMMENT ON CONSTRAINT positivos_tel_empleado ON telefono_empleado IS 'Restringe los valores de los id de telefono_empleado a valores positivos';
