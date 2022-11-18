@@ -1137,7 +1137,7 @@ INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salari
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (39,4,74,'Bendicty Janak','1918-04-12','$18040.16','Kansas City','Missouri',64125,'1943 Meadow Vale Circle');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (58,1,75,'Arlan Humberstone','1979-01-23','$21954.25','Rochester','New York',14614,'8 Holy Cross Alley');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (63,2,76,'Tiphany Delucia','1989-04-04','$10859.52','Lexington','Kentucky',40510,'36889 Garrison Road');
-INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (69,4,77,'Shay Lorking','1979-03-22','$14579.92','Cleveland','Ohio',44185,'9 Marcy Drive');
+INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (69,4,77,'Chay Lorking','1979-03-22','$14579.92','Cleveland','Ohio',44185,'9 Marcy Drive');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (44,1,78,'Chanda Jakubowsky','1934-09-01','$14626.41','Winston Salem','North Carolina',27116,'5 Moose Lane');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (64,4,79,'Biron Leathard','1954-05-06','$7621.18','Portland','Oregon',97229,'8 Spaight Place');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (98,1,80,'Teressa Gearing','1944-08-15','$6638.34','Detroit','Michigan',48217,'2198 Summerview Drive');
@@ -1148,7 +1148,7 @@ INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salari
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (3,4,85,'Mattias Cratchley','1993-05-21','$27727.57','Denver','Colorado',80270,'609 Comanche Drive');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (70,4,86,'Ario Dossettor','1979-10-15','$10264.44','Rochester','New York',14604,'02627 Corscot Avenue');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (47,2,87,'Agathe Hauger','1903-11-19','$5950.33','Kansas City','Missouri',64187,'1 Corscot Avenue');
-INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (52,3,88,'Kris McGarva','1988-07-17','$16861.46','Worcester','Massachusetts',01605,'5519 Wayridge Hill');
+INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (52,3,88,'Cris McGarva','1988-07-17','$16861.46','Worcester','Massachusetts',01605,'5519 Wayridge Hill');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (10,1,89,'Noellyn Gianneschi','1953-06-28','$19024.58','Chicago','Illinois',60604,'8173 Green Trail');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (91,3,90,'Netty Foley','1926-06-17','$12227.41','Peoria','Illinois',61635,'20319 Shasta Crossing');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (86,2,91,'Stewart Wyman','1912-02-29','$4982.61','Oklahoma City','Oklahoma',73167,'3 Derek Pass');
@@ -1158,7 +1158,7 @@ INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salari
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (68,4,95,'Cora Veal','1964-11-27','$18323.12','Panama City','Florida',32412,'097 Sachs Alley');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (67,4,96,'Milli Choake','1941-10-18','$15474.60','Littleton','Colorado',80127,'4523 Hallows Trail');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (17,2,97,'Barr Killock','1968-10-22','$17052.19','Reno','Nevada',89519,'03858 Tennyson Plaza');
-INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (20,1,98,'Dodie Morfield','1923-08-19','$14861.52','Phoenix','Arizona',85025,'01927 Myrtle Point');
+INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (20,1,98,'Codie Morfield','1923-08-19','$14861.52','Phoenix','Arizona',85025,'01927 Myrtle Point');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (2,4,99,'Faulkner Brammar','1975-03-19','$22058.53','Atlanta','Georgia',31196,'5 Portage Court');
 INSERT INTO empleado(id_vivero,id_rol,id_empleado,nombre,fecha_nacimiento,salario,ciudad,estado,cp,calle) VALUES (19,1,100,'Giorgio Summergill','1979-09-18','$16839.86','El Paso','Texas',88579,'8176 Transport Way');
 
