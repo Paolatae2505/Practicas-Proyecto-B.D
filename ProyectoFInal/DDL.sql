@@ -10,6 +10,14 @@ CREATE TABLE Piso(
 	Estatus VARCHAR(30) NOT NULL
 );
 
+CREATE TABLE Sala(
+	IdSala INT NOT NULL,
+	IdPiso INT NOT NULL,
+	IdEdificio INT NOT NULL,
+	Costo NUMERIC NOT NULL,
+	Tipo VARCHAR(13) NOT NULL
+);
+
 CREATE TABLE AgenteTele(
 	CURPAgente VARCHAR(20),
 	IdPiso INT,
@@ -34,6 +42,52 @@ CREATE TABLE Entrenador(
 	Fotografia VARCHAR(270) NOT NULL
 );
 
+CREATE TABLE Cliente(
+	RFC VARCHAR(13) NOT NULL, 
+	AliasCliente VARCHAR(100) NOT NULL,
+	RazonSocial VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE TelefonoCliente(
+	RFCCliente VARCHAR(13) NOT NULL, 
+	TelefonoCliente VARCHAR(15) NOT NULL
+);
+
+CREATE TABLE CorreoCliente(
+	RFCCliente VARCHAR(13) NOT NULL, 
+	CorreoCliente VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE PersonaDeContactoCliente(
+	RFCCliente VARCHAR(13) NOT NULL, 
+	PersonaDeContactoCliente VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Curso(
+	IdCurso INT NOT NULL, 
+	RFCCliente VARCHAR(13) NOT NULL, 
+	Idsala INT NOT NULL,
+	IdPiso INT NOT NULL,
+	IdEdificio INT NOT NULL,
+	CURPEntrenador VARCHAR(20) NOT NULL,
+	Nombre VARCHAR(256) NOT NULL,
+	Modalidad VARCHAR(10) NOT NULL,
+	FechaInicio DATE NOT NULL,
+	FechaFin DATE NOT NULL,
+	HorasDeEntrenamiento INT NOT NULL,
+	PagoEntrenador NUMERIC NOT NULL,
+	PagoAgente NUMERIC NOT NULL
+);
+
+CREATE TABLE FechaCurso(
+	IdCurso INT NOT NULL, 
+	RFCCliente VARCHAR(13) NOT NULL, 
+	Idsala INT NOT NULL,
+	IdPiso INT NOT NULL,
+	IdEdificio INT NOT NULL,
+	CURPEntrenador VARCHAR(20) NOT NULL,
+	FechaCurso NUMERIC NOT NULL
+);
 
 CREATE TABLE AsistenciaCurso(
 	IdAsistenciaCurso INT,
@@ -77,6 +131,10 @@ ALTER TABLE Piso
 ADD CONSTRAINT PK_Piso
 PRIMARY KEY (IdEdificio,IdPiso);
 
+ALTER TABLE Sala
+ADD CONSTRAINT PK_Sala
+PRIMARY KEY (IdSala);
+
 ALTER TABLE AgenteTele
 ADD CONSTRAINT PK_AgenteTele
 PRIMARY KEY (CURPAgente);
@@ -84,6 +142,30 @@ PRIMARY KEY (CURPAgente);
 ALTER TABLE Entrenador
 ADD CONSTRAINT PK_Entrenador
 PRIMARY KEY (CURPEntrenador,IdPiso,IdEdificio);
+
+ALTER TABLE Cliente
+ADD CONSTRAINT PK_Cliente
+PRIMARY KEY (RFC);
+
+ALTER TABLE TelefonoCliente
+ADD CONSTRAINT PK_TelefonoCliente
+PRIMARY KEY (TelefonoCliente);
+
+ALTER TABLE CorreoCliente
+ADD CONSTRAINT PK_CorreoCliente
+PRIMARY KEY (CorreoCliente);
+
+ALTER TABLE PersonaDeContactoCliente
+ADD CONSTRAINT PK_PersonaDeContactoCliente
+PRIMARY KEY (PersonaDeContactoCliente);
+
+ALTER TABLE Curso
+ADD CONSTRAINT PK_Curso
+PRIMARY KEY (IdCurso);
+
+ALTER TABLE FechaCurso
+ADD CONSTRAINT PK_FechaCurso
+PRIMARY KEY (FechaCurso);
 
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT PK_AsistenciaCurso
@@ -94,6 +176,11 @@ ALTER TABLE Piso
 ADD CONSTRAINT FK_Piso
 FOREIGN KEY (IdEdificio)
    REFERENCES Edificio (IdEdificio);
+   
+ALTER TABLE Sala
+ADD CONSTRAINT FK1_Sala
+FOREIGN KEY (IdPiso, IdEdificio)
+   REFERENCES Piso (IdPiso, IdEdificio);
 
 ALTER TABLE AgenteTele
 ADD CONSTRAINT FK1_IdPisoAgente
@@ -109,6 +196,51 @@ ALTER TABLE Entrenador
 ADD CONSTRAINT FK2_IdEdificio
 FOREIGN KEY (IdEdificio)
    REFERENCES Edificio (IdEdificio);
+   
+ALTER TABLE TelefonoCliente
+ADD CONSTRAINT FK1_TelefonoCliente
+FOREIGN KEY (RFCCliente)
+   REFERENCES Cliente (RFC);
+   
+ALTER TABLE CorreoCliente
+ADD CONSTRAINT FK1_CorreoCliente
+FOREIGN KEY (RFCCliente)
+   REFERENCES Cliente (RFC);
+   
+ALTER TABLE PersonaDeContactoCliente
+ADD CONSTRAINT FK1_PersonaDeContactoCliente
+FOREIGN KEY (RFCCliente)
+   REFERENCES Cliente (RFC);
+   
+ALTER TABLE Curso
+ADD CONSTRAINT FK1_Curso
+FOREIGN KEY (RFCCliente)
+   REFERENCES Cliente (RFC);
+   
+ALTER TABLE Curso
+ADD CONSTRAINT FK2_Curso
+FOREIGN KEY (IdSala, IdPiso, IdEdificio)
+   REFERENCES Sala (IdSala, IdPiso, IdEdificio);
+   
+ALTER TABLE Curso
+ADD CONSTRAINT FK3_Curso
+FOREIGN KEY (CURPEntrenador)
+   REFERENCES Entrenador (CURPEntrenador);
+
+ALTER TABLE FechaCurso
+ADD CONSTRAINT FK1_FechaCurso
+FOREIGN KEY (RFCCliente)
+   REFERENCES Cliente (RFC);
+   
+ALTER TABLE FechaCurso
+ADD CONSTRAINT FK2_FechaCurso
+FOREIGN KEY (IdSala, IdPiso, IdEdificio)
+   REFERENCES Sala (IdSala, IdPiso, IdEdificio);
+   
+ALTER TABLE FechaCurso
+ADD CONSTRAINT FK3_FechaCurso
+FOREIGN KEY (CURPEntrenador)
+   REFERENCES Entrenador (CURPEntrenador);   
    
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT FK1_IdEdificio
@@ -147,6 +279,10 @@ CHECK (
     AND IdEdificio > 0
 	AND SALARIO >= 0
 );
+
+ALTER TABLE CorreoCliente 
+ADD CONSTRAINT formato_CorreoCliente 
+CHECK(CorreoCliente like '_%@_%._%');
 
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT Positivos_AsistenciaCurso
