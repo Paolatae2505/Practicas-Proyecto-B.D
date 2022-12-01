@@ -30,11 +30,11 @@ CREATE TABLE AgenteTele(
 );
 
 CREATE TABLE TelefonoCelAgente(
-	CURPAgente INT,
+	CURPAgente VARCHAR(20),
 	TelefonoCel INT
 );
 CREATE TABLE CorreoElectronicoAgente(
-	CURPAgente INT,
+	CURPAgente VARCHAR(20),
 	CorreoElectronico INT
 );
 CREATE TABLE Entrenador(
@@ -49,11 +49,11 @@ CREATE TABLE Entrenador(
 	Fotografia VARCHAR(270) NOT NULL
 );
 CREATE TABLE TelefonoCelEntrenador(
-	CURPEntrenador INT,
+	CURPEntrenador VARCHAR(20),
 	TelefonoCel INT
 );
 CREATE TABLE CorreoElectronicoEntrenador(
-	CURPEntrenador INT,
+	CURPEntrenador VARCHAR(20),
 	CorreoElectronico INT
 );
 CREATE TABLE Cliente(
