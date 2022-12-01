@@ -180,7 +180,7 @@ PRIMARY KEY (IdEdificio,IdPiso);
 
 ALTER TABLE Sala
 ADD CONSTRAINT PK_Sala
-PRIMARY KEY (IdSala);
+PRIMARY KEY (IdSala, IdPiso, IdEdificio);
 
 ALTER TABLE AgenteTele
 ADD CONSTRAINT PK_AgenteTele
