@@ -145,6 +145,12 @@ UNIQUE(
 	IdPiso
 );
 
+ALTER TABLE Sala
+ADD CONSTRAINT Unique_Sala
+UNIQUE(
+	IdSala
+);
+
 ALTER TABLE AgenteTele
 ADD CONSTRAINT Unique_AgenteTele
 UNIQUE(
