@@ -29,7 +29,14 @@ CREATE TABLE AgenteTele(
 	Fotografia VARCHAR(270) NOT NULL
 );
 
-
+CREATE TABLE TelefonoCelAgente(
+	CURPAgente INT,
+	TelefonoCel INT
+);
+CREATE TABLE CorreoElectronicoAgente(
+	CURPAgente INT,
+	CorreoElectronico INT
+);
 CREATE TABLE Entrenador(
 	CURPEntrenador VARCHAR(20),
 	IdPiso INT,
@@ -41,7 +48,14 @@ CREATE TABLE Entrenador(
 	Salario NUMERIC NOT NULL,
 	Fotografia VARCHAR(270) NOT NULL
 );
-
+CREATE TABLE TelefonoCelEntrenador(
+	CURPEntrenador INT,
+	TelefonoCel INT
+);
+CREATE TABLE CorreoElectronicoEntrenador(
+	CURPEntrenador INT,
+	CorreoElectronico INT
+);
 CREATE TABLE Cliente(
 	RFC VARCHAR(13) NOT NULL, 
 	AliasCliente VARCHAR(100) NOT NULL,
@@ -166,10 +180,25 @@ ALTER TABLE AgenteTele
 ADD CONSTRAINT PK_AgenteTele
 PRIMARY KEY (CURPAgente);
 
+ALTER TABLE TelefonoCelAgente 
+ADD CONSTRAINT PK_TelefonoCelAgente
+PRIMARY KEY (CURPAgente,TelefonoCel);
+
+ALTER TABLE CorreoElectronicoAgente 
+ADD CONSTRAINT PK_CorreoElectronicoAgente
+PRIMARY KEY (CURPAgente,CorreoElectronico);
+
 ALTER TABLE Entrenador
 ADD CONSTRAINT PK_Entrenador
---PRIMARY KEY (CURPEntrenador,IdPiso,IdEdificio);
 PRIMARY KEY (CURPEntrenador);
+
+ALTER TABLE TelefonoCelEntrenador 
+ADD CONSTRAINT PK_TelefonoCelEntrenador
+PRIMARY KEY (CURPEntrenador,TelefonoCel);
+
+ALTER TABLE CorreoElectronicoEntrenador 
+ADD CONSTRAINT PK_CorreoElectronicoEntrenador
+PRIMARY KEY (CURPEntrenador,CorreoElectronico);
 
 ALTER TABLE Cliente
 ADD CONSTRAINT PK_Cliente
@@ -235,15 +264,25 @@ ADD CONSTRAINT FK1_IdPisoAgente
 FOREIGN KEY (IdPiso)
    REFERENCES Piso (IdPiso);
 
-ALTER TABLE Entrenador
-ADD CONSTRAINT FK1_IdPisoEntrenador
-FOREIGN KEY (IdPiso)
-   REFERENCES Piso (IdPiso);
+ALTER TABLE TelefonoCelAgente
+ADD CONSTRAINT FK1_TelefonoCelAgente
+FOREIGN KEY (CURPAgente)
+   REFERENCES AgenteTele (CURPAgente);
+   
+ALTER TABLE CorreoElectronicoAgente
+ADD CONSTRAINT FK1_CorreoElectronicoAgente
+FOREIGN KEY (CURPAgente)
+   REFERENCES AgenteTele (CURPAgente);
+   
+ALTER TABLE TelefonoCelEntrenador
+ADD CONSTRAINT FK1_TelefonoCelEntrenador
+FOREIGN KEY (CURPEntrenador)
+   REFERENCES Entrenador (CURPEntrenador);
 
-ALTER TABLE Entrenador
-ADD CONSTRAINT FK2_IdEdificio
-FOREIGN KEY (IdEdificio)
-   REFERENCES Edificio (IdEdificio);
+ALTER TABLE CorreoElectronicoEntrenador
+ADD CONSTRAINT FK1_CorreoElectronicoEntrenaodor
+FOREIGN KEY (CURPEntrenador)
+   REFERENCES Entrenador (CURPEntrenador);
    
 ALTER TABLE TelefonoCliente
 ADD CONSTRAINT FK1_TelefonoCliente
