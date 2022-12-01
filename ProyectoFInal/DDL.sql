@@ -97,6 +97,33 @@ CREATE TABLE AsistenciaCurso(
 	HorasAsitencia INT NOT NULL
 );
 
+CREATE TABLE Horario(
+    FechaIncio DATE NOT NULL,
+    FechaFin DATE NOT NULL,
+    CURPEntrenador VARCHAR(20) NOT NULL,
+    Horas INT NOT NULL
+
+);
+
+CREATE TABLE EntradaEntrenador(
+    FechaEntradaEntrenador DATE NOT NULL,
+    CURPEntrenador VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE SalidaEntrenador(
+    FechaSalidaEntrenador DATE NOT NULL,
+    CURPEntrenador VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE EntradaAgente(
+    FechaEntradaAgente DATE NOT NULL,
+    CURPAgente VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE SalidaAgente(
+    FechaSalidaAgente DATE NOT NULL,
+    CURPAgente VARCHAR(20) NOT NULL
+);
 -- Uniques
 ALTER TABLE Piso
 ADD CONSTRAINT Unique_Piso
@@ -141,7 +168,8 @@ PRIMARY KEY (CURPAgente);
 
 ALTER TABLE Entrenador
 ADD CONSTRAINT PK_Entrenador
-PRIMARY KEY (CURPEntrenador,IdPiso,IdEdificio);
+--PRIMARY KEY (CURPEntrenador,IdPiso,IdEdificio);
+PRIMARY KEY (CURPEntrenador);
 
 ALTER TABLE Cliente
 ADD CONSTRAINT PK_Cliente
@@ -170,6 +198,26 @@ PRIMARY KEY (FechaCurso);
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT PK_AsistenciaCurso
 PRIMARY KEY (IdAsistenciaCurso,IdCurso,CURPAgente);
+
+ALTER TABLE Horario
+ADD CONSTRAINT PK_Horario
+PRIMARY KEY (FechaIncio,FechaFin,CURPEntrenador);
+
+ALTER TABLE EntradaEntrenador
+ADD CONSTRAINT PK_EntradaEntrenador
+PRIMARY KEY (FechaEntradaEntrenador,CURPEntrenador);
+
+ALTER TABLE SalidaEntrenador
+ADD CONSTRAINT PK_SalidaEntrenador
+PRIMARY KEY (FechaSalidaEntrenador,CURPEntrenador);
+
+ALTER TABLE EntradaAgente
+ADD CONSTRAINT PK_EntradaAgente
+PRIMARY KEY (FechaEntradaAgente,CURPAgente);
+
+ALTER TABLE SalidaAgente
+ADD CONSTRAINT PK_SalidaAgente
+PRIMARY KEY (FechaSalidaAgente,CURPAgente);
 
 -- FKs
 ALTER TABLE Piso
@@ -251,6 +299,31 @@ ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT FK2_CURPAgente
 FOREIGN KEY (CURPAgente)
    REFERENCES AgenteTele (CURPAgente);
+
+ALTER TABLE Horario
+ADD CONSTRAINT FK1_Horario
+FOREIGN KEY (CURPEntrenador)
+   REFERENCES Entrenador (CURPEntrenador);
+
+ALTER TABLE EntradaEntrenador
+ADD CONSTRAINT FK1_EntradaEntrenador
+FOREIGN KEY (CURPEntrenador)
+   REFERENCES Entrenador (CURPEntrenador);
+
+ALTER TABLE SalidaEntrenador
+ADD CONSTRAINT FK1_SalidaEntrenador
+FOREIGN KEY (CURPEntrenador)
+   REFERENCES Entrenador (CURPEntrenador);
+   
+ALTER TABLE EntradaAgente
+ADD CONSTRAINT FK1_EntradaAgente
+FOREIGN KEY (CURPAgente)
+   REFERENCES AgenteTele (CURPAgente);
+   
+ALTER TABLE SalidaAgente
+ADD CONSTRAINT FK1_SalidaAgente
+FOREIGN KEY (CURPAgente)
+   REFERENCES AgenteTele (CURPAgente);
    
 -- Positivos
 ALTER TABLE Edificio
@@ -289,6 +362,12 @@ ADD CONSTRAINT Positivos_AsistenciaCurso
 CHECK (
     IdAsistenciaCurso > 0
     AND IdCurso > 0
+);
+
+ALTER TABLE Horario
+ADD CONSTRAINT Positivos_Horario
+CHECK (
+    Horas > 0
 );
 
 
