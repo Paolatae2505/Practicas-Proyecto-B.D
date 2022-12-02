@@ -18,6 +18,47 @@ CREATE TABLE Sala(
 	Tipo VARCHAR(13) NOT NULL
 );
 
+CREATE TABLE Mouse(
+	NumSerie INT,
+	FechaAdqui DATE NOT NULL,
+	Modelo VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Headset(
+	NumSerie INT,
+	FechaAdqui DATE NOT NULL,
+	Modelo VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Teclado(
+	NumSerie INT,
+	FechaAdqui DATE NOT NULL,
+	Modelo VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Estacion(
+	IdEstacion INT,
+	IdSala INT,
+	IdPiso INT,
+	IdEdificio INT,
+	sistemaOp VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE TenerMouse(
+	NumSerie INT,
+	IdEstacion INT
+);
+
+CREATE TABLE TenerHeadset(
+	NumSerie INT,
+	IdEstacion INT
+);
+
+CREATE TABLE TenerTeclado(
+	NumSerie INT,
+	IdEstacion INT
+);
+
 CREATE TABLE AgenteTele(
 	CURPAgente VARCHAR(20),
 	IdPiso INT,
@@ -151,6 +192,30 @@ UNIQUE(
 	IdSala
 );
 
+ALTER TABLE Mouse
+ADD CONSTRAINT Unique_Mouse
+UNIQUE(
+	NumSerie
+);
+
+ALTER TABLE Headset
+ADD CONSTRAINT Unique_Headset
+UNIQUE(
+	NumSerie
+);
+
+ALTER TABLE Teclado
+ADD CONSTRAINT Unique_Teclado
+UNIQUE(
+	NumSerie
+);
+
+ALTER TABLE Estacion
+ADD CONSTRAINT Unique_Estacion
+UNIQUE(
+	IdEstacion
+);
+
 ALTER TABLE AgenteTele
 ADD CONSTRAINT Unique_AgenteTele
 UNIQUE(
@@ -181,6 +246,34 @@ PRIMARY KEY (IdEdificio,IdPiso);
 ALTER TABLE Sala
 ADD CONSTRAINT PK_Sala
 PRIMARY KEY (IdSala, IdPiso, IdEdificio);
+
+ALTER TABLE Mouse
+ADD CONSTRAINT PK_Mouse
+PRIMARY KEY (NumSerie);
+
+ALTER TABLE Headset
+ADD CONSTRAINT PK_Headset
+PRIMARY KEY (NumSerie);
+
+ALTER TABLE Teclado
+ADD CONSTRAINT PK_Teclado
+PRIMARY KEY (NumSerie);
+
+ALTER TABLE Estacion 
+ADD CONSTRAINT PK_Estacion
+PRIMARY KEY (IdEstacion, IdSala, IdPiso, IdEdificio);
+
+ALTER TABLE TenerMouse
+ADD CONSTRAINT PK_TenerMouse
+PRIMARY KEY (NumSerie, IdEstacion);
+
+ALTER TABLE TenerHeadset
+ADD CONSTRAINT PK_TenerHeadset
+PRIMARY KEY (NumSerie, IdEstacion);
+
+ALTER TABLE TenerTeclado
+ADD CONSTRAINT PK_TenerTeclado
+PRIMARY KEY (NumSerie, IdEstacion);
 
 ALTER TABLE AgenteTele
 ADD CONSTRAINT PK_AgenteTele
@@ -264,6 +357,41 @@ ALTER TABLE Sala
 ADD CONSTRAINT FK1_Sala
 FOREIGN KEY (IdPiso, IdEdificio)
    REFERENCES Piso (IdPiso, IdEdificio);
+
+ALTER TABLE Estacion
+ADD CONSTRAINT FK_Estacion
+FOREIGN KEY (IdSala, IdPiso, IdEdificio)
+	REFERENCES Sala;
+
+ALTER TABLE TenerMouse
+ADD CONSTRAINT FK1_TenerMouse
+FOREIGN KEY (NumSerie)
+	REFERENCES Mouse(NumSerie);
+
+ALTER TABLE TenerHeadset
+ADD CONSTRAINT FK1_TenerHeadset
+FOREIGN KEY (NumSerie)
+	REFERENCES Headset(NumSerie);
+
+ALTER TABLE TenerTeclado
+ADD CONSTRAINT FK1_TenerTeclado
+FOREIGN KEY (NumSerie)
+	REFERENCES Teclado(NumSerie);
+
+ALTER TABLE TenerMouse
+ADD CONSTRAINT FK2_TenerMouse
+FOREIGN KEY (IdEstacion)
+	REFERENCES Estacion(IdEstacion);
+
+ALTER TABLE TenerHeadset
+ADD CONSTRAINT FK2_TenerHeadset
+FOREIGN KEY (IdEstacion)
+	REFERENCES Estacion(IdEstacion);
+
+ALTER TABLE TenerTeclado
+ADD CONSTRAINT FK2_TenerTeclado
+FOREIGN KEY (IdEstacion)
+	REFERENCES Estacion(IdEstacion);
 
 ALTER TABLE AgenteTele
 ADD CONSTRAINT FK1_IdPisoAgente
