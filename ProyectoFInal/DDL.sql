@@ -224,7 +224,7 @@ PRIMARY KEY (PersonaDeContactoCliente);
 
 ALTER TABLE Curso
 ADD CONSTRAINT PK_Curso
-PRIMARY KEY (IdCurso);
+PRIMARY KEY (IdCurso, RFCCliente, IdSala, IdPiso, IdEdificio, CURPEntrenador);
 
 ALTER TABLE FechaCurso
 ADD CONSTRAINT PK_FechaCurso
