@@ -96,11 +96,11 @@ CREATE TABLE Curso(
 CREATE TABLE FechaCurso(
 	IdCurso INT NOT NULL, 
 	RFCCliente VARCHAR(13) NOT NULL, 
-	Idsala INT NOT NULL,
+	IdSala INT NOT NULL,
 	IdPiso INT NOT NULL,
 	IdEdificio INT NOT NULL,
 	CURPEntrenador VARCHAR(20) NOT NULL,
-	FechaCurso NUMERIC NOT NULL
+	FechaCurso DATE NOT NULL
 );
 
 CREATE TABLE AsistenciaCurso(
@@ -383,6 +383,15 @@ CHECK (
     IdPiso > 0
 );
 
+ALTER TABLE Sala
+ADD CONSTRAINT Positivos_Sala
+CHECK (
+    IdSala > 0
+    AND IdPiso > 0
+    AND IdEdificio > 0
+    AND Costo > 0
+);
+
 ALTER TABLE AgenteTele
 ADD CONSTRAINT Positivos_AgenteTele
 CHECK (
@@ -401,6 +410,27 @@ CHECK (
 ALTER TABLE CorreoCliente 
 ADD CONSTRAINT formato_CorreoCliente 
 CHECK(CorreoCliente like '_%@_%._%');
+
+ALTER TABLE Curso
+ADD CONSTRAINT Positivos_Curso
+CHECK (
+    IdCurso > 0
+    AND IdSala > 0
+    AND IdPiso > 0
+    AND IdEdificio > 0
+    AND HorasDeEntrenamiento >= 0
+    AND PagoEntrenador >= 0
+    AND PagoAgente >= 0
+);
+
+ALTER TABLE FechaCurso
+ADD CONSTRAINT Positivos_FechaCurso
+CHECK (
+    IdCurso > 0
+    AND IdSala > 0
+    AND IdPiso > 0
+    AND IdEdificio > 0
+);
 
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT Positivos_AsistenciaCurso
