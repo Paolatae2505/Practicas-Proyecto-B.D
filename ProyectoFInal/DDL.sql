@@ -73,11 +73,11 @@ CREATE TABLE AgenteTele(
 
 CREATE TABLE TelefonoCelAgente(
 	CURPAgente VARCHAR(20),
-	TelefonoCel INT
+	TelefonoCel VARCHAR(12)
 );
 CREATE TABLE CorreoElectronicoAgente(
 	CURPAgente VARCHAR(20),
-	CorreoElectronico INT
+	CorreoElectronico VARCHAR(286)
 );
 CREATE TABLE Entrenador(
 	CURPEntrenador VARCHAR(20),
@@ -94,11 +94,11 @@ CREATE TABLE Entrenador(
 );
 CREATE TABLE TelefonoCelEntrenador(
 	CURPEntrenador VARCHAR(20),
-	TelefonoCel INT
+	TelefonoCel VARCHAR(12)
 );
 CREATE TABLE CorreoElectronicoEntrenador(
 	CURPEntrenador VARCHAR(20),
-	CorreoElectronico INT
+	CorreoElectronico VARCHAR(286)
 );
 CREATE TABLE Cliente(
 	RFC VARCHAR(13) NOT NULL, 
