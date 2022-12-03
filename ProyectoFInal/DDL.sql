@@ -428,12 +428,7 @@ ALTER TABLE AgenteTele
 ADD CONSTRAINT FK1_Curso
 FOREIGN KEY (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador)
    REFERENCES Curso (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador);
-   
-ALTER TABLE AgenteTele
-ADD CONSTRAINT FK2_Piso
-FOREIGN KEY (IdPiso,IdEdificio)
-   REFERENCES Piso (IdPiso,IdEdificio);
-   
+      
 ALTER TABLE TelefonoCelAgente
 ADD CONSTRAINT FK1_TelefonoCelAgente
 FOREIGN KEY (CURPAgente)
