@@ -67,6 +67,11 @@ CREATE TABLE TenerTeclado(
 CREATE TABLE AgenteTele(
 	CURPAgente VARCHAR(20),
 	IdPiso INT,
+	IdCurso INT, 
+	RFCCliente VARCHAR(13), 
+	Idsala INT,
+	IdEdificio INT,
+	CURPEntrenador VARCHAR(20),
 	NombreC VARCHAR(100) NOT NULL,
 	FechaNac DATE NOT NULL,
 	Horario VARCHAR(12) NOT NULL,
@@ -77,7 +82,8 @@ CREATE TABLE AgenteTele(
 	Calle VARCHAR(256) NOT NULL,
 	Numero VARCHAR(256) NOT NULL,
 	Pais VARCHAR(60) NOT NULL,
-	Fotografia VARCHAR(270) NOT NULL
+	Fotografia VARCHAR(270) NOT NULL,
+	Evaluacion NUMERIC NOT NULL
 );
 
 CREATE TABLE TelefonoCelAgente(
@@ -303,7 +309,7 @@ PRIMARY KEY (NumSerie, IdEstacion);
 
 ALTER TABLE AgenteTele
 ADD CONSTRAINT PK_AgenteTele
-PRIMARY KEY (CURPAgente);
+PRIMARY KEY (CURPAgente,IdPiso,IdCurso, RFCCliente, IdSala, IdEdificio, CURPEntrenador);
 
 ALTER TABLE TelefonoCelAgente 
 ADD CONSTRAINT PK_TelefonoCelAgente
@@ -420,12 +426,15 @@ FOREIGN KEY (IdEstacion)
 	REFERENCES Estacion(IdEstacion);
 
 ALTER TABLE AgenteTele
-ADD CONSTRAINT FK1_IdPisoAgente
-FOREIGN KEY (IdPiso)
-   REFERENCES Piso (IdPiso)
-   ON UPDATE CASCADE
-   ON DELETE SET NULL;
-
+ADD CONSTRAINT FK1_Curso
+FOREIGN KEY (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador)
+   REFERENCES Curso (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador);
+   
+ALTER TABLE AgenteTele
+ADD CONSTRAINT FK2_Piso
+FOREIGN KEY (IdPiso,IdEdificio)
+   REFERENCES Piso (IdPiso,IdEdificio);
+   
 ALTER TABLE TelefonoCelAgente
 ADD CONSTRAINT FK1_TelefonoCelAgente
 FOREIGN KEY (CURPAgente)
@@ -443,7 +452,7 @@ FOREIGN KEY (CURPAgente)
 ALTER TABLE Entrenador
 ADD CONSTRAINT FK1_Piso
 FOREIGN KEY (IdPiso,IdEdificio)
-   REFERENCES Edificio (IdPiso,IdEdificio)
+   REFERENCES Piso (IdPiso,IdEdificio)
    ON UPDATE CASCADE
    ON DELETE SET NULL;
    
@@ -568,6 +577,10 @@ ADD CONSTRAINT Positivos_AgenteTele
 CHECK (
     IdPiso > 0
     AND Salario >= 0
+	AND IdCurso > 0
+    AND IdSala > 0
+	AND Evaluacion >= 0
+	AND Evaluacion <= 10
 );
 
 ALTER TABLE Entrenador
@@ -575,7 +588,7 @@ ADD CONSTRAINT Positivos_Entrenador
 CHECK (
     IdPiso > 0
     AND IdEdificio > 0
-	AND SALARIO >= 0
+	AND Salario >= 0
 );
 
 ALTER TABLE CorreoCliente 
@@ -618,6 +631,3 @@ ADD CONSTRAINT Positivos_Horario
 CHECK (
     Horas > 0
 );
-
-
-   
