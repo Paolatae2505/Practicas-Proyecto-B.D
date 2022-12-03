@@ -462,12 +462,7 @@ ALTER TABLE FechaCurso
 ADD CONSTRAINT FK3_FechaCurso
 FOREIGN KEY (CURPEntrenador)
    REFERENCES Entrenador (CURPEntrenador);   
-   
-ALTER TABLE AsistenciaCurso
-ADD CONSTRAINT FK1_IdEdificio
-FOREIGN KEY (IdEdificio)
-   REFERENCES Edificio (IdEdificio);
-   
+      
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT FK2_CURPAgente
 FOREIGN KEY (CURPAgente)
