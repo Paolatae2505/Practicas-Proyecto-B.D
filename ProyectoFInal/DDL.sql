@@ -146,7 +146,12 @@ CREATE TABLE FechaCurso(
 
 CREATE TABLE AsistenciaCurso(
 	IdAsistenciaCurso INT,
-	IdCurso INT,
+	IdCurso INT, 
+	RFCCliente VARCHAR(13), 
+	Idsala INT,
+	IdPiso INT,
+	IdEdificio INT,
+	CURPEntrenador VARCHAR(20) NOT NULL,
 	CURPAgente VARCHAR(20),
 	Fecha DATE NOT NULL,
 	HorasAsitencia INT NOT NULL
@@ -190,6 +195,11 @@ ALTER TABLE Sala
 ADD CONSTRAINT Unique_Sala
 UNIQUE(
 	IdSala
+);
+ALTER TABLE Curso
+ADD CONSTRAINT Unique_Curso
+UNIQUE(
+	IdCurso
 );
 
 ALTER TABLE Mouse
@@ -325,7 +335,7 @@ PRIMARY KEY (FechaCurso);
 
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT PK_AsistenciaCurso
-PRIMARY KEY (IdAsistenciaCurso,IdCurso,CURPAgente);
+PRIMARY KEY (IdAsistenciaCurso,IdCurso,RFCCliente, IdSala, IdPiso, IdEdificio, CURPEntrenador,CURPAgente);
 
 ALTER TABLE Horario
 ADD CONSTRAINT PK_Horario
@@ -462,12 +472,22 @@ ALTER TABLE FechaCurso
 ADD CONSTRAINT FK3_FechaCurso
 FOREIGN KEY (CURPEntrenador)
    REFERENCES Entrenador (CURPEntrenador);   
-      
+         
+ALTER TABLE AsistenciaCurso
+ADD CONSTRAINT FK1_PKCurso
+FOREIGN KEY (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador)
+   REFERENCES Curso (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador);
+    
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT FK2_CURPAgente
 FOREIGN KEY (CURPAgente)
    REFERENCES AgenteTele (CURPAgente);
 
+ALTER TABLE AsistenciaCurso
+ADD CONSTRAINT FK7_CURPAgente
+FOREIGN KEY (CURPAgente)
+   REFERENCES AgenteTele (CURPAgente);
+   
 ALTER TABLE Horario
 ADD CONSTRAINT FK1_Horario
 FOREIGN KEY (CURPEntrenador)
@@ -560,6 +580,9 @@ ADD CONSTRAINT Positivos_AsistenciaCurso
 CHECK (
     IdAsistenciaCurso > 0
     AND IdCurso > 0
+    AND IdSala > 0
+    AND IdPiso > 0
+    AND IdEdificio > 0
 );
 
 ALTER TABLE Horario
