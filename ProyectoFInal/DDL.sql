@@ -157,7 +157,7 @@ CREATE TABLE AsistenciaCurso(
 	CURPEntrenador VARCHAR(20) NOT NULL,
 	CURPAgente VARCHAR(20),
 	Fecha DATE NOT NULL,
-	HorasAsitencia INT NOT NULL
+	HorasAsitencia NUMERIC NOT NULL
 );
 
 CREATE TABLE Horario(
