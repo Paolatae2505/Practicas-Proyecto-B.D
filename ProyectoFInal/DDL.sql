@@ -406,27 +406,52 @@ FOREIGN KEY (IdEstacion)
 ALTER TABLE AgenteTele
 ADD CONSTRAINT FK1_IdPisoAgente
 FOREIGN KEY (IdPiso)
-   REFERENCES Piso (IdPiso);
+   REFERENCES Piso (IdPiso)
+   ON UPDATE CASCADE
+   ON DELETE SET NULL;
 
 ALTER TABLE TelefonoCelAgente
 ADD CONSTRAINT FK1_TelefonoCelAgente
 FOREIGN KEY (CURPAgente)
-   REFERENCES AgenteTele (CURPAgente);
+   REFERENCES AgenteTele (CURPAgente)
+   ON UPDATE CASCADE
+   ON DELETE SET NULL;
    
 ALTER TABLE CorreoElectronicoAgente
 ADD CONSTRAINT FK1_CorreoElectronicoAgente
 FOREIGN KEY (CURPAgente)
-   REFERENCES AgenteTele (CURPAgente);
+   REFERENCES AgenteTele (CURPAgente)
+   ON UPDATE CASCADE
+   ON DELETE SET NULL;
+
+ALTER TABLE Entrenador
+ADD CONSTRAINT FK1_IdPiso
+FOREIGN KEY (IdPiso)
+   REFERENCES Piso (IdPiso)
+   ON UPDATE CASCADE
+   ON DELETE SET NULL;
+   
+ALTER TABLE Entrenador
+ADD CONSTRAINT FK2_IdEdificio
+FOREIGN KEY (IdEdificio)
+   REFERENCES Edificio (IdEdificio)
+   ON UPDATE CASCADE
+   ON DELETE SET NULL;
+   
    
 ALTER TABLE TelefonoCelEntrenador
 ADD CONSTRAINT FK1_TelefonoCelEntrenador
 FOREIGN KEY (CURPEntrenador)
-   REFERENCES Entrenador (CURPEntrenador);
+   REFERENCES Entrenador (CURPEntrenador)
+   ON UPDATE CASCADE
+   ON DELETE CASCADE;
 
 ALTER TABLE CorreoElectronicoEntrenador
 ADD CONSTRAINT FK1_CorreoElectronicoEntrenaodor
 FOREIGN KEY (CURPEntrenador)
-   REFERENCES Entrenador (CURPEntrenador);
+   REFERENCES Entrenador (CURPEntrenador)
+   ON UPDATE CASCADE
+   ON DELETE CASCADE;;
    
 ALTER TABLE TelefonoCliente
 ADD CONSTRAINT FK1_TelefonoCliente
