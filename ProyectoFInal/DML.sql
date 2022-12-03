@@ -1,0 +1,10 @@
+INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (1,'Mexico','CDMX','CDMX','Calle Madero',03239,31540);
+INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (2,'Mexico','CDMX','CDMX','Avenida Juárez',91151,41640);
+INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (3,'Mexico','CDMX','CDMX','Paseo de la Reforma',06603,78436);
+INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (4,'Mexico','CDMX','CDMX','Avenida Álvaro Obregón',2,83450);
+INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (5,'Mexico','CDMX','CDMX','Calle Génova',2,39266);
+INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (6,'Mexico','CDMX','CDMX','Avenida Juárez',84569,29020);
+INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (7,'Mexico','CDMX','CDMX','Calle Madero',95631,72089);
+INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (8,'Mexico','CDMX','CDMX','Calle Génova',230,74960);
+INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (9,'Mexico','CDMX','CDMX','Paseo de la Reforma',997,40070);
+INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (10,'Mexico','CDMX','CDMX','Avenida Álvaro Obregón',888,94724);
