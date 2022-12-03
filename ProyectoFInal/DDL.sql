@@ -67,6 +67,7 @@ CREATE TABLE AgenteTele(
 	Horario VARCHAR(12) NOT NULL,
 	Salario NUMERIC NOT NULL,
 	Domicilio VARCHAR(300) NOT NULL ,
+	Pais VARCHAR(60) NOT NULL,
 	Fotografia VARCHAR(270) NOT NULL
 );
 
@@ -87,7 +88,9 @@ CREATE TABLE Entrenador(
 	FechaIngreso DATE NOT NULL,
 	NumeroSeguroSoc VARCHAR(13) NOT NULL,
 	Salario NUMERIC NOT NULL,
-	Fotografia VARCHAR(270) NOT NULL
+	Fotografia VARCHAR(270) NOT NULL,
+	Domicilio VARCHAR(300) NOT NULL ,
+	Pais VARCHAR(60) NOT NUll
 );
 CREATE TABLE TelefonoCelEntrenador(
 	CURPEntrenador VARCHAR(20),
