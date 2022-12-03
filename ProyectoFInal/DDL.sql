@@ -574,7 +574,7 @@ ALTER TABLE AgenteTele
 ADD CONSTRAINT Positivos_AgenteTele
 CHECK (
     IdPiso > 0
-    AND Salario >= 0
+    AND PagoAgente >= 0
 	AND IdCurso > 0
     AND IdSala > 0
 	AND Evaluacion >= 0
@@ -586,7 +586,6 @@ ADD CONSTRAINT Positivos_Entrenador
 CHECK (
     IdPiso > 0
     AND IdEdificio > 0
-	AND Salario >= 0
 );
 
 ALTER TABLE CorreoCliente 
