@@ -24,19 +24,19 @@ CREATE TABLE Sala(
 );
 
 CREATE TABLE Mouse(
-	NumSerie INT,
+	IdPeriferico INT,
 	FechaAdqui DATE NOT NULL,
 	Modelo VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Headset(
-	NumSerie INT,
+	IdPeriferico INT,
 	FechaAdqui DATE NOT NULL,
 	Modelo VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Teclado(
-	NumSerie INT,
+	IdPeriferico INT,
 	FechaAdqui DATE NOT NULL,
 	Modelo VARCHAR(50) NOT NULL
 );
@@ -46,21 +46,21 @@ CREATE TABLE Estacion(
 	IdSala INT,
 	IdPiso INT,
 	IdEdificio INT,
-	sistemaOp VARCHAR(50) NOT NULL
+	SistemaOp VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE TenerMouse(
-	NumSerie INT,
+	IdPeriferico INT,
 	IdEstacion INT
 );
 
 CREATE TABLE TenerHeadset(
-	NumSerie INT,
+	IdPeriferico INT,
 	IdEstacion INT
 );
 
 CREATE TABLE TenerTeclado(
-	NumSerie INT,
+	IdPeriferico INT,
 	IdEstacion INT
 );
 
@@ -226,19 +226,19 @@ UNIQUE(
 ALTER TABLE Mouse
 ADD CONSTRAINT Unique_Mouse
 UNIQUE(
-	NumSerie
+	IdPeriferico
 );
 
 ALTER TABLE Headset
 ADD CONSTRAINT Unique_Headset
 UNIQUE(
-	NumSerie
+	IdPeriferico
 );
 
 ALTER TABLE Teclado
 ADD CONSTRAINT Unique_Teclado
 UNIQUE(
-	NumSerie
+	IdPeriferico
 );
 
 ALTER TABLE Estacion
@@ -280,15 +280,15 @@ PRIMARY KEY (IdSala, IdPiso, IdEdificio);
 
 ALTER TABLE Mouse
 ADD CONSTRAINT PK_Mouse
-PRIMARY KEY (NumSerie);
+PRIMARY KEY (IdPeriferico);
 
 ALTER TABLE Headset
 ADD CONSTRAINT PK_Headset
-PRIMARY KEY (NumSerie);
+PRIMARY KEY (IdPeriferico);
 
 ALTER TABLE Teclado
 ADD CONSTRAINT PK_Teclado
-PRIMARY KEY (NumSerie);
+PRIMARY KEY (IdPeriferico);
 
 ALTER TABLE Estacion 
 ADD CONSTRAINT PK_Estacion
@@ -296,15 +296,15 @@ PRIMARY KEY (IdEstacion, IdSala, IdPiso, IdEdificio);
 
 ALTER TABLE TenerMouse
 ADD CONSTRAINT PK_TenerMouse
-PRIMARY KEY (NumSerie, IdEstacion);
+PRIMARY KEY (IdPeriferico, IdEstacion);
 
 ALTER TABLE TenerHeadset
 ADD CONSTRAINT PK_TenerHeadset
-PRIMARY KEY (NumSerie, IdEstacion);
+PRIMARY KEY (IdPeriferico, IdEstacion);
 
 ALTER TABLE TenerTeclado
 ADD CONSTRAINT PK_TenerTeclado
-PRIMARY KEY (NumSerie, IdEstacion);
+PRIMARY KEY (IdPeriferico, IdEstacion);
 
 ALTER TABLE AgenteTele
 ADD CONSTRAINT PK_AgenteTele
@@ -396,18 +396,18 @@ FOREIGN KEY (IdSala, IdPiso, IdEdificio)
 
 ALTER TABLE TenerMouse
 ADD CONSTRAINT FK1_TenerMouse
-FOREIGN KEY (NumSerie)
-	REFERENCES Mouse(NumSerie);
+FOREIGN KEY (IdPeriferico)
+	REFERENCES Mouse(IdPeriferico);
 
 ALTER TABLE TenerHeadset
 ADD CONSTRAINT FK1_TenerHeadset
-FOREIGN KEY (NumSerie)
-	REFERENCES Headset(NumSerie);
+FOREIGN KEY (IdPeriferico)
+	REFERENCES Headset(IdPeriferico);
 
 ALTER TABLE TenerTeclado
 ADD CONSTRAINT FK1_TenerTeclado
-FOREIGN KEY (NumSerie)
-	REFERENCES Teclado(NumSerie);
+FOREIGN KEY (IdPeriferico)
+	REFERENCES Teclado(IdPeriferico);
 
 ALTER TABLE TenerMouse
 ADD CONSTRAINT FK2_TenerMouse
