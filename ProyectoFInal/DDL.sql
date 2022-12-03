@@ -441,19 +441,11 @@ FOREIGN KEY (CURPAgente)
    ON DELETE SET NULL;
 
 ALTER TABLE Entrenador
-ADD CONSTRAINT FK1_IdPiso
-FOREIGN KEY (IdPiso)
-   REFERENCES Piso (IdPiso)
+ADD CONSTRAINT FK1_Piso
+FOREIGN KEY (IdPiso,IdEdificio)
+   REFERENCES Edificio (IdPiso,IdEdificio)
    ON UPDATE CASCADE
    ON DELETE SET NULL;
-   
-ALTER TABLE Entrenador
-ADD CONSTRAINT FK2_IdEdificio
-FOREIGN KEY (IdEdificio)
-   REFERENCES Edificio (IdEdificio)
-   ON UPDATE CASCADE
-   ON DELETE SET NULL;
-   
    
 ALTER TABLE TelefonoCelEntrenador
 ADD CONSTRAINT FK1_TelefonoCelEntrenador
@@ -467,7 +459,7 @@ ADD CONSTRAINT FK1_CorreoElectronicoEntrenaodor
 FOREIGN KEY (CURPEntrenador)
    REFERENCES Entrenador (CURPEntrenador)
    ON UPDATE CASCADE
-   ON DELETE CASCADE;;
+   ON DELETE CASCADE;
    
 ALTER TABLE TelefonoCliente
 ADD CONSTRAINT FK1_TelefonoCliente
@@ -523,12 +515,7 @@ ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT FK2_CURPAgente
 FOREIGN KEY (CURPAgente)
    REFERENCES AgenteTele (CURPAgente);
-
-ALTER TABLE AsistenciaCurso
-ADD CONSTRAINT FK7_CURPAgente
-FOREIGN KEY (CURPAgente)
-   REFERENCES AgenteTele (CURPAgente);
-   
+  
 ALTER TABLE Horario
 ADD CONSTRAINT FK1_Horario
 FOREIGN KEY (CURPEntrenador)
