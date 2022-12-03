@@ -82,6 +82,7 @@ CREATE TABLE AgenteTele(
 	Numero VARCHAR(256) NOT NULL,
 	Pais VARCHAR(60) NOT NULL,
 	Fotografia VARCHAR(270) NOT NULL,
+	PagoAgente NUMERIC NOT NUll,
 	Evaluacion NUMERIC NOT NULL
 );
 
