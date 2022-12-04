@@ -155,14 +155,14 @@ CREATE TABLE Curso(
 	PagoAgente NUMERIC NOT NULL
 );
 
-CREATE TABLE FechaCurso(
+CREATE TABLE FechasCurso(
 	IdCurso INT NOT NULL, 
 	RFCCliente VARCHAR(13) NOT NULL, 
 	IdSala INT NOT NULL,
 	IdPiso INT NOT NULL,
 	IdEdificio INT NOT NULL,
 	CURPEntrenador VARCHAR(20) NOT NULL,
-	FechaCurso DATE NOT NULL
+	FechasCurso DATE NOT NULL
 );
 
 CREATE TABLE AsistenciaCurso(
@@ -494,18 +494,18 @@ ADD CONSTRAINT FK3_Curso
 FOREIGN KEY (CURPEntrenador)
    REFERENCES Entrenador (CURPEntrenador);
 
-ALTER TABLE FechaCurso
-ADD CONSTRAINT FK1_FechaCurso
+ALTER TABLE FechasCurso
+ADD CONSTRAINT FK1_FechasCurso
 FOREIGN KEY (RFCCliente)
    REFERENCES Cliente (RFC);
    
-ALTER TABLE FechaCurso
-ADD CONSTRAINT FK2_FechaCurso
+ALTER TABLE FechasCurso
+ADD CONSTRAINT FK2_FechasCurso
 FOREIGN KEY (IdSala, IdPiso, IdEdificio)
    REFERENCES Sala (IdSala, IdPiso, IdEdificio);
    
-ALTER TABLE FechaCurso
-ADD CONSTRAINT FK3_FechaCurso
+ALTER TABLE FechasCurso
+ADD CONSTRAINT FK3_FechasCurso
 FOREIGN KEY (CURPEntrenador)
    REFERENCES Entrenador (CURPEntrenador);   
          
