@@ -207,16 +207,17 @@ INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('FNI560713UZ9','O''Har
 INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('JKP394099AG3','Schulist, Gutmann and Beer','Moral');
 INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('WHE037717RU4','Wisozk LLC','Moral');
 INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('BAP039629UR8','Wilderman, Crona and Yost','Moral');
-INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('KBT457112LM7','Borer-Ortiz','Moral');
-INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('MDP556636DU3','Swift, Ratke and Rogahn','Moral');
-INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('ZUB816706NZ1','Brown, Murphy and Rodriguez','Moral');
-INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('QZF349892RY2','Williamson Inc','Moral');
-INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('XZP238901BB8','Ebert, Friesen and Armstrong','Moral');
-INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('WCH573222HO2','Johns-Green','Moral');
-INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('VLE743753FK7','Rosenbaum-Runolfsson','Moral');
-INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('YKO754020SP4','Bergstrom, Prohaska and Bins','Moral');
-INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('BXT219468ZV6','Conn, Kertzmann and Greenfelder','Moral');
+INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('RZEF895741EH9','Maxine Jacquemy','Fisica');
+INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('GKTC275685XG9','Nichol Delacour','Fisica');
+INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('YYIV886222CI7','Yvor Dewfall','Fisica');
+INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('MJAI693914ZP0','Enrichetta Vasiltsov','Fisica');
+INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('JUMW741966IA2','Anabelle McIan','Fisica');
+INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('BQNV154049LX8','Muhammad Lewisham','Fisica');
+INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('ZVEQ607855WO6','Victoria Shorbrook','Fisica');
+INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('GSMK107276KA6','Arron Campbell-Dunlop','Fisica');
+INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('NITJ102243RJ0','Florencia Bourgaize','Fisica');
 INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('NNMA569580AB2','Foster Espadate','Fisica');
+
 
 
 INSERT INTO Entrenador(CURPEntrenador,IdPiso,IdEdificio,NombreC,FechaNac,FechaIngreso,NumeroSeguroSoc,Fotografia,CP,Ciudad,Estado,Numero,Calle,Pais) VALUES ('VJQ037276TPCXX98',13,1,'Brigham Mingame','1994-01-24','2021-11-29','LYHTSVIG','http://dummyimage.com/227x100.png/dddddd/000000','88930','Mexico','CDMX','CDMX','Avenida Álvaro Obregón','Mexico');
