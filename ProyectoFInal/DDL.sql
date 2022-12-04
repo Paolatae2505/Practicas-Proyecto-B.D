@@ -350,9 +350,9 @@ ALTER TABLE Curso
 ADD CONSTRAINT PK_Curso
 PRIMARY KEY (IdCurso, RFCCliente, IdSala, IdPiso, IdEdificio, CURPEntrenador);
 
-ALTER TABLE FechaCurso
-ADD CONSTRAINT PK_FechaCurso
-PRIMARY KEY (FechaCurso);
+ALTER TABLE FechasCurso
+ADD CONSTRAINT PK_FechasCurso
+PRIMARY KEY (FechasCurso);
 
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT PK_AsistenciaCurso
@@ -600,8 +600,8 @@ CHECK (
     AND PagoAgente >= 0
 );
 
-ALTER TABLE FechaCurso
-ADD CONSTRAINT Positivos_FechaCurso
+ALTER TABLE FechasCurso
+ADD CONSTRAINT Positivos_FechasCurso
 CHECK (
     IdCurso > 0
     AND IdSala > 0
