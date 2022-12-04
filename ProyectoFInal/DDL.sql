@@ -148,11 +148,8 @@ CREATE TABLE Curso(
 	CURPEntrenador VARCHAR(20) NOT NULL,
 	Nombre VARCHAR(256) NOT NULL,
 	Modalidad VARCHAR(10) NOT NULL,
-	FechaInicio DATE NOT NULL,
-	FechaFin DATE NOT NULL,
 	HorasDeEntrenamiento INT NOT NULL,
-	PagoEntrenador NUMERIC NOT NULL,
-	PagoAgente NUMERIC NOT NULL
+	PagoEntrenador NUMERIC NOT NULL
 );
 
 CREATE TABLE FechasCurso(
@@ -597,7 +594,6 @@ CHECK (
     AND IdEdificio > 0
     AND HorasDeEntrenamiento >= 0
     AND PagoEntrenador >= 0
-    AND PagoAgente >= 0
 );
 
 ALTER TABLE FechasCurso
