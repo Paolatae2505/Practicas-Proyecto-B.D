@@ -479,9 +479,30 @@ INSERT INTO CorreoElectronicoEntrenador(CURPEntrenador,CorreoElectronico) VALUES
 
 INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (1,'HCE678692PS6',62,15,1,'VJQ037276TPCXX98','Programa de capacitacion Hamill-Yost','en linea',42,70);
 INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (2,'BQNV154049LX8',124,14,2,'ZQT637913WDFHB36','Programa de capacitacion Muhammad Lewisham','presencial',42,70);
-INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (3,'BAP039629UR8',41,9,1,'KQJ109191WTWRZ35','Programa de capacitacion "Wilderman Crona and Yost"','presencial',42,70);
+INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (3,'BAP039629UR8',41,9,1,'KQJ109191WTWRZ35','Programa de capacitacion Wilderman Crona and Yost','presencial',42,70);
 INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (4,'YEI079256PP6',118,2,2,'CPI302573GVVDN91','Programa de capacitacion Howell Group','presencial',42,70);
 INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (5,'AAD282786GE0',38,3,1,'EJW320090LUIRX20','Programa de capacitacion Herman-Schuppe','en linea',42,70);
+
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-11-29',1,'HCE678692PS6',62,15,1,'VJQ037276TPCXX98');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2022-01-03',2,'BQNV154049LX8',124,14,2,'ZQT637913WDFHB36');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-07-16',3,'BAP039629UR8',41,9,1,'KQJ109191WTWRZ35');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-08-16',4,'YEI079256PP6',118,2,2,'CPI302573GVVDN91');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2020-09-21',5,'AAD282786GE0',38,3,1,'EJW320090LUIRX20');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-12-06',1,'HCE678692PS6',62,15,1,'VJQ037276TPCXX98');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2022-01-10',2,'BQNV154049LX8',124,14,2,'ZQT637913WDFHB36');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-07-23',3,'BAP039629UR8',41,9,1,'KQJ109191WTWRZ35');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-08-23',4,'YEI079256PP6',118,2,2,'CPI302573GVVDN91');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2020-09-28',5,'AAD282786GE0',38,3,1,'EJW320090LUIRX20');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-12-02',1,'HCE678692PS6',62,15,1,'VJQ037276TPCXX98');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2022-01-06',2,'BQNV154049LX8',124,14,2,'ZQT637913WDFHB36');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-07-17',3,'BAP039629UR8',41,9,1,'KQJ109191WTWRZ35');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-08-19',4,'YEI079256PP6',118,2,2,'CPI302573GVVDN91');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2020-09-23',5,'AAD282786GE0',38,3,1,'EJW320090LUIRX20');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-12-08',1,'HCE678692PS6',62,15,1,'VJQ037276TPCXX98');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2022-01-11',2,'BQNV154049LX8',124,14,2,'ZQT637913WDFHB36');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-07-24',3,'BAP039629UR8',41,9,1,'KQJ109191WTWRZ35');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-08-25',4,'YEI079256PP6',118,2,2,'CPI302573GVVDN91');
+INSERT INTO FechasCurso(FechaCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2020-09-29',5,'AAD282786GE0',38,3,1,'EJW320090LUIRX20');
 
 
 INSERT INTO AgenteTele(CURPAgente,IdPiso,IdCurso,RFCCliente,IdSala,CURPEntrenador,IdEdificio,NombreC,FechaNac,Horario,CP,Ciudad,Estado,Numero,Calle,Pais,Fotografia,PagoAgente,Evaluacion) VALUES ('AWT902812HIFRE96',15,1,'HCE678692PS6',62,'VJQ037276TPCXX98',1,'Billi Kingsworth','1984-12-31','Matutino',48892,'CDMX','CDMX',835,'Calle Génova','Mexico','http://dummyimage.com/189x100.png/cc0000/ffffff',40,9);
