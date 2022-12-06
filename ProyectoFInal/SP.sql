@@ -22,7 +22,13 @@ $$;
 CREATE OR REPLACE PROCEDURE baja_por_faltas(CURPAgenteN VARCHAR, IdCursoN int)
 AS $$
 BEGIN 
-	if (SELECT contar_faltas(CURPAgenteN,IdCursoN) > 3) THEN
+	IF NOT EXISTS(SELECT * FROM AgenteTele WHERE CURPAgente = CURPAgenteN) THEN 
+		RAISE NOTICE 'NO EXISTE UN AGENTE CON ESTE CURP';
+	ELSE IF NOT EXISTS(SELECT * FROM FechasCurso WHERE IdCurso = IdCursoN) THEN
+    	RAISE NOTICE 'NO EXISTE ESTE CURSO O AUN NO HA SIDO IMPARTIDO';
+		END IF;
+	END IF;
+	if (SELECT contar_faltas(CURPAgenteN,IdCursoN) > 1) THEN
 	UPDATE AgenteTele SET Estatus = false WHERE CURPAgente = CURPAgenteN;
     END IF;
 END;
