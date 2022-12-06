@@ -185,22 +185,22 @@ CREATE TABLE Horario(
 );
 
 CREATE TABLE EntradaEntrenador(
-    FechaEntradaEntrenador DATE NOT NULL,
+    FechaEntradaEntrenador TIMESTAMP NOT NULL,
     CURPEntrenador VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE SalidaEntrenador(
-    FechaSalidaEntrenador DATE NOT NULL,
+    FechaSalidaEntrenador TIMESTAMP NOT NULL,
     CURPEntrenador VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE EntradaAgente(
-    FechaEntradaAgente DATE NOT NULL,
+    FechaEntradaAgente TIMESTAMP NOT NULL,
     CURPAgente VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE SalidaAgente(
-    FechaSalidaAgente DATE NOT NULL,
+    FechaSalidaAgente TIMESTAMP NOT NULL,
     CURPAgente VARCHAR(20) NOT NULL
 );
 -- Uniques
