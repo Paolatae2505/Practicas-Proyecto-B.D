@@ -2157,8 +2157,6 @@ INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,I
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (25,2,'BQNV154049LX8',124,14,2,'LXY599411EJYLA07','ZQT637913WDFHB36','2021-12-08',2);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (26,3,'BAP039629UR8',41,9,1,'MPS691833FWCEB71','KQJ109191WTWRZ35','2021-12-06',2);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (27,3,'BAP039629UR8',41,9,1,'IGU003788CGJUB79','KQJ109191WTWRZ35','2021-12-08',3);
-
-
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (28,2,'BQNV154049LX8',124,14,2,'LVY046256QXJDN01','ZQT637913WDFHB36','2021-12-08',1);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (29,5,'AAD282786GE0',38,3,1,'OPP925651CLUSR18','EJW320090LUIRX20','2021-12-08',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (30,5,'AAD282786GE0',38,3,1,'RFX276754JBFRD28','EJW320090LUIRX20','2021-11-29',3);
@@ -2194,9 +2192,6 @@ INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,I
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (60,1,'HCE678692PS6',62,15,1,'OPP925651CLUSR18','VJQ037276TPCXX98','2021-12-08',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (61,4,'YEI079256PP6',118,2,2,'LOH824075NATPR65','CPI302573GVVDN91','2021-12-08',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (62,2,'BQNV154049LX8',124,14,2,'TCE395788FBOBH38','ZQT637913WDFHB36','2021-12-06',1);
-
-
-
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (63,4,'YEI079256PP6',118,2,2,'CSL452181XIYWF11','CPI302573GVVDN91','2022-01-11',2);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (64,3,'BAP039629UR8',41,9,1,'PAD732458DLYNM08','KQJ109191WTWRZ35','2022-01-06',2);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (65,5,'AAD282786GE0',38,3,1,'RVA407320RBXQL75','EJW320090LUIRX20','2022-01-11',3);
@@ -2230,8 +2225,6 @@ INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,I
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (93,4,'YEI079256PP6',118,2,2,'PAD732458DLYNM08','CPI302573GVVDN91','2022-01-03',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (94,4,'YEI079256PP6',118,2,2,'PAD732458DLYNM08','CPI302573GVVDN91','2022-01-11',1);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (95,5,'AAD282786GE0',38,3,1,'CGF044994CTAEY79','EJW320090LUIRX20','2022-01-10',2);
-
-
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (96,3,'BAP039629UR8',41,9,1,'XOB400838YACET66','KQJ109191WTWRZ35','2022-01-11',1);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (97,4,'YEI079256PP6',118,2,2,'KEJ515126ZJPTH20','CPI302573GVVDN91','2022-01-10',1);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (98,3,'BAP039629UR8',41,9,1,'NLQ668850IAXLM76','KQJ109191WTWRZ35','2022-01-03',2);
@@ -2250,9 +2243,6 @@ INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,I
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (111,2,'BQNV154049LX8',124,14,2,'NLQ668850IAXLM76','ZQT637913WDFHB36','2022-01-06',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (112,3,'BAP039629UR8',41,9,1,'NLQ668850IAXLM76','KQJ109191WTWRZ35','2022-01-11',1);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (113,5,'AAD282786GE0',38,3,1,'RTC443654YSZGC43','EJW320090LUIRX20','2022-01-03',2);
-
-
-
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (114,4,'YEI079256PP6',118,2,2,'IHI886614WBDZM63','CPI302573GVVDN91','2021-07-23',1);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (115,5,'AAD282786GE0',38,3,1,'JWQ926542NXHWQ53','EJW320090LUIRX20','2021-07-16',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (116,5,'AAD282786GE0',38,3,1,'ZDS335551UZLQZ38','EJW320090LUIRX20','2021-07-16',2);
@@ -2326,9 +2316,6 @@ INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,I
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (185,2,'BQNV154049LX8',124,14,2,'VWY891661RWUNE21','ZQT637913WDFHB36','2021-07-23',1);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (186,4,'YEI079256PP6',118,2,2,'PNO292698JVWEW14','CPI302573GVVDN91','2021-07-23',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (187,2,'BQNV154049LX8',124,14,2,'JWQ926542NXHWQ53','ZQT637913WDFHB36','2021-07-23',2);
-
-
-
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (188,3,'BAP039629UR8',41,9,1,'DCG842926ACADM12','KQJ109191WTWRZ35','2021-07-24',1);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (189,5,'AAD282786GE0',38,3,1,'MOZ572863ZCZLT42','EJW320090LUIRX20','2021-07-16',2);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (190,4,'YEI079256PP6',118,2,2,'PES814498YNZVJ68','CPI302573GVVDN91','2021-07-24',1);
@@ -2352,10 +2339,6 @@ INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,I
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (208,2,'BQNV154049LX8',124,14,2,'PES814498YNZVJ68','ZQT637913WDFHB36','2021-07-17',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (209,4,'YEI079256PP6',118,2,2,'ZEF860439JJHOE64','CPI302573GVVDN91','2021-07-23',2);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (210,3,'BAP039629UR8',41,9,1,'YDE357105ULASF58','KQJ109191WTWRZ35','2021-07-23',3);
-
-
-
-
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (211,1,'HCE678692PS6',62,15,1,'EOR696891DKKHD67','VJQ037276TPCXX98','2021-08-16',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (212,2,'BQNV154049LX8',124,14,2,'LOQ010207SFNTW02','ZQT637913WDFHB36','2021-08-23',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (213,4,'YEI079256PP6',118,2,2,'CTC040122ALHKF52','CPI302573GVVDN91','2021-08-25',2);
@@ -2393,7 +2376,6 @@ INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,I
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (245,3,'BAP039629UR8',41,9,1,'WLY504922LLLCQ76','KQJ109191WTWRZ35','2021-08-25',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (246,4,'YEI079256PP6',118,2,2,'GSD335987XRSIK75','CPI302573GVVDN91','2021-08-19',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (247,3,'BAP039629UR8',41,9,1,'ZBE452918KZRHG23','KQJ109191WTWRZ35','2021-08-19',3);
-
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (248,2,'BQNV154049LX8',124,14,2,'VXH165592ZUQEZ07','ZQT637913WDFHB36','2021-08-23',1);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (249,5,'AAD282786GE0',38,3,1,'AZS735697MIAUJ08','EJW320090LUIRX20','2021-08-19',2);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (250,3,'BAP039629UR8',41,9,1,'OHM227005QOPEZ13','KQJ109191WTWRZ35','2021-08-25',3);
@@ -2430,8 +2412,6 @@ INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,I
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (281,3,'BAP039629UR8',41,9,1,'DWY025072YWCLB74','KQJ109191WTWRZ35','2020-09-21',1);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (282,3,'BAP039629UR8',41,9,1,'TMY191674DLVHD02','KQJ109191WTWRZ35','2020-09-28',1);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (283,4,'YEI079256PP6',118,2,2,'EDQ308723AETVE79','CPI302573GVVDN91','2020-09-23',1);
-
-
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (284,5,'AAD282786GE0',38,3,1,'IZJ075876GCBEV92','EJW320090LUIRX20','2020-09-21',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (285,1,'HCE678692PS6',62,15,1,'PAD083239MDAAK08','VJQ037276TPCXX98','2020-09-21',3);
 INSERT INTO AsistenciaCurso(IdAsistenciaCurso,IdCurso,RFCCliente,IdSala,IdPiso,IdEdificio,CURPAgente,CURPEntrenador,Fecha,HorasAsistencia) VALUES (286,4,'YEI079256PP6',118,2,2,'CSU438640YZZNK79','CPI302573GVVDN91','2020-09-21',2);
