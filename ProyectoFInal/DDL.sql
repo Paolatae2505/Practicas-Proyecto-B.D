@@ -16,9 +16,9 @@ CREATE TABLE Piso(
 );
 
 CREATE TABLE Sala(
-	IdSala INT,
-	IdPiso INT,
-	IdEdificio INT,
+	IdSala INT NOT NULL,
+	IdPiso INT NOT NULL,
+	IdEdificio INT NOT NULL,
 	Costo NUMERIC NOT NULL,
 	Tipo VARCHAR(13) NOT NULL
 );
@@ -83,8 +83,7 @@ CREATE TABLE AgenteTele(
 	Pais VARCHAR(60) NOT NULL,
 	Fotografia VARCHAR(270) NOT NULL,
 	PagoAgente NUMERIC NOT NUll,
-	Evaluacion NUMERIC NOT NULL,
-	Estatus BOOLEAN NOT NULL
+	Evaluacion NUMERIC NOT NULL
 );
 
 CREATE TABLE TelefonoCelAgente(
@@ -112,7 +111,7 @@ CREATE TABLE Entrenador(
 	Pais VARCHAR(60) NOT NULL
 );
 CREATE TABLE TelefonoCelEntrenador(
-	CURPEntrenador VARCHAR(20),
+	CURPEntrenador VARCHAR(20), -- ??
 	TelefonoCel VARCHAR(12)
 );
 CREATE TABLE CorreoElectronicoEntrenador(
@@ -120,33 +119,33 @@ CREATE TABLE CorreoElectronicoEntrenador(
 	CorreoElectronico VARCHAR(286)
 );
 CREATE TABLE Cliente(
-	RFC VARCHAR(13), 
+	RFC VARCHAR(13) NOT NULL, 
 	AliasCliente VARCHAR(100) NOT NULL,
 	RazonSocial VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE TelefonoCliente(
-	RFCCliente VARCHAR(13), 
-	TelefonoCliente VARCHAR(15)
+	RFCCliente VARCHAR(13) NOT NULL, 
+	TelefonoCliente VARCHAR(15) NOT NULL
 );
 
 CREATE TABLE CorreoCliente(
-	RFCCliente VARCHAR(13), 
-	CorreoCliente VARCHAR(256)
+	RFCCliente VARCHAR(13) NOT NULL, 
+	CorreoCliente VARCHAR(256) NOT NULL
 );
 
 CREATE TABLE PersonaDeContactoCliente(
-	RFCCliente VARCHAR(13), 
-	PersonaDeContactoCliente VARCHAR(100)
+	RFCCliente VARCHAR(13) NOT NULL, 
+	PersonaDeContactoCliente VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE Curso(
-	IdCurso INT, 
-	RFCCliente VARCHAR(13), 
-	Idsala INT,
-	IdPiso INT,
-	IdEdificio INT,
-	CURPEntrenador VARCHAR(20),
+	IdCurso INT NOT NULL, 
+	RFCCliente VARCHAR(13) NOT NULL, 
+	Idsala INT NOT NULL,
+	IdPiso INT NOT NULL,
+	IdEdificio INT NOT NULL,
+	CURPEntrenador VARCHAR(20) NOT NULL,
 	Nombre VARCHAR(256) NOT NULL,
 	Modalidad VARCHAR(10) NOT NULL,
 	HorasDeEntrenamiento INT NOT NULL,
@@ -154,13 +153,13 @@ CREATE TABLE Curso(
 );
 
 CREATE TABLE FechasCurso(
-	IdCurso INT, 
-	RFCCliente VARCHAR(13), 
-	IdSala INT,
-	IdPiso INT,
-	IdEdificio INT,
-	CURPEntrenador VARCHAR(20),
-	FechasCurso DATE
+	IdCurso INT NOT NULL, 
+	RFCCliente VARCHAR(13) NOT NULL, 
+	IdSala INT NOT NULL,
+	IdPiso INT NOT NULL,
+	IdEdificio INT NOT NULL,
+	CURPEntrenador VARCHAR(20) NOT NULL,
+	FechasCurso DATE NOT NULL
 );
 
 CREATE TABLE AsistenciaCurso(
@@ -390,30 +389,22 @@ FOREIGN KEY (IdPiso, IdEdificio)
 ALTER TABLE Estacion
 ADD CONSTRAINT FK_Estacion
 FOREIGN KEY (IdSala, IdPiso, IdEdificio)
-	REFERENCES Sala
-	ON UPDATE CASCADE
-	ON DELETE SET NULL;
+	REFERENCES Sala;
 
 ALTER TABLE TenerMouse
 ADD CONSTRAINT FK1_TenerMouse
 FOREIGN KEY (IdPeriferico)
-	REFERENCES Mouse(IdPeriferico)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE;
+	REFERENCES Mouse(IdPeriferico);
 
 ALTER TABLE TenerHeadset
 ADD CONSTRAINT FK1_TenerHeadset
 FOREIGN KEY (IdPeriferico)
-	REFERENCES Headset(IdPeriferico)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE;
+	REFERENCES Headset(IdPeriferico);
 
 ALTER TABLE TenerTeclado
 ADD CONSTRAINT FK1_TenerTeclado
 FOREIGN KEY (IdPeriferico)
-	REFERENCES Teclado(IdPeriferico)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE;
+	REFERENCES Teclado(IdPeriferico);
 
 ALTER TABLE TenerMouse
 ADD CONSTRAINT FK2_TenerMouse
@@ -433,21 +424,23 @@ FOREIGN KEY (IdEstacion)
 ALTER TABLE AgenteTele
 ADD CONSTRAINT FK1_Curso
 FOREIGN KEY (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador)
-   REFERENCES Curso (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador);
+   REFERENCES Curso (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador)
+   ON UPDATE CASCADE
+   ON DELETE SET NULL;
       
 ALTER TABLE TelefonoCelAgente
 ADD CONSTRAINT FK1_TelefonoCelAgente
 FOREIGN KEY (CURPAgente)
    REFERENCES AgenteTele (CURPAgente)
    ON UPDATE CASCADE
-   ON DELETE SET NULL;
+   ON DELETE SET NULL; -- Cambiar a Cascade ?
    
 ALTER TABLE CorreoElectronicoAgente
 ADD CONSTRAINT FK1_CorreoElectronicoAgente
 FOREIGN KEY (CURPAgente)
    REFERENCES AgenteTele (CURPAgente)
    ON UPDATE CASCADE
-   ON DELETE SET NULL;
+   ON DELETE SET NULL; -- Cambiar a Casacade ?
 
 ALTER TABLE Entrenador
 ADD CONSTRAINT FK1_Piso
@@ -518,12 +511,16 @@ FOREIGN KEY (CURPEntrenador)
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT FK1_PKCurso
 FOREIGN KEY (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador)
-   REFERENCES Curso (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador);
+   REFERENCES Curso (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
     
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT FK2_CURPAgente
 FOREIGN KEY (CURPAgente)
-   REFERENCES AgenteTele (CURPAgente);
+   REFERENCES AgenteTele (CURPAgente)
+   ON UPDATE CASCADE
+   ON DELETE CASCADE;
   
 ALTER TABLE Horario
 ADD CONSTRAINT FK1_Horario
