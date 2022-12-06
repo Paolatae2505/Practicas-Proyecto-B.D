@@ -384,7 +384,7 @@ FOREIGN KEY (IdEdificio)
 ALTER TABLE Sala
 ADD CONSTRAINT FK1_Sala
 FOREIGN KEY (IdPiso, IdEdificio)
-   REFERENCES Piso (IdPiso, IdEdificio);
+   REFERENCES Piso (IdPiso, IdEdificio)
    ON UPDATE CASCADE
    ON DELETE CASCADE;
 
@@ -435,14 +435,14 @@ ADD CONSTRAINT FK1_TelefonoCelAgente
 FOREIGN KEY (CURPAgente)
    REFERENCES AgenteTele (CURPAgente)
    ON UPDATE CASCADE
-   ON DELETE SET NULL; -- Cambiar a Cascade ?
+   ON DELETE CASCADE; 
    
 ALTER TABLE CorreoElectronicoAgente
 ADD CONSTRAINT FK1_CorreoElectronicoAgente
 FOREIGN KEY (CURPAgente)
    REFERENCES AgenteTele (CURPAgente)
    ON UPDATE CASCADE
-   ON DELETE SET NULL; -- Cambiar a Casacade ?
+   ON DELETE CASCADE; 
 
 ALTER TABLE Entrenador
 ADD CONSTRAINT FK1_Piso
@@ -468,63 +468,63 @@ FOREIGN KEY (CURPEntrenador)
 ALTER TABLE TelefonoCliente
 ADD CONSTRAINT FK1_TelefonoCliente
 FOREIGN KEY (RFCCliente)
-   REFERENCES Cliente (RFC);
+   REFERENCES Cliente (RFC)
    ON UPDATE CASCADE
    ON DELETE CASCADE;
    
 ALTER TABLE CorreoCliente
 ADD CONSTRAINT FK1_CorreoCliente
 FOREIGN KEY (RFCCliente)
-   REFERENCES Cliente (RFC);
+   REFERENCES Cliente (RFC)
    ON UPDATE CASCADE
    ON DELETE CASCADE;
    
 ALTER TABLE PersonaDeContactoCliente
 ADD CONSTRAINT FK1_PersonaDeContactoCliente
 FOREIGN KEY (RFCCliente)
-   REFERENCES Cliente (RFC);
+   REFERENCES Cliente (RFC)
    ON UPDATE CASCADE
    ON DELETE CASCADE;
    
 ALTER TABLE Curso
 ADD CONSTRAINT FK1_Curso
 FOREIGN KEY (RFCCliente)
-   REFERENCES Cliente (RFC);
+   REFERENCES Cliente (RFC)
    ON UPDATE CASCADE
    ON DELETE SET NULL;
    
 ALTER TABLE Curso
 ADD CONSTRAINT FK2_Curso
 FOREIGN KEY (IdSala, IdPiso, IdEdificio)
-   REFERENCES Sala (IdSala, IdPiso, IdEdificio);
+   REFERENCES Sala (IdSala, IdPiso, IdEdificio)
    ON UPDATE CASCADE
    ON DELETE SET NULL;
    
 ALTER TABLE Curso
 ADD CONSTRAINT FK3_Curso
 FOREIGN KEY (CURPEntrenador)
-   REFERENCES Entrenador (CURPEntrenador);
+   REFERENCES Entrenador (CURPEntrenador)
    ON UPDATE CASCADE
    ON DELETE SET NULL;
 
 ALTER TABLE FechasCurso
 ADD CONSTRAINT FK1_FechasCurso
 FOREIGN KEY (RFCCliente)
-   REFERENCES Cliente (RFC);
+   REFERENCES Cliente (RFC)
    ON UPDATE CASCADE
    ON DELETE CASCADE;
    
 ALTER TABLE FechasCurso
 ADD CONSTRAINT FK2_FechasCurso
 FOREIGN KEY (IdSala, IdPiso, IdEdificio)
-   REFERENCES Sala (IdSala, IdPiso, IdEdificio);
+   REFERENCES Sala (IdSala, IdPiso, IdEdificio)
    ON UPDATE CASCADE
    ON DELETE CASCADE;
    
 ALTER TABLE FechasCurso
 ADD CONSTRAINT FK3_FechasCurso
 FOREIGN KEY (CURPEntrenador)
-   REFERENCES Entrenador (CURPEntrenador); 
+   REFERENCES Entrenador (CURPEntrenador)
    ON UPDATE CASCADE
    ON DELETE CASCADE;
          
