@@ -172,7 +172,7 @@ CREATE TABLE AsistenciaCurso(
 	CURPEntrenador VARCHAR(20) NOT NULL,
 	CURPAgente VARCHAR(20),
 	Fecha DATE NOT NULL,
-	HorasAsitencia NUMERIC NOT NULL
+	HorasAsistencia NUMERIC NOT NULL
 );
 
 CREATE TABLE Horario(
@@ -259,7 +259,7 @@ UNIQUE(
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT Unique_AsistenciaCurso
 UNIQUE(
-	CURPAgente
+	IdAsistenciaCurso
 );
 
 -- PKs
@@ -305,7 +305,7 @@ PRIMARY KEY (IdPeriferico, IdEstacion);
 
 ALTER TABLE AgenteTele
 ADD CONSTRAINT PK_AgenteTele
-PRIMARY KEY (CURPAgente,IdPiso,IdCurso, RFCCliente, IdSala, IdEdificio, CURPEntrenador);
+PRIMARY KEY (CURPAgente);
 
 ALTER TABLE TelefonoCelAgente 
 ADD CONSTRAINT PK_TelefonoCelAgente
