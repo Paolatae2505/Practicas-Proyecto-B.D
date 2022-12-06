@@ -643,11 +643,11 @@ INSERT INTO CorreoElectronicoEntrenador(CURPEntrenador,CorreoElectronico) VALUES
 INSERT INTO CorreoElectronicoEntrenador(CURPEntrenador,CorreoElectronico) VALUES ('BAW272063KOCRC34','ivaggs2r@storify.com');
 
 
-INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (1,'HCE678692PS6',62,15,1,'VJQ037276TPCXX98','Programa de capacitacion Hamill-Yost','en linea',42,70);
-INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (2,'BQNV154049LX8',124,14,2,'ZQT637913WDFHB36','Programa de capacitacion Muhammad Lewisham','presencial',42,70);
-INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (3,'BAP039629UR8',41,9,1,'KQJ109191WTWRZ35','Programa de capacitacion Wilderman Crona and Yost','presencial',42,70);
-INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (4,'YEI079256PP6',118,2,2,'CPI302573GVVDN91','Programa de capacitacion Howell Group','presencial',42,70);
-INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (5,'AAD282786GE0',38,3,1,'EJW320090LUIRX20','Programa de capacitacion Herman-Schuppe','en linea',42,70);
+INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (1,'HCE678692PS6',62,15,1,'VJQ037276TPCXX98','Programa de capacitacion Hamill-Yost','en linea',14,70);
+INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (2,'BQNV154049LX8',124,14,2,'ZQT637913WDFHB36','Programa de capacitacion Muhammad Lewisham','presencial',15,70);
+INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (3,'BAP039629UR8',41,9,1,'KQJ109191WTWRZ35','Programa de capacitacion Wilderman Crona and Yost','presencial',10,70);
+INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (4,'YEI079256PP6',118,2,2,'CPI302573GVVDN91','Programa de capacitacion Howell Group','presencial',14,70);
+INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (5,'AAD282786GE0',38,3,1,'EJW320090LUIRX20','Programa de capacitacion Herman-Schuppe','en linea',12,70);
 
 INSERT INTO FechasCurso(FechasCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2021-11-29',1,'HCE678692PS6',62,15,1,'VJQ037276TPCXX98');
 INSERT INTO FechasCurso(FechasCurso,IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador) VALUES ('2022-01-03',2,'BQNV154049LX8',124,14,2,'ZQT637913WDFHB36');
