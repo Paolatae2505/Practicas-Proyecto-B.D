@@ -16,9 +16,9 @@ CREATE TABLE Piso(
 );
 
 CREATE TABLE Sala(
-	IdSala INT NOT NULL,
-	IdPiso INT NOT NULL,
-	IdEdificio INT NOT NULL,
+	IdSala INT,
+	IdPiso INT,
+	IdEdificio INT,
 	Costo NUMERIC NOT NULL,
 	Tipo VARCHAR(13) NOT NULL
 );
@@ -119,33 +119,33 @@ CREATE TABLE CorreoElectronicoEntrenador(
 	CorreoElectronico VARCHAR(286)
 );
 CREATE TABLE Cliente(
-	RFC VARCHAR(13) NOT NULL, 
+	RFC VARCHAR(13), 
 	AliasCliente VARCHAR(100) NOT NULL,
 	RazonSocial VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE TelefonoCliente(
-	RFCCliente VARCHAR(13) NOT NULL, 
-	TelefonoCliente VARCHAR(15) NOT NULL
+	RFCCliente VARCHAR(13), 
+	TelefonoCliente VARCHAR(15)
 );
 
 CREATE TABLE CorreoCliente(
-	RFCCliente VARCHAR(13) NOT NULL, 
-	CorreoCliente VARCHAR(256) NOT NULL
+	RFCCliente VARCHAR(13), 
+	CorreoCliente VARCHAR(256)
 );
 
 CREATE TABLE PersonaDeContactoCliente(
-	RFCCliente VARCHAR(13) NOT NULL, 
-	PersonaDeContactoCliente VARCHAR(100) NOT NULL
+	RFCCliente VARCHAR(13), 
+	PersonaDeContactoCliente VARCHAR(100)
 );
 
 CREATE TABLE Curso(
-	IdCurso INT NOT NULL, 
-	RFCCliente VARCHAR(13) NOT NULL, 
-	Idsala INT NOT NULL,
-	IdPiso INT NOT NULL,
-	IdEdificio INT NOT NULL,
-	CURPEntrenador VARCHAR(20) NOT NULL,
+	IdCurso INT, 
+	RFCCliente VARCHAR(13), 
+	Idsala INT,
+	IdPiso INT,
+	IdEdificio INT,
+	CURPEntrenador VARCHAR(20),
 	Nombre VARCHAR(256) NOT NULL,
 	Modalidad VARCHAR(10) NOT NULL,
 	HorasDeEntrenamiento INT NOT NULL,
@@ -153,13 +153,13 @@ CREATE TABLE Curso(
 );
 
 CREATE TABLE FechasCurso(
-	IdCurso INT NOT NULL, 
-	RFCCliente VARCHAR(13) NOT NULL, 
-	IdSala INT NOT NULL,
-	IdPiso INT NOT NULL,
-	IdEdificio INT NOT NULL,
-	CURPEntrenador VARCHAR(20) NOT NULL,
-	FechasCurso DATE NOT NULL
+	IdCurso INT, 
+	RFCCliente VARCHAR(13), 
+	IdSala INT,
+	IdPiso INT,
+	IdEdificio INT,
+	CURPEntrenador VARCHAR(20),
+	FechasCurso DATE
 );
 
 CREATE TABLE AsistenciaCurso(
