@@ -1,6 +1,6 @@
---- CONSULTAS ----
+--- CONSULTAS ---
 
--- Consulta 1 --
+-- Consulta 1 :
 -- Obtiene a los agentes (con la cantidad de horas Asistidas)
 -- que no cumplieron con su cuota de Horas de entrenamiento
 -- CURSO 1,2,4 = 15 horas 
@@ -27,12 +27,12 @@ WHERE IdCurso = 5
 GROUP BY CURPAgente,IdCurso) AS NoCumplen3
 WHERE HorasAsistencia < 17;
 
--- Consulta 2 --
+-- Consulta 2 :
 -- Obtiene a los agentes que asisten al curso
 -- en un horario vespertino
 SELECT * FROM AgenteTele WHERE Horario = 'Vespertino';
 
--- Consulta 3 --
+-- Consulta 3 :
 -- Obtiene a los agentes que asistieron  el dia '2021-07-16' 
 -- y cumplieron con 3 horas (max por dia de curso) de 
 -- Asistencia
