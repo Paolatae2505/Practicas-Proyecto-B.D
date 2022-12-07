@@ -95,3 +95,8 @@ SELECT CURPEntrenador FROM (
 	GROUP BY CURPEntrenador) as TablaA
 ) as TablaY;
 
+-- Consulta 13: nos regresa toda la información sobre los cursos activos
+SELECT IdCurso, RFCCliente, IdSala, IdPiso, IdEdificio, CURPEntrenador, 
+		Nombre, Modalidad, HorasDeEntrenamiento, PagoEntrenador
+FROM Curso NATURAL JOIN FechasCurso
+WHERE CURRENT_DATE = FechasCurso;
