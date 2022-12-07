@@ -95,11 +95,10 @@ SELECT CURPEntrenador FROM (
 	GROUP BY CURPEntrenador) as TablaA
 ) as TablaY;
 
--- Consulta 13: nos regresa toda la información sobre los cursos activos
-SELECT IdCurso, RFCCliente, IdSala, IdPiso, IdEdificio, CURPEntrenador, 
-		Nombre, Modalidad, HorasDeEntrenamiento, PagoEntrenador
-FROM Curso NATURAL JOIN FechasCurso
-WHERE CURRENT_DATE = FechasCurso;
+-- Consulta 13: nos regresa toda la información sobre los entrenadores con 
+-- antigüedad de por lo menos 2 años.
+SELECT * FROM Entrenador
+WHERE (EXTRACT(YEAR FROM CURRENT_DATE) - EXTRACT(YEAR FROM FechaIngreso)) >= 2;
 
 -- Consulta 14: nos regresa todos los CURPS de entrenadores que ingresaron en la fecha actual
 SELECT CURPEntrenador 
