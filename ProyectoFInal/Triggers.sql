@@ -130,3 +130,58 @@ LANGUAGE plpgsql;
 CREATE TRIGGER asigna_pisos BEFORE 
 INSERT OR UPDATE ON Curso
 FOR EACH ROW EXECUTE PROCEDURE revisa_estatus();
+
+
+
+-- Trigger que al insertar o al eliminar de la tabla Piso, 
+-- se asegura de que el edificio correspondiente tenga
+-- mínimo 8 y máximo 10 pisos
+-- Función auxiliar para contar el número de pisos en un edificio
+CREATE OR REPLACE FUNCTION contar_pisos(Identificador int) RETURNS int AS 
+$$
+DECLARE
+	numpisos int;
+BEGIN 
+	IF Identificador NOT IN (SELECT IdEdificio FROM Edificio) THEN
+		RAISE EXCEPTION 'El edificio % no existe.', Identificador 
+		USING HINT = 'Verifica tu identificador de edificio.';
+	ELSE
+		SELECT COUNT(IdPiso) INTO numpisos
+		FROM Edificio NATURAL JOIN Piso
+		WHERE IdEdificio = Identificador
+		GROUP BY IdEdificio;
+		RETURN numpisos;
+	END IF;
+END;
+$$ LANGUAGE PLPGSQL;
+-- Trigger para asegurar que los edificios tengan entre 8 y 10 pisos
+CREATE OR REPLACE FUNCTION check_pisos() RETURNS TRIGGER AS 
+$$
+DECLARE
+	numpisos int;
+BEGIN
+	IF (TG_OP = 'INSERT') THEN
+		SELECT contar_pisos(NEW.IdEdificio) INTO numpisos;
+		IF (numpisos = 10) THEN
+			RAISE EXCEPTION 'El edificio % ya tiene el número máximo de pisos.', NEW.IdEdificio
+			USING HINT = 'Verifica el edificio al que quieres agregar el piso.';
+		ELSE 
+			RETURN NEW;
+		END IF;
+	ELSIF (TG_OP = 'DELETE') THEN
+		SELECT contar_pisos(OLD.IdEdificio) INTO numpisos;
+		IF (numpisos = 8) THEN
+			RAISE EXCEPTION 'El edificio % ya tiene el número mínimo de pisos.', OLD.IdEdificio
+			USING HINT = 'Verifica el edificio del que quieres eliminar el piso.';
+		ELSE
+			RETURN OLD;
+		END IF;
+	END IF;
+	RETURN NULL;
+END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER check_pisos
+BEFORE INSERT OR DELETE ON Piso
+FOR EACH ROW EXECUTE PROCEDURE check_pisos();
+
