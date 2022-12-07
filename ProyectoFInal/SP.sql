@@ -19,7 +19,7 @@ END;
 $$;
 
 --Procedimiento almacenado que da de baja a un agente si tiene más de 3 faltas
-CREATE OR REPLACE PROCEDURE baja_por_faltas(CURPAgenteN VARCHAR, IdCursoN int)
+CREATE OR REPLACE FUNCTION baja_por_faltas(CURPAgenteN VARCHAR, IdCursoN int) RETURNS void
 AS $$
 BEGIN 
 	IF NOT EXISTS(SELECT * FROM AgenteTele WHERE CURPAgente = CURPAgenteN) THEN 
@@ -28,11 +28,12 @@ BEGIN
     	RAISE NOTICE 'NO EXISTE ESTE CURSO O AUN NO HA SIDO IMPARTIDO';
 		END IF;
 	END IF;
-	if (SELECT contar_faltas(CURPAgenteN,IdCursoN) > 1) THEN
+	if (SELECT contar_faltas(CURPAgenteN,IdCursoN) > 3) THEN
 	UPDATE AgenteTele SET Estatus = false WHERE CURPAgente = CURPAgenteN;
     END IF;
 END;
-$$ LANGUAGE PLPGSQL;
+$$
+LANGUAGE PLPGSQL;
 
 --Procedimiento almacenado que da de baja a un agente si tiene menos de 8 de calificación.
 CREATE OR REPLACE FUNCTION baja_por_calificacion () RETURNS void
