@@ -31,8 +31,13 @@ SELECT * FROM AgenteTele WHERE Horario = 'Vespertino';
 SELECT CURPAgente,Fecha,HorasAsistencia
 FROM AsistenciaCurso WHERE Fecha = '2021-07-16' and horasAsistencia = 3;
 
---Consulta 4: Número de agentes dados de baja
+-- Consulta 4: Número de agentes dados de baja
 SELECT COUNT(*) FROM AgenteTele WHERE Estatus = false; 
 
---Consulta 5: Nombres de los agentes que tomaron cursos en línea
+-- Consulta 5: Nombres de los agentes que tomaron cursos en línea
 SELECT NombreC, Nombre FROM AgenteTele NATURAL JOIN Curso WHERE Modalidad = 'en linea';
+
+-- Consulta 6: Cantidad de agentes dados de baja en el 2020
+SELECT COUNT(*)
+FROM AgenteTele NATURAL JOIN FechasCurso 
+WHERE FechasCurso >= '2020/01/01' AND FechasCurso < '2021/01/01' AND Estatus = false;
