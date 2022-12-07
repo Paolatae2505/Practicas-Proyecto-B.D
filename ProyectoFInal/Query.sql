@@ -71,7 +71,7 @@ ORDER BY idestacion
 SELECT * FROM (SELECT  MAX(HorasTotales.sum) as maximo FROM (SELECT SUM(HorasDeEntrenamiento) FROM Curso GROUP BY RFCCLiente) AS HorasTotales) AS MaxHoras
 NATURAL JOIN (SELECT RFCCLiente, SUM(HorasDeEntrenamiento) as maximo FROM Curso GROUP BY RFCCLiente) AS HorasTotales;
 
--- Consulta 11: nos regresa el edificio con más cursos asignados 
+-- Consulta 11: nos regresa el id del edificio con más cursos asignados 
 SELECT IdEdificio FROM (
 	SELECT IdEdificio, COUNT(IdEdificio) AS NumCursos 
 	FROM Edificio NATURAL JOIN Curso 
@@ -83,4 +83,15 @@ NATURAL JOIN (
 		FROM Edificio NATURAL JOIN Curso 
 		GROUP BY IdEdificio) AS NumCursos) AS TablaB;
 		
--- Consulta 12: nos regresa el entrenador con más horas asignadas
+-- Consulta 12: nos regresa la curp del entrenador con más horas asignadas
+SELECT CURPEntrenador FROM (
+	SELECT CURPEntrenador, SUM(Horas) as NumHoras 
+	FROM Entrenador NATURAL JOIN Horario 
+	GROUP BY CURPEntrenador
+) as TablaX NATURAL JOIN (
+	SELECT MAX(NumHoras) as NumHoras FROM (
+	SELECT CURPEntrenador, SUM(Horas) as NumHoras 
+	FROM Entrenador NATURAL JOIN Horario 
+	GROUP BY CURPEntrenador) as TablaA
+) as TablaY;
+
