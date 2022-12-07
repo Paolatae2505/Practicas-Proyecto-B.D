@@ -32,6 +32,7 @@ WHERE HorasAsistencia < 17;
 -- en un horario vespertino
 
 SELECT * FROM AgenteTele WHERE Horario = 'Vespertino';
+
 -- Consulta 3 --
 -- Obtiene a los agentes que asistieron  el dia '2021-07-16' 
 -- y cumplieron con 3 horas (max por dia de curso) de 
