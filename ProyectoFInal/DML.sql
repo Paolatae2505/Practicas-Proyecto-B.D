@@ -2651,6 +2651,11 @@ INSERT INTO EntradaEntrenador(FechaEntradaEntrenador,CURPEntrenador) VALUES ('20
 INSERT INTO EntradaEntrenador(FechaEntradaEntrenador,CURPEntrenador) VALUES ('2021-02-21 10:00:00','BIH318724DFZHF88');
 INSERT INTO EntradaEntrenador(FechaEntradaEntrenador,CURPEntrenador) VALUES ('2022-07-12 11:00:00','FHY232712HQQFR54');
 INSERT INTO EntradaEntrenador(FechaEntradaEntrenador,CURPEntrenador) VALUES ('2020-07-01 09:00:00','WIN256809IKFEZ67');
+INSERT INTO EntradaEntrenador(FechaEntradaEntrenador,CURPEntrenador) VALUES ('2022-12-07 08:00:00','EYI050753SDJXR73');
+INSERT INTO EntradaEntrenador(FechaEntradaEntrenador,CURPEntrenador) VALUES ('2022-12-07 11:00:00','BQA218318FCEUN89');
+INSERT INTO EntradaEntrenador(FechaEntradaEntrenador,CURPEntrenador) VALUES ('2022-12-07 10:00:00','BIH318724DFZHF88');
+INSERT INTO EntradaEntrenador(FechaEntradaEntrenador,CURPEntrenador) VALUES ('2022-12-07 11:00:00','FHY232712HQQFR54');
+INSERT INTO EntradaEntrenador(FechaEntradaEntrenador,CURPEntrenador) VALUES ('2022-12-07 09:00:00','WIN256809IKFEZ67');
 
 INSERT INTO SalidaEntrenador(FechaSalidaEntrenador,CURPEntrenador) VALUES ('2021-11-29 12:00:00','VJQ037276TPCXX98');
 INSERT INTO SalidaEntrenador(FechaSalidaEntrenador,CURPEntrenador) VALUES ('2022-01-03 13:00:00','ZQT637913WDFHB36');
