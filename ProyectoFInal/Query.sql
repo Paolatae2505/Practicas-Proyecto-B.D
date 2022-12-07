@@ -49,3 +49,20 @@ SELECT NombreC, Nombre FROM AgenteTele NATURAL JOIN Curso WHERE Modalidad = 'en 
 SELECT COUNT(*)
 FROM AgenteTele NATURAL JOIN FechasCurso 
 WHERE FechasCurso >= '2020/01/01' AND FechasCurso < '2021/01/01' AND Estatus = false;
+
+--Consulta 7: nos regresa el número de agentes en capacitación.
+SELECT COUNT(estatus) as enCapacitacion
+FROM agentetele
+WHERE estatus = true;
+
+--Consulta 8: nos regresa las existencias de cada modelo de mouse.
+SELECT modelo, COUNT(*) as existencias
+FROM mouse
+GROUP BY modelo
+ORDER BY modelo;
+
+--Consulta 9: nos regresa el número de teclados que tiene cada estacion
+SELECT idestacion, COUNT(*) as numeroTeclados
+FROM tenerteclado
+GROUP BY idestacion
+ORDER BY idestacion
