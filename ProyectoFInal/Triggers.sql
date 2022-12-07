@@ -185,3 +185,71 @@ CREATE TRIGGER check_pisos
 BEFORE INSERT OR DELETE ON Piso
 FOR EACH ROW EXECUTE PROCEDURE check_pisos();
 
+
+
+-- Trigger que al insertar o al eliminar de la tabla sala, 
+-- se asegura de que el edificio correspondiente tenga
+-- máximo 4 pisos en los cuales la mitad esta reservada para operaciones
+-- Función auxiliar para contar el número de pisos cuya mitad esta reservada para operaciones
+CREATE OR REPLACE FUNCTION contar_pisos_operaciones(Identificador int) RETURNS int AS 
+$$
+DECLARE
+	numpisos int;
+BEGIN 
+	IF Identificador NOT IN (SELECT IdEdificio FROM Edificio) THEN
+		RAISE EXCEPTION 'El edificio % no existe.', Identificador 
+		USING HINT = 'Verifica tu identificador de edificio.';
+	ELSE
+		SELECT COUNT(*) INTO numpisos
+		FROM (
+			SELECT COUNT(IdPiso) AS NumOperaciones
+			FROM Edificio NATURAL JOIN Piso NATURAL JOIN Sala
+			WHERE Tipo = 'Operaciones' and IdEdificio = Identificador
+			GROUP BY IdPiso
+		) AS Cantidades
+		WHERE NumOperaciones = 4;
+		RETURN numpisos;
+	END IF;
+END;
+$$ LANGUAGE PLPGSQL;
+-- Función auxiliar para contar el número de salas de operaciones en un piso
+CREATE OR REPLACE FUNCTION contar_salas_operaciones(Identificador int) RETURNS int AS 
+$$
+DECLARE
+	numsalas int;
+BEGIN 
+	IF Identificador NOT IN (SELECT IdPiso FROM Piso) THEN
+		RAISE EXCEPTION 'El Piso % no existe.', Identificador 
+		USING HINT = 'Verifica tu identificador de Piso.';
+	ELSE
+		SELECT COUNT(*) INTO numsalas
+		FROM Sala
+		WHERE Tipo = 'Operaciones' and IdPiso = Identificador;
+		RETURN numsalas;
+	END IF;
+END;
+$$ LANGUAGE PLPGSQL;
+-- Trigger para asegurar que los edificios tengan como máximo 4 pisos con la mitad del espacio reservado para operaciones
+CREATE OR REPLACE FUNCTION check_salas() RETURNS TRIGGER AS 
+$$
+DECLARE
+	numpisos int;
+	numsalas int;
+BEGIN
+	IF (TG_OP = 'INSERT') THEN
+		SELECT contar_pisos_operaciones(NEW.IdEdificio) INTO numpisos;
+		SELECT contar_salas_operaciones(NEW.IdPiso) INTO numsalas;
+		IF (numpisos = 4 AND numsalas = 3) THEN
+			RAISE EXCEPTION 'El edificio % ya tiene el número máximo de pisos con la mitad del espacio reservado para operaciones.', NEW.IdEdificio
+			USING HINT = 'Verifica el edificio al que quieres agregar el piso.';
+		ELSE 
+			RETURN NEW;
+		END IF;
+	END IF;
+	RETURN NULL;
+END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER check_salas
+BEFORE INSERT ON Sala
+FOR EACH ROW EXECUTE PROCEDURE check_salas();
