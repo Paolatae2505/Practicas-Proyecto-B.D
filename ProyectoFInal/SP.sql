@@ -47,7 +47,7 @@ WHERE evaluacion < 8 AND estatus = true;
 $$
 LANGUAGE sql;
 
--- Procedimiento que calcula el costo total de un curso
+-- Procedimiento que calcula el costo total de un curso de un cliente
 CREATE OR REPLACE FUNCTION costo_total_curso(rfc VARCHAR)
 RETURNS INT LANGUAGE PLPGSQL
 AS
@@ -68,6 +68,24 @@ BEGIN
 	SELECT COUNT(DISTINCT fechascurso) INTO numDias FROM fechascurso
 	WHERE rfccliente = rfc;
 	resultado := (numAgentes * 40 * horasEntrenamiento) + (70 * horasEntrenamiento) + (numSalas * numDias * 5000);
+RETURN resultado;
+END;
+$$;
+
+-- Procedimiento que calcula el costo total diario de un cliente
+CREATE OR REPLACE FUNCTION costo_total_diario(rfc VARCHAR)
+RETURNS INT LANGUAGE PLPGSQL
+AS
+$$
+DECLARE
+	costoTotal int;
+	numDias int;
+	resultado int;
+BEGIN 
+	SELECT costo_total_curso(rfc) INTO costoTotal;
+	SELECT COUNT(DISTINCT fechascurso) INTO numDias FROM fechascurso
+	WHERE rfccliente = rfc;
+	resultado := costoTotal / numDias;
 RETURN resultado;
 END;
 $$;
