@@ -6,7 +6,7 @@ INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (0,0,'Disponible');
 INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (1,1,'Disponible');
 INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (2,2,'Disponible');
 INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (1,3,'Ocupado');
-INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (2,4,'Ocupado');
+INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (2,4,'Disponible');
 INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (1,5,'Disponible');
 INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (2,6,'Disponible');
 INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (1,7,'Ocupado');
