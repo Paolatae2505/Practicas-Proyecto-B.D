@@ -68,6 +68,7 @@ CREATE TRIGGER modalidad_curso
 AFTER INSERT OR UPDATE ON Curso
 FOR EACH ROW EXECUTE PROCEDURE checar_modalidad();
 
+--Trigger para asegurar que un entrenador no imparta más de un curso por periodo
 CREATE OR REPLACE FUNCTION revisa_horario()
 RETURNS trigger AS $$
 DECLARE
@@ -88,6 +89,7 @@ CREATE TRIGGER entrenador_maximo_un_curso BEFORE
 INSERT OR UPDATE ON FechasCurso
 FOR EACH ROW EXECUTE PROCEDURE revisa_horario();
 
+--Trigger para asegurar que un entrenador no tenga más de 20 agentes al mismo tiempo
 CREATE OR REPLACE FUNCTION revisa_agentes()
 RETURNS trigger AS $$
 DECLARE
@@ -110,6 +112,7 @@ CREATE TRIGGER entrenador_maximo_agentes BEFORE
 INSERT OR UPDATE ON AgenteTele
 FOR EACH ROW EXECUTE PROCEDURE revisa_agentes();
 
+--Trigger para asegurar que no se le asigne un salón ocupado a un curso
 CREATE OR REPLACE FUNCTION revisa_estatus()
 RETURNS trigger AS $$
 DECLARE
