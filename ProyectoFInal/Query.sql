@@ -29,8 +29,8 @@ WHERE HorasAsistencia < 17;
 
 -- Consulta 2 :
 -- Obtiene a los agentes que asisten al curso
--- en un horario vespertino
-SELECT * FROM AgenteTele WHERE Horario = 'Vespertino';
+-- en un horario Vespertino
+SELECT CURPAgente, Horario FROM AgenteTele WHERE Horario = 'Vespertino';
 
 -- Consulta 3 :
 -- Obtiene a los agentes que asistieron  el dia '2021-07-16' 
