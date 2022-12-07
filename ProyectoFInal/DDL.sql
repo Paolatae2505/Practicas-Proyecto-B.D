@@ -403,7 +403,7 @@ PRIMARY KEY (FechaSalidaAgente,CURPAgente);
 ALTER TABLE Piso
 ADD CONSTRAINT FK_Piso
 FOREIGN KEY (IdEdificio)
-   REFERENCES Edificio (IdEdificio);
+   REFERENCES Edificio (IdEdificio)
    ON UPDATE CASCADE
    ON DELETE CASCADE;
    
