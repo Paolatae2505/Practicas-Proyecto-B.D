@@ -380,7 +380,9 @@ PRIMARY KEY (FechaSalidaAgente,CURPAgente);
 ALTER TABLE Piso
 ADD CONSTRAINT FK_Piso
 FOREIGN KEY (IdEdificio)
-   REFERENCES Edificio (IdEdificio);
+   REFERENCES Edificio (IdEdificio)
+   ON UPDATE CASCADE
+   ON DELETE CASCADE;
    
 ALTER TABLE Sala
 ADD CONSTRAINT FK1_Sala
@@ -554,27 +556,37 @@ FOREIGN KEY (CURPAgente)
 ALTER TABLE Horario
 ADD CONSTRAINT FK1_Horario
 FOREIGN KEY (CURPEntrenador)
-   REFERENCES Entrenador (CURPEntrenador);
+   REFERENCES Entrenador (CURPEntrenador)
+   ON UPDATE CASCADE
+   ON DELETE CASCADE;
 
 ALTER TABLE EntradaEntrenador
 ADD CONSTRAINT FK1_EntradaEntrenador
 FOREIGN KEY (CURPEntrenador)
-   REFERENCES Entrenador (CURPEntrenador);
+   REFERENCES Entrenador (CURPEntrenador)
+   ON UPDATE CASCADE
+   ON DELETE CASCADE;
 
 ALTER TABLE SalidaEntrenador
 ADD CONSTRAINT FK1_SalidaEntrenador
 FOREIGN KEY (CURPEntrenador)
-   REFERENCES Entrenador (CURPEntrenador);
+   REFERENCES Entrenador (CURPEntrenador)
+   ON UPDATE CASCADE
+   ON DELETE CASCADE;
    
 ALTER TABLE EntradaAgente
 ADD CONSTRAINT FK1_EntradaAgente
 FOREIGN KEY (CURPAgente)
-   REFERENCES AgenteTele (CURPAgente);
+   REFERENCES AgenteTele (CURPAgente)
+   ON UPDATE CASCADE
+   ON DELETE CASCADE;
    
 ALTER TABLE SalidaAgente
 ADD CONSTRAINT FK1_SalidaAgente
 FOREIGN KEY (CURPAgente)
-   REFERENCES AgenteTele (CURPAgente);
+   REFERENCES AgenteTele (CURPAgente)
+   ON UPDATE CASCADE
+   ON DELETE CASCADE;
    
 -- Positivos
 ALTER TABLE Edificio
