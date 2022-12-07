@@ -105,3 +105,17 @@ WHERE CURRENT_DATE = FechasCurso;
 SELECT CURPEntrenador 
 FROM EntradaEntrenador 
 WHERE DATE(FechaEntradaEntrenador) = CURRENT_DATE
+
+-- Consulta 15: nos regresa el identificador(es) de la sala(s) con mayor número de estaciones 
+SELECT IdSala FROM (
+	SELECT IdSala, COUNT(IdSala) as NumEstaciones
+	FROM Sala NATURAL JOIN Estacion
+	GROUP BY IdSala
+) as TablaX NATURAL JOIN (
+	SELECT MAX(NumEstaciones) as NumEstaciones
+	FROM (
+		SELECT IdSala, COUNT(IdSala) as NumEstaciones
+		FROM Sala NATURAL JOIN Estacion
+		GROUP BY IdSala
+	) as TablaA
+) as TablaY;
