@@ -113,12 +113,12 @@ FOR EACH ROW EXECUTE PROCEDURE revisa_agentes();
 CREATE OR REPLACE FUNCTION revisa_estatus()
 RETURNS trigger AS $$
 DECLARE
-    estado INT;
+    estado VARCHAR(256);
 BEGIN
     IF TG_OP = 'UPDATE' OR  TG_OP = 'INSERT' THEN
 		IF NEW.IdPiso IS NOT NULL THEN 
 			SELECT Estatus INTO estado FROM Piso WHERE IdPiso = NEW.IdPiso;
-			IF estado == 'Ocupado' THEN
+			IF estado != 'Disponible' THEN
 				RAISE EXCEPTION 'El piso al que quiere asignar el curso esta ocupado';
 			END IF;
 		END IF;
