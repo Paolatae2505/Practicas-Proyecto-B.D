@@ -588,7 +588,7 @@ FOREIGN KEY (CURPAgente)
    ON UPDATE CASCADE
    ON DELETE CASCADE;
    
--- Positivos
+-- CHECKS
 ALTER TABLE Edificio
 ADD CONSTRAINT Positivos_Edificio
 CHECK (
@@ -615,6 +615,7 @@ ADD CONSTRAINT Positivos_AgenteTele
 CHECK (
     IdPiso >= 0
     AND PagoAgente >= 0
+    AND PagoAgente <= 40
 	AND IdCurso >= 0
     AND IdSala >= 0
 	AND Evaluacion >= 0
@@ -631,6 +632,14 @@ CHECK (
 ALTER TABLE CorreoCliente 
 ADD CONSTRAINT formato_CorreoCliente 
 CHECK(CorreoCliente like '_%@_%._%');
+
+ALTER TABLE CorreoElectronicoAgente
+ADD CONSTRAINT formato_CorreoAgente
+CHECK(CorreoElectronico like '_%@_%._%');
+
+ALTER TABLE CorreoElectronicoEntrenador
+ADD CONSTRAINT formato_CorreoEntrenador
+CHECK(CorreoElectronico like '_%@_%._%');
 
 ALTER TABLE Curso
 ADD CONSTRAINT Positivos_Curso
