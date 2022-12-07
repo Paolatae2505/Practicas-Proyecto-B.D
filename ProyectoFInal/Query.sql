@@ -1,4 +1,5 @@
 --- CONSULTAS ----
+
 -- Consulta 1 --
 -- Obtiene a los agentes (con la cantidas de horas Asistidas)
 -- que no cumplieron con su cuota de Horas de entrenamiento
@@ -32,3 +33,6 @@ FROM AsistenciaCurso WHERE Fecha = '2021-07-16' and horasAsistencia = 3;
 
 --Consulta 4: Número de agentes dados de baja
 SELECT COUNT(*) FROM AgenteTele WHERE Estatus = false; 
+
+--Consulta 5: Nombres de los agentes que tomaron cursos en línea
+SELECT NombreC, Nombre FROM AgenteTele NATURAL JOIN Curso WHERE Modalidad = 'en linea';
