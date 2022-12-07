@@ -43,9 +43,9 @@ CREATE TABLE Teclado(
 
 CREATE TABLE Estacion(
 	IdEstacion INT,
-	IdSala INT,
-	IdPiso INT,
-	IdEdificio INT,
+	IdSala INT DEFAULT 0,
+	IdPiso INT DEFAULT 0,
+	IdEdificio INT DEFAULT 0,
 	SistemaOp VARCHAR(50) NOT NULL
 );
 
@@ -66,12 +66,12 @@ CREATE TABLE TenerTeclado(
 
 CREATE TABLE AgenteTele(
 	CURPAgente VARCHAR(20),
-	IdPiso INT,
-	IdCurso INT, 
-	RFCCliente VARCHAR(13), 
-	Idsala INT,
-	IdEdificio INT,
-	CURPEntrenador VARCHAR(20),
+	IdPiso INT DEFAULT 0,
+	IdCurso INT DEFAULT 0, 
+	RFCCliente VARCHAR(13) DEFAULT 'XAXX010101000', 
+	Idsala INT DEFAULT 0,
+	IdEdificio INT DEFAULT 0,
+	CURPEntrenador VARCHAR(20) DEFAULT 'XEXX010101HNEXXXA4',
 	NombreC VARCHAR(100) NOT NULL,
 	FechaNac DATE NOT NULL,
 	Horario VARCHAR(12) NOT NULL,
@@ -142,11 +142,11 @@ CREATE TABLE PersonaDeContactoCliente(
 
 CREATE TABLE Curso(
 	IdCurso INT, 
-	RFCCliente VARCHAR(13), 
-	Idsala INT,
-	IdPiso INT,
-	IdEdificio INT,
-	CURPEntrenador VARCHAR(20),
+	RFCCliente VARCHAR(13) DEFAULT 'XAXX010101000', 
+	Idsala INT DEFAULT 0,
+	IdPiso INT DEFAULT 0,
+	IdEdificio INT DEFAULT 0,
+	CURPEntrenador VARCHAR(20) DEFAULT 'XEXX010101HNEXXXA4',
 	Nombre VARCHAR(256) NOT NULL,
 	Modalidad VARCHAR(10) NOT NULL,
 	HorasDeEntrenamiento INT NOT NULL,
@@ -396,7 +396,7 @@ ADD CONSTRAINT FK_Estacion
 FOREIGN KEY (IdSala, IdPiso, IdEdificio)
 	REFERENCES Sala
 	ON UPDATE CASCADE
-	ON DELETE SET NULL;
+	ON DELETE SET DEFAULT;
 
 ALTER TABLE TenerMouse
 ADD CONSTRAINT FK1_TenerMouse
@@ -439,7 +439,7 @@ ADD CONSTRAINT FK1_Curso
 FOREIGN KEY (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador)
    REFERENCES Curso (IdCurso, RFCCliente,IdSala,IdPiso,IdEdificio,CURPEntrenador)
    ON UPDATE CASCADE
-   ON DELETE SET NULL;
+   ON DELETE SET DEFAULT;
       
 ALTER TABLE TelefonoCelAgente
 ADD CONSTRAINT FK1_TelefonoCelAgente
@@ -502,21 +502,21 @@ ADD CONSTRAINT FK1_Curso
 FOREIGN KEY (RFCCliente)
    REFERENCES Cliente (RFC)
    ON UPDATE CASCADE
-   ON DELETE SET NULL;
+   ON DELETE SET DEFAULT;
    
 ALTER TABLE Curso
 ADD CONSTRAINT FK2_Curso
 FOREIGN KEY (IdSala, IdPiso, IdEdificio)
    REFERENCES Sala (IdSala, IdPiso, IdEdificio)
    ON UPDATE CASCADE
-   ON DELETE SET NULL;
+   ON DELETE SET DEFAULT;
    
 ALTER TABLE Curso
 ADD CONSTRAINT FK3_Curso
 FOREIGN KEY (CURPEntrenador)
    REFERENCES Entrenador (CURPEntrenador)
    ON UPDATE CASCADE
-   ON DELETE SET NULL;
+   ON DELETE SET DEFAULT;
 
 ALTER TABLE FechasCurso
 ADD CONSTRAINT FK1_FechasCurso
@@ -592,31 +592,31 @@ FOREIGN KEY (CURPAgente)
 ALTER TABLE Edificio
 ADD CONSTRAINT Positivos_Edificio
 CHECK (
-    IdEdificio > 0
+    IdEdificio >= 0
 );
 
 ALTER TABLE Piso
 ADD CONSTRAINT Positivos_Piso
 CHECK (
-    IdPiso > 0
+    IdPiso >= 0
 );
 
 ALTER TABLE Sala
 ADD CONSTRAINT Positivos_Sala
 CHECK (
-    IdSala > 0
-    AND IdPiso > 0
-    AND IdEdificio > 0
-    AND Costo > 0
+    IdSala >= 0
+    AND IdPiso >= 0
+    AND IdEdificio >= 0
+    AND Costo >= 0
 );
 
 ALTER TABLE AgenteTele
 ADD CONSTRAINT Positivos_AgenteTele
 CHECK (
-    IdPiso > 0
+    IdPiso >= 0
     AND PagoAgente >= 0
-	AND IdCurso > 0
-    AND IdSala > 0
+	AND IdCurso >= 0
+    AND IdSala >= 0
 	AND Evaluacion >= 0
 	AND Evaluacion <= 10
 );
@@ -624,8 +624,8 @@ CHECK (
 ALTER TABLE Entrenador
 ADD CONSTRAINT Positivos_Entrenador
 CHECK (
-    IdPiso > 0
-    AND IdEdificio > 0
+    IdPiso >= 0
+    AND IdEdificio >= 0
 );
 
 ALTER TABLE CorreoCliente 
@@ -635,10 +635,10 @@ CHECK(CorreoCliente like '_%@_%._%');
 ALTER TABLE Curso
 ADD CONSTRAINT Positivos_Curso
 CHECK (
-    IdCurso > 0
-    AND IdSala > 0
-    AND IdPiso > 0
-    AND IdEdificio > 0
+    IdCurso >= 0
+    AND IdSala >= 0
+    AND IdPiso >= 0
+    AND IdEdificio >= 0
     AND HorasDeEntrenamiento >= 0
     AND PagoEntrenador >= 0
 );
@@ -646,24 +646,24 @@ CHECK (
 ALTER TABLE FechasCurso
 ADD CONSTRAINT Positivos_FechasCurso
 CHECK (
-    IdCurso > 0
-    AND IdSala > 0
-    AND IdPiso > 0
-    AND IdEdificio > 0
+    IdCurso >= 0
+    AND IdSala >= 0
+    AND IdPiso >= 0
+    AND IdEdificio >= 0
 );
 
 ALTER TABLE AsistenciaCurso
 ADD CONSTRAINT Positivos_AsistenciaCurso
 CHECK (
-    IdAsistenciaCurso > 0
-    AND IdCurso > 0
-    AND IdSala > 0
-    AND IdPiso > 0
-    AND IdEdificio > 0
+    IdAsistenciaCurso >= 0
+    AND IdCurso >= 0
+    AND IdSala >= 0
+    AND IdPiso >= 0
+    AND IdEdificio >= 0
 );
 
 ALTER TABLE Horario
 ADD CONSTRAINT Positivos_Horario
 CHECK (
-    Horas > 0
+    Horas >= 0
 );

@@ -1,6 +1,8 @@
+INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (0,'Default','Default','Default','Default',0,00000);
 INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (1,'Mexico','CDMX','CDMX','Calle Madero',03239,31540);
 INSERT INTO Edificio(IdEdificio,Pais,Estado,Ciudad,Calle,Numero,CP) VALUES (2,'Mexico','CDMX','CDMX','Paseo de la Reforma',997,40070);
 
+INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (0,0,'Disponible');
 INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (1,1,'Disponible');
 INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (2,2,'Disponible');
 INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (1,3,'Ocupado');
@@ -20,6 +22,7 @@ INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (2,16,'Disponible');
 INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (1,17,'Ocupado');
 INSERT INTO Piso(IdEdificio,IdPiso,Estatus) VALUES (2,18,'Ocupado');
 
+INSERT INTO Sala(IdSala,IdPiso,IdEdificio,Costo,Tipo) VALUES (0,0,0,5000,'Operaciones');
 INSERT INTO Sala(IdSala,IdPiso,IdEdificio,Costo,Tipo) VALUES (1,1,1,5000,'Operaciones');
 INSERT INTO Sala(IdSala,IdPiso,IdEdificio,Costo,Tipo) VALUES (2,3,1,5000,'Operaciones');
 INSERT INTO Sala(IdSala,IdPiso,IdEdificio,Costo,Tipo) VALUES (3,5,1,5000,'Operaciones');
@@ -166,6 +169,7 @@ INSERT INTO Sala(IdSala,IdPiso,IdEdificio,Costo,Tipo) VALUES (143,16,2,5000,'Ent
 INSERT INTO Sala(IdSala,IdPiso,IdEdificio,Costo,Tipo) VALUES (144,18,2,5000,'Entrenamiento');
 
 
+INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('XAXX010101000','Default','Moral');
 INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('AVH966179VU3','Rodriguez Inc','Moral');
 INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('NQX396228SR8','Beatty and Sons','Moral');
 INSERT INTO Cliente(RFC,AliasCliente,RazonSocial) VALUES ('SQQ248665GM8','Muller Inc','Moral');
@@ -386,6 +390,7 @@ INSERT INTO PersonaDeContactoCliente(RFCCliente,PersonaDeContactoCliente) VALUES
 INSERT INTO PersonaDeContactoCliente(RFCCliente,PersonaDeContactoCliente) VALUES ('CTC550898QF6','Daune Flipek');
 
 
+INSERT INTO Entrenador(CURPEntrenador,IdPiso,IdEdificio,NombreC,FechaNac,FechaIngreso,NumeroSeguroSoc,Fotografia,CP,Ciudad,Estado,Numero,Calle,Pais) VALUES ('XEXX010101HNEXXXA4',0,0,'Default','2022-12-06','2022-12-06','AAAAAAAA','Default','00000','Default','Default','Default','Default','Default');
 INSERT INTO Entrenador(CURPEntrenador,IdPiso,IdEdificio,NombreC,FechaNac,FechaIngreso,NumeroSeguroSoc,Fotografia,CP,Ciudad,Estado,Numero,Calle,Pais) VALUES ('VJQ037276TPCXX98',13,1,'Brigham Mingame','1994-01-24','2021-11-29','LYHTSVIG','http://dummyimage.com/227x100.png/dddddd/000000','88930','Mexico','CDMX','CDMX','Avenida Álvaro Obregón','Mexico');
 INSERT INTO Entrenador(CURPEntrenador,IdPiso,IdEdificio,NombreC,FechaNac,FechaIngreso,NumeroSeguroSoc,Fotografia,CP,Ciudad,Estado,Numero,Calle,Pais) VALUES ('ZQT637913WDFHB36',8,2,'Erick Ivushkin','1985-03-28','2022-01-03','EMLJTJBL','http://dummyimage.com/107x100.png/cc0000/ffffff','62576','Mexico','CDMX','CDMX','Calle Génova','Mexico');
 INSERT INTO Entrenador(CURPEntrenador,IdPiso,IdEdificio,NombreC,FechaNac,FechaIngreso,NumeroSeguroSoc,Fotografia,CP,Ciudad,Estado,Numero,Calle,Pais) VALUES ('KQJ109191WTWRZ35',10,2,'Ronda Enders','1986-03-20','2021-07-16','ZMVHVRHR','http://dummyimage.com/148x100.png/cc0000/ffffff','79783','Mexico','CDMX','CDMX','Avenida Presidente Masaryk','Mexico');
@@ -643,6 +648,7 @@ INSERT INTO CorreoElectronicoEntrenador(CURPEntrenador,CorreoElectronico) VALUES
 INSERT INTO CorreoElectronicoEntrenador(CURPEntrenador,CorreoElectronico) VALUES ('BAW272063KOCRC34','ivaggs2r@storify.com');
 
 
+INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (0,'XAXX010101000',0,0,0,'XEXX010101HNEXXXA4','Default','en linea',15,70);
 INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (1,'HCE678692PS6',62,15,1,'VJQ037276TPCXX98','Programa de capacitacion Hamill-Yost','en linea',15,70);
 INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (2,'BQNV154049LX8',124,14,2,'ZQT637913WDFHB36','Programa de capacitacion Muhammad Lewisham','presencial',15,70);
 INSERT INTO Curso(IdCurso,RFCCliente,Idsala,IdPiso,IdEdificio,CURPEntrenador,Nombre,Modalidad,HorasDeEntrenamiento,PagoEntrenador) VALUES (3,'BAP039629UR8',41,9,1,'KQJ109191WTWRZ35','Programa de capacitacion Wilderman Crona and Yost','presencial',16,70);
