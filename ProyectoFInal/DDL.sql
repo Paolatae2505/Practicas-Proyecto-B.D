@@ -135,9 +135,9 @@ CREATE TABLE CorreoCliente(
 	CorreoCliente VARCHAR(256)
 );
 
-CREATE TABLE PersonaDeContactoCliente(
+CREATE TABLE PersContCliente(
 	RFCCliente VARCHAR(13), 
-	PersonaDeContactoCliente VARCHAR(100)
+	PersContCliente VARCHAR(100)
 );
 
 CREATE TABLE Curso(
@@ -340,9 +340,9 @@ ALTER TABLE CorreoCliente
 ADD CONSTRAINT PK_CorreoCliente
 PRIMARY KEY (CorreoCliente);
 
-ALTER TABLE PersonaDeContactoCliente
-ADD CONSTRAINT PK_PersonaDeContactoCliente
-PRIMARY KEY (PersonaDeContactoCliente);
+ALTER TABLE PersContCliente
+ADD CONSTRAINT PK_PersContCliente
+PRIMARY KEY (PersContCliente);
 
 ALTER TABLE Curso
 ADD CONSTRAINT PK_Curso
@@ -490,8 +490,8 @@ FOREIGN KEY (RFCCliente)
    ON UPDATE CASCADE
    ON DELETE CASCADE;
    
-ALTER TABLE PersonaDeContactoCliente
-ADD CONSTRAINT FK1_PersonaDeContactoCliente
+ALTER TABLE PersContCliente
+ADD CONSTRAINT FK1_PersContCliente
 FOREIGN KEY (RFCCliente)
    REFERENCES Cliente (RFC)
    ON UPDATE CASCADE
