@@ -100,3 +100,8 @@ SELECT IdCurso, RFCCliente, IdSala, IdPiso, IdEdificio, CURPEntrenador,
 		Nombre, Modalidad, HorasDeEntrenamiento, PagoEntrenador
 FROM Curso NATURAL JOIN FechasCurso
 WHERE CURRENT_DATE = FechasCurso;
+
+-- Consulta 14: nos regresa todos los CURPS de entrenadores que ingresaron en la fecha actual
+SELECT CURPEntrenador 
+FROM EntradaEntrenador 
+WHERE DATE(FechaEntradaEntrenador) = CURRENT_DATE
