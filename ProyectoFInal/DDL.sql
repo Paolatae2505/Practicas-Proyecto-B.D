@@ -203,6 +203,29 @@ CREATE TABLE SalidaAgente(
     FechaSalidaAgente TIMESTAMP NOT NULL,
     CURPAgente VARCHAR(20) NOT NULL
 );
+
+CREATE TABLE historicoagente(
+	CURPAgente VARCHAR(20),
+	IdPiso INT,
+	IdCurso INT, 
+	RFCCliente VARCHAR(13), 
+	Idsala INT,
+	IdEdificio INT,
+	CURPEntrenador VARCHAR(20),
+	NombreC VARCHAR(100) NOT NULL,
+	FechaNac DATE NOT NULL,
+	Horario VARCHAR(12) NOT NULL,
+	CP VARCHAR(5) NOT NULL,
+	Ciudad VARCHAR(256) NOT NULL,
+	Estado VARCHAR(256) NOT NULL,
+	Calle VARCHAR(256) NOT NULL,
+	Numero VARCHAR(256) NOT NULL,
+	Pais VARCHAR(60) NOT NULL,
+	Fotografia VARCHAR(270) NOT NULL,
+	PagoAgente NUMERIC NOT NUll,
+	Evaluacion NUMERIC NOT NULL,
+	Estatus BOOLEAN NOT NULL
+);
 -- Uniques
 ALTER TABLE Piso
 ADD CONSTRAINT Unique_Piso

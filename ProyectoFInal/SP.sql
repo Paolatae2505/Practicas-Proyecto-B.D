@@ -33,3 +33,19 @@ BEGIN
     END IF;
 END;
 $$ LANGUAGE PLPGSQL;
+
+--Procedimiento almacenado que da de baja a un agente si tiene menos de 8 de calificación.
+CREATE OR REPLACE FUNCTION baja_por_calificacion () RETURNS void
+AS 
+$$
+
+INSERT INTO historicoagente
+SELECT * FROM agentetele
+WHERE evaluacion < 8 AND estatus = true;
+
+UPDATE agentetele
+SET estatus = false
+WHERE evaluacion < 8 AND estatus = true;
+
+$$
+LANGUAGE sql;
