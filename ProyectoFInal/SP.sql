@@ -1,4 +1,4 @@
-1
+
 
 --Función que cuenta las faltas de un agente
 CREATE OR REPLACE FUNCTION contar_faltas(CURPAgenteN VARCHAR, IdCursoN int) 
