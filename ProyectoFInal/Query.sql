@@ -19,3 +19,6 @@ SELECT * FROM AgenteTele WHERE Horario = 'Vespertino';
 
 -- Consulta 3
 SELECT CURPAgente,Fecha,HorasAsistencia FROM AsistenciaCurso WHERE Fecha = '2021-07-16' and horasAsistencia = 3;
+
+--Consulta 4: Número de agentes dados de baja
+SELECT COUNT(*) FROM AgenteTele WHERE Estatus = false; 
