@@ -1,6 +1,6 @@
 --Trigger que al insertar o actualizar la tabla sala, checa que el costo de ésta sea exactamente
 --$5000 pesos.
-CREATE OR REPLACE FUNCTION costosalas()
+CREATE OR REPLACE FUNCTION costo_salas()
 RETURNS TRIGGER
 LANGUAGE PLPGSQL
 AS
@@ -13,7 +13,7 @@ BEGIN
 END;
 $$
 
-CREATE TRIGGER t_costosalas
+CREATE TRIGGER t_costo_salas
 BEFORE INSERT OR UPDATE
 ON sala
 FOR EACH ROW
