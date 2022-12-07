@@ -67,3 +67,66 @@ LANGUAGE plpgsql;
 CREATE TRIGGER modalidad_curso 
 AFTER INSERT OR UPDATE ON Curso
 FOR EACH ROW EXECUTE PROCEDURE checar_modalidad();
+
+CREATE OR REPLACE FUNCTION revisa_horario()
+RETURNS trigger AS $$
+DECLARE
+    curso INT;
+BEGIN
+    IF TG_OP = 'UPDATE' OR  TG_OP = 'INSERT' THEN
+        SELECT CursosPeriodo.IdCurso INTO curso FROM (SELECT MIN(FechasCurso), MAX(FechasCurso), IdCurso FROM FechasCurso WHERE CURPEntrenador = NEW.CURPEntrenador
+		GROUP BY  IdCurso  HAVING MIN(FechasCurso)<= NEW.FechasCurso AND  MAX(FechasCurso)>= NEW.FechasCurso) AS CursosPeriodo;
+        IF curso != New.IdCurso THEN
+        	RAISE EXCEPTION 'El entrenador ya tiene un curso en ese periodo';
+    	END IF;
+    END IF;
+RETURN NEW;
+END;
+$$
+LANGUAGE plpgsql;
+CREATE TRIGGER entrenador_maximo_un_curso BEFORE 
+INSERT OR UPDATE ON FechasCurso
+FOR EACH ROW EXECUTE PROCEDURE revisa_horario();
+
+CREATE OR REPLACE FUNCTION revisa_agentes()
+RETURNS trigger AS $$
+DECLARE
+    agentes INT;
+BEGIN
+    IF TG_OP = 'UPDATE' OR  TG_OP = 'INSERT' THEN
+		IF NEW.IdCurso IS NOT NULL THEN 
+			--Revisamos únicamente el IdCurso pues un entrenador no tiene más de un curso a la vez
+			SELECT COUNT(CURPAgente) INTO agentes FROM AgenteTele WHERE IdCurso = NEW.IdCurso;
+			IF agentes > 19 THEN
+				RAISE EXCEPTION 'El entrenador ya tiene 20 agentes asignados en ese periodo';
+			END IF;
+		END IF;
+    END IF;
+RETURN NEW;
+END;
+$$
+LANGUAGE plpgsql;
+CREATE TRIGGER entrenador_maximo_agentes BEFORE 
+INSERT OR UPDATE ON AgenteTele
+FOR EACH ROW EXECUTE PROCEDURE revisa_agentes();
+
+CREATE OR REPLACE FUNCTION revisa_estatus()
+RETURNS trigger AS $$
+DECLARE
+    estado INT;
+BEGIN
+    IF TG_OP = 'UPDATE' OR  TG_OP = 'INSERT' THEN
+		IF NEW.IdPiso IS NOT NULL THEN 
+			SELECT Estatus INTO estado FROM Piso WHERE IdPiso = NEW.IdPiso;
+			IF estado == 'Ocupado' THEN
+				RAISE EXCEPTION 'El piso al que quiere asignar el curso esta ocupado';
+			END IF;
+		END IF;
+    END IF;
+RETURN NEW;
+END;
+$$
+LANGUAGE plpgsql;
+CREATE TRIGGER asigna_pisos BEFORE 
+INSERT OR UPDATE ON Curso
+FOR EACH ROW EXECUTE PROCEDURE revisa_estatus();
