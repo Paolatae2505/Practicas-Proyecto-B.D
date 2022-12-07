@@ -43,3 +43,27 @@ LANGUAGE plpgsql;
 CREATE TRIGGER matutino_vespertino 
 AFTER INSERT OR UPDATE ON AgenteTele
 FOR EACH ROW EXECUTE PROCEDURE checar_turno();
+
+
+-- Trigger que al insertar o actualizar la tabla Curso, checa que el valor de Modalidad esté bien escrito
+-- Debe ser 'en linea' o 'presencial'
+CREATE OR REPLACE FUNCTION checar_modalidad() RETURNS TRIGGER
+AS $$
+DECLARE
+	ModalidadN VARCHAR(10);
+BEGIN
+	IF (TG_OP = 'INSERT' or TG_OP = 'UPDATE') THEN 
+		SELECT Modalidad INTO ModalidadN FROM Curso
+		WHERE IdCurso = NEW.IdCurso;
+		IF (ModalidadN != 'en linea' AND ModalidadN != 'presencial') THEN
+			RAISE EXCEPTION '% debe estar escrito como: en linea o presencial', ModalidadN;
+		END IF;
+	END IF;
+	RETURN NULL;
+END;
+$$
+LANGUAGE plpgsql;	   
+
+CREATE TRIGGER modalidad_curso 
+AFTER INSERT OR UPDATE ON Curso
+FOR EACH ROW EXECUTE PROCEDURE checar_modalidad();
