@@ -68,7 +68,7 @@ FROM tenerteclado
 GROUP BY idestacion
 ORDER BY idestacion
 
---Consulta10: nos regresa el cliente que contrató más horas
+--Consulta10: nos regresa el cliente que contrató más horas y cuantas horas contrató
 SELECT * FROM (SELECT  MAX(HorasTotales.sum) as maximo FROM (SELECT SUM(HorasDeEntrenamiento) FROM Curso GROUP BY RFCCLiente) AS HorasTotales) AS MaxHoras
 NATURAL JOIN (SELECT RFCCLiente, SUM(HorasDeEntrenamiento) as maximo FROM Curso GROUP BY RFCCLiente) AS HorasTotales;
 
