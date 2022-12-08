@@ -66,7 +66,7 @@ ORDER BY modelo;
 SELECT idestacion, COUNT(*) as numeroTeclados
 FROM tenerteclado
 GROUP BY idestacion
-ORDER BY idestacion
+ORDER BY idestacion;
 
 --Consulta10: nos regresa el cliente que contrató más horas y cuantas horas contrató
 SELECT * FROM (SELECT  MAX(HorasTotales.sum) as maximo FROM (SELECT SUM(HorasDeEntrenamiento) FROM Curso GROUP BY RFCCLiente) AS HorasTotales) AS MaxHoras
@@ -104,7 +104,7 @@ WHERE (EXTRACT(YEAR FROM CURRENT_DATE) - EXTRACT(YEAR FROM FechaIngreso)) >= 2;
 -- Consulta 14: nos regresa todos los CURPS de entrenadores que ingresaron en la fecha actual
 SELECT CURPEntrenador 
 FROM EntradaEntrenador 
-WHERE DATE(FechaEntradaEntrenador) = CURRENT_DATE
+WHERE DATE(FechaEntradaEntrenador) = CURRENT_DATE;
 
 -- Consulta 15: nos regresa el identificador(es) de la sala(s) con mayor número de estaciones 
 SELECT IdSala FROM (
